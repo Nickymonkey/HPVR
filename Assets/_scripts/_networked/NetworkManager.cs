@@ -31,6 +31,8 @@ namespace HPVR
         /// </summary>
         string gameVersion = "1";
 
+        //public string lobbyToLoad = "";
+        //public string levelToLoad = "";
 
         /// <summary>
         /// MonoBehaviour method called on GameObject by Unity during early initialization phase.
@@ -161,7 +163,7 @@ namespace HPVR
                 // #Critical
                 // Load the Room Level.
                 //PhotonNetwork.Destroy(GameControllerVR.Instance.CurrentPlayer);
-                PhotonNetwork.LoadLevel("SteamVR-Lobby");
+                PhotonNetwork.LoadLevel(GameState.Instance.lobbyToLoad);
             }
         }
 
@@ -176,7 +178,7 @@ namespace HPVR
             {
                 Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
 
-                LoadArena();
+                LoadLevel();
             }
         }
 
@@ -191,7 +193,7 @@ namespace HPVR
             {
                 Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
 
-                PhotonNetwork.LoadLevel("SteamVR-Lobby");
+                PhotonNetwork.LoadLevel(GameState.Instance.lobbyToLoad);
             }
         }
 
@@ -213,14 +215,14 @@ namespace HPVR
             Application.Quit();
         }
 
-        void LoadArena()
+        void LoadLevel()
         {
             if (!PhotonNetwork.IsMasterClient)
             {
                 Debug.LogError("PhotonNetwork : Trying to Load a level but we are not the master Client");
             }
 
-            PhotonNetwork.LoadLevel("SteamVR-Arena");
+            PhotonNetwork.LoadLevel(GameState.Instance.levelToLoad);
         }
     }
 }

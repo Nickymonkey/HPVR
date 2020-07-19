@@ -25,6 +25,17 @@ namespace HPVR
             {
                 LocalPlayerInstance = PhotonNetwork.Instantiate(this.prefabToInstantiate.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
             }
+            else
+            {
+                if(PlayerManager.LocalPlayerInstance != null)
+                {
+                    LocalPlayerInstance = PlayerManager.LocalPlayerInstance;
+                }
+                else
+                {
+                    LocalPlayerInstance = Player_VR.LocalPlayerInstance;
+                }
+            }
         }
 
         // Start is called before the first frame update

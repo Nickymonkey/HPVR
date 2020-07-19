@@ -12,7 +12,8 @@ namespace HPVR
     {
 
         public string location = "";
-        public string scene = "";
+        public string lobby = "";
+        public string level = "";
         private TextMesh generalText;
         private TextMesh hoveringText;
         private Vector3 oldPosition;
@@ -102,6 +103,8 @@ namespace HPVR
             if (networkedConnect)
             {
                 Destroy(Launcher.LocalPlayerInstance);
+                GameState.Instance.lobbyToLoad = lobby;
+                GameState.Instance.levelToLoad = level;
                 NetworkManager.Instance.Connect();
             } else if (networkedDisconnect)
             {
@@ -111,7 +114,7 @@ namespace HPVR
             else if (localConnect)
             {
                 Destroy(Launcher.LocalPlayerInstance);
-                SceneManager.LoadScene(scene, LoadSceneMode.Single);
+                SceneManager.LoadScene(lobby, LoadSceneMode.Single);
             }
             //generalText.text = string.Format("Attached: {0}", hand.name);
             //attachTime = Time.time;

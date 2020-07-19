@@ -11,6 +11,8 @@ namespace HPVR
         public string locomotion = "Teleport";
         public GameObject VRPrefab;
         public GameObject NormalPrefab;
+        public string lobbyToLoad = "";
+        public string levelToLoad = "";
         // Start is called before the first frame update
 
         public GameState(bool isVR)

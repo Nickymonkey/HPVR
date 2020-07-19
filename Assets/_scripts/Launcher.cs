@@ -18,7 +18,8 @@ namespace HPVR
         private GameObject prefabToInstantiate;
         private GameObject objToSpawn;
         public NetworkedTeleport nt;
-
+        public string level = "";
+        public string lobby = "";
         public void Awake()
         {
             Instance = this;
@@ -53,6 +54,8 @@ namespace HPVR
             if (Input.GetKeyDown("space"))
             {
                 Destroy(Launcher.LocalPlayerInstance);
+                GameState.Instance.lobbyToLoad = lobby;
+                GameState.Instance.levelToLoad = level;
                 NetworkManager.Instance.Connect();
             }
 

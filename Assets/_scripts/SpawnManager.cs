@@ -56,8 +56,11 @@ namespace HPVR
 
         public void SpawnNetworkedGameManager()
         {
-            GameObject networkedGameManagerObject = PhotonNetwork.Instantiate(this.networkedGameManager.name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
-            NetworkedGameManager networkedGameManagerScript = networkedGameManagerObject.GetComponent<NetworkedGameManager>();
+            if(networkedGameManager != null)
+            {
+                GameObject networkedGameManagerObject = PhotonNetwork.Instantiate(this.networkedGameManager.name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
+                NetworkedGameManager networkedGameManagerScript = networkedGameManagerObject.GetComponent<NetworkedGameManager>();
+            }
         }
     }
 }
