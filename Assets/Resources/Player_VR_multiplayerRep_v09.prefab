@@ -850,7 +850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7135170013601271294}
-  - component: {fileID: 7818113545057953769}
+  - component: {fileID: 4611047329209307523}
   m_Layer: 8
   m_Name: Snap Turn
   m_TagString: Untagged
@@ -875,7 +875,7 @@ Transform:
   m_Father: {fileID: 7135170013601271173}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7818113545057953769
+--- !u!114 &4611047329209307523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7135170013601270929}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7434e43635fb2924583f5e0f2fb6ed3a, type: 3}
+  m_Script: {fileID: 11500000, guid: f96350c7993829e42ae8ad04e4dd4ff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   snapAngle: 45

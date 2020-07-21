@@ -8174,7 +8174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e53a985809f0949b9a42cc2a6888c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemPackage: {fileID: 11450054, guid: 98a3ad29136d5c04f8a025adf1cbd704, type: 3}
+  _itemPackage: {fileID: 11450054, guid: 7591e6c1289d87b4db8be15102283c4f, type: 3}
   useItemPackagePreview: 1
   requireGrabActionToTake: 1
   requireReleaseActionToReturn: 0
@@ -17799,6 +17799,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7135170013601270937, guid: 4c76f6f415cf5224a8e6801a414bbe73,
         type: 3}
+    - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
+        type: 3}
+      propertyPath: lobby
+      value: SteamVR-Co Op Lobby
+      objectReference: {fileID: 0}
+    - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
+        type: 3}
+      propertyPath: level
+      value: SteamVR-Co Op Puzzle A
+      objectReference: {fileID: 0}
     - target: {fileID: 3273526340244230773, guid: a8594ebb7e729c54c903334d8f5f3621,
         type: 3}
       propertyPath: m_LocalPosition.x

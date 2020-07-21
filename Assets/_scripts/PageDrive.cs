@@ -204,7 +204,7 @@ namespace HPVR
 
                 for (ushort i = 0; i < nCount; ++i)
                 {
-                    ushort duration = (ushort)Random.Range(100, nRangeMax);
+                    ushort duration = (ushort)UnityEngine.Random.Range(100, nRangeMax);
                     hand.TriggerHapticPulse(duration);
                     yield return new WaitForSeconds(.01f);
                 }
@@ -271,19 +271,30 @@ namespace HPVR
 
                 driving = false;
                 grabbedWithType = GrabTypes.None;
+
             }
 
             if (driving && isGrabEnding == false && hand.hoveringInteractable == this.interactable)
             {
+                //Debug.Log("updating...");
                 ComputeAngle(hand);
                 UpdateAll();
             }
         }
 
-
         //-------------------------------------------------
         private Vector3 ComputeToTransformProjected(Transform xForm)
         {
+            worldPlaneNormal = new Vector3(0.0f, 0.0f, 0.0f);
+            worldPlaneNormal[(int)axisOfRotation] = 1.0f;
+
+            localPlaneNormal = worldPlaneNormal;
+
+            if (transform.parent)
+            {
+                worldPlaneNormal = transform.parent.localToWorldMatrix.MultiplyVector(worldPlaneNormal).normalized;
+            }
+
             Vector3 toTransform = (xForm.position - transform.position).normalized;
             Vector3 toTransformProjected = new Vector3(0.0f, 0.0f, 0.0f);
 
@@ -407,6 +418,10 @@ namespace HPVR
         //-------------------------------------------------
         public void UpdateGameObject()
         {
+            worldPlaneNormal = new Vector3(0.0f, 0.0f, 0.0f);
+            worldPlaneNormal[(int)axisOfRotation] = 1.0f;
+
+            localPlaneNormal = worldPlaneNormal;
             if (rotateGameObject)
             {
                 transform.localRotation = start * Quaternion.AngleAxis(outAngle, localPlaneNormal);
@@ -429,13 +444,12 @@ namespace HPVR
         //-------------------------------------------------
         // Updates the Debug TextMesh with the linear mapping value and the angle
         //-------------------------------------------------
-        private void UpdateAll()
+        public void UpdateAll()
         {
             UpdateLinearMapping();
             UpdateGameObject();
             UpdateDebugText();
         }
-
 
         //-------------------------------------------------
         // Computes the angle to rotate the game object based on the change in the transform
@@ -455,7 +469,7 @@ namespace HPVR
                         float frozenSqDist = (hand.hoverSphereTransform.position - frozenHandWorldPos).sqrMagnitude;
                         if (frozenSqDist > frozenSqDistanceMinMaxThreshold.x)
                         {
-                            outAngle = frozenAngle + Random.Range(-1.0f, 1.0f);
+                            outAngle = frozenAngle + UnityEngine.Random.Range(-1.0f, 1.0f);
 
                             float magnitude = Util.RemapNumberClamped(frozenSqDist, frozenSqDistanceMinMaxThreshold.x, frozenSqDistanceMinMaxThreshold.y, 0.0f, 1.0f);
                             if (magnitude > 0)

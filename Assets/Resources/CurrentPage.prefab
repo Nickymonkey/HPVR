@@ -845,7 +845,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  maxAngle: 45
+  maxAngle: 180
   freezeOnMax: 0
   onMaxAngle:
     m_PersistentCalls:
@@ -863,7 +863,7 @@ MonoBehaviour:
         m_CallState: 2
   forceStart: 1
   startAngle: 0
-  rotateGameObject: 0
+  rotateGameObject: 1
   debugPath: 0
   dbgPathLimit: 50
   debugText: {fileID: 0}
