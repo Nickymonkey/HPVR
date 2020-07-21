@@ -32,7 +32,7 @@ namespace HPVR
             if (GetComponentInChildren<FireSource>() != null)
             {
                 GetComponentInChildren<FireSource>().isBurning = false;
-                GetComponentInChildren<FireSource>().isDisabled = false;
+                //GetComponentInChildren<FireSource>().isDisabled = false;
             }
 
             if (GetComponent<AudioSource>() != null)

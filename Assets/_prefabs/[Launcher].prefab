@@ -43,9 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864555125971a5640b1c4217914269a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NetworkManager: {fileID: 8228359494106007462, guid: c5db9f9e196ad67468f1079c519704ca,
-    type: 3}
-  Player: {fileID: 5402942782353227516, guid: 45abaf8381b4d8848aef56c1765625a3, type: 3}
-  Player_VR: {fileID: 2438591766619400791, guid: adcfb00514e7df24baf006f04ced9fad,
-    type: 3}
-  isPlayerVR: 1
+  initialSpawnPoint: {fileID: 0}
+  returnSpawnPoint: {fileID: 0}
+  Player: {fileID: 0}
+  Player_VR: {fileID: 0}
+  isPlayerVR: 0
+  nt: {fileID: 0}
+  level: 
+  lobby: 

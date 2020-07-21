@@ -19,40 +19,32 @@ namespace HPVR
         public Collider pageCollider;
         public Interactable interactable;
         private float speed = 0.0075f;
-        public CircularDrive cd;
+        public PageDrive pageDrive;
         private bool handDetached = false;
-
-        //public Spellbook sb;
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
 
         void Update()
         {
-            if (!cd.driving && (cd.outAngle != cd.maxAngle && cd.outAngle != cd.minAngle))
+            if (!pageDrive.driving && (pageDrive.outAngle != pageDrive.maxAngle && pageDrive.outAngle != pageDrive.minAngle))
             {
-                if (Mathf.Abs(cd.minAngle - cd.outAngle) < Mathf.Abs(cd.maxAngle - cd.outAngle))
+                if (Mathf.Abs(pageDrive.minAngle - pageDrive.outAngle) < Mathf.Abs(pageDrive.maxAngle - pageDrive.outAngle))
                 {
-                    cd.outAngle = Mathf.LerpAngle(cd.outAngle, cd.minAngle, Time.time * speed);
-                    cd.outAngle = Mathf.Clamp(cd.outAngle, cd.minAngle, cd.maxAngle);
-                    if(Mathf.Abs(cd.minAngle - cd.outAngle) <= .5f)
+                    pageDrive.outAngle = Mathf.LerpAngle(pageDrive.outAngle, pageDrive.minAngle, Time.time * speed);
+                    pageDrive.outAngle = Mathf.Clamp(pageDrive.outAngle, pageDrive.minAngle, pageDrive.maxAngle);
+                    if(Mathf.Abs(pageDrive.minAngle - pageDrive.outAngle) <= .5f)
                     {
-                        cd.outAngle = cd.minAngle;
+                        pageDrive.outAngle = pageDrive.minAngle;
                         minAngleReached();
                     }
                 } else{
-                    cd.outAngle = Mathf.LerpAngle(cd.outAngle, cd.maxAngle, Time.time * speed);
-                    cd.outAngle = Mathf.Clamp(cd.outAngle, cd.minAngle, cd.maxAngle);
-                    if (Mathf.Abs(cd.maxAngle - cd.outAngle) <= .5f)
+                    pageDrive.outAngle = Mathf.LerpAngle(pageDrive.outAngle, pageDrive.maxAngle, Time.time * speed);
+                    pageDrive.outAngle = Mathf.Clamp(pageDrive.outAngle, pageDrive.minAngle, pageDrive.maxAngle);
+                    if (Mathf.Abs(pageDrive.maxAngle - pageDrive.outAngle) <= .5f)
                     {
-                        cd.outAngle = cd.maxAngle;
+                        pageDrive.outAngle = pageDrive.maxAngle;
                         maxAngleReached();
                     }
                 }
-                cd.UpdateGameObject();
+                pageDrive.UpdateGameObject();
             }
         }
 
@@ -61,7 +53,7 @@ namespace HPVR
             if (currentSide == PageSide.Left)
             {
                 currentSide = PageSide.Right;
-                cd.startAngle = 180f;
+                pageDrive.startAngle = 180f;
                 SendMessageUpwards("PageFlipped", false);
             }
         }
@@ -71,7 +63,7 @@ namespace HPVR
             if (currentSide == PageSide.Right)
             {
                 currentSide = PageSide.Left;
-                cd.startAngle = 0f;
+                pageDrive.startAngle = 0f;
                 SendMessageUpwards("PageFlipped", true);
             }
         }
@@ -79,8 +71,8 @@ namespace HPVR
         public void lerpPages()
         {
              //cd.outAngle = cd.startAngle;
-             transform.localRotation = Quaternion.Euler(cd.startAngle, 0f, 0f);
-             cd.outAngle = cd.startAngle;
+             transform.localRotation = Quaternion.Euler(pageDrive.startAngle, 0f, 0f);
+             pageDrive.outAngle = pageDrive.startAngle;
             //cd.outAngle = cd.startAngle;
         }
     }

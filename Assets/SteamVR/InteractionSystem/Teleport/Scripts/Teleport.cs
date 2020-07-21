@@ -10,8 +10,8 @@ using System.Collections;
 
 namespace Valve.VR.InteractionSystem
 {
-    //-------------------------------------------------------------------------
-    public class Teleport : MonoBehaviour
+	//-------------------------------------------------------------------------
+	public class Teleport : MonoBehaviour
     {
         public SteamVR_Action_Boolean teleportAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Teleport");
 
@@ -69,14 +69,14 @@ namespace Valve.VR.InteractionSystem
 		private GameObject teleportPointerObject;
 		private Transform pointerStartTransform;
 		private Hand pointerHand = null;
-        protected Player player = null;
+		private Player player = null;
 		private TeleportArc teleportArc = null;
 
 		private bool visible = false;
 
-		protected TeleportMarkerBase[] teleportMarkers;
-        protected TeleportMarkerBase pointedAtTeleportMarker;
-        protected TeleportMarkerBase teleportingToMarker;
+		private TeleportMarkerBase[] teleportMarkers;
+		private TeleportMarkerBase pointedAtTeleportMarker;
+		private TeleportMarkerBase teleportingToMarker;
 		private Vector3 pointedAtPosition;
 		private Vector3 prevPointedAtPosition;
 		private bool teleporting = false;
@@ -110,7 +110,7 @@ namespace Valve.VR.InteractionSystem
 		private Vector3 startingFeetOffset = Vector3.zero;
 		private bool movedFeetFarEnough = false;
 
-		protected SteamVR_Events.Action chaperoneInfoInitializedAction;
+		SteamVR_Events.Action chaperoneInfoInitializedAction;
 
 		// Events
 
@@ -178,7 +178,7 @@ namespace Valve.VR.InteractionSystem
 			if ( player == null )
 			{
 				Debug.LogError("<b>[SteamVR Interaction]</b> Teleport: No Player instance found in map.", this);
-				//Destroy( this.gameObject );
+				Destroy( this.gameObject );
 				return;
 			}
 
@@ -186,6 +186,7 @@ namespace Valve.VR.InteractionSystem
 
 			Invoke( "ShowTeleportHint", 5.0f );
 		}
+
 
 		//-------------------------------------------------
 		void OnEnable()
@@ -203,8 +204,8 @@ namespace Valve.VR.InteractionSystem
 		}
 
 
-        //-------------------------------------------------
-        protected void CheckForSpawnPoint()
+		//-------------------------------------------------
+		private void CheckForSpawnPoint()
 		{
 			foreach ( TeleportMarkerBase teleportMarker in teleportMarkers )
 			{
@@ -540,7 +541,7 @@ namespace Valve.VR.InteractionSystem
 
 
 		//-------------------------------------------------
-		protected void OnChaperoneInfoInitialized()
+		private void OnChaperoneInfoInitialized()
 		{
 			ChaperoneInfo chaperone = ChaperoneInfo.instance;
 
@@ -612,8 +613,8 @@ namespace Valve.VR.InteractionSystem
 		}
 
 
-        //-------------------------------------------------
-        protected void HidePointer()
+		//-------------------------------------------------
+		private void HidePointer()
 		{
 			if ( visible )
 			{
@@ -1028,23 +1029,19 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		public bool IsEligibleForTeleport( Hand hand )
 		{
-
 			if ( hand == null )
 			{
-                //Debug.Log("IN TELEPORT: HAND not found");
-                return false;
+				return false;
 			}
 
 			if ( !hand.gameObject.activeInHierarchy )
 			{
-                //Debug.Log("IN TELEPORT: HAND not active in hierarchy");
-                return false;
+				return false;
 			}
 
 			if ( hand.hoveringInteractable != null )
 			{
-                //Debug.Log("IN TELEPORT: HAND hovering something");
-                //return false;
+				return false;
 			}
 
 			if ( hand.noSteamVRFallbackCamera == null )
@@ -1055,16 +1052,10 @@ namespace Valve.VR.InteractionSystem
 				}
 
 				//Something is attached to the hand
-
 				if ( hand.currentAttachedObject != null )
 				{
-                    //Debug.Log("IN TELEPORT: HAND HAS OBJECT ATTACHED");
 					AllowTeleportWhileAttachedToHand allowTeleportWhileAttachedToHand = hand.currentAttachedObject.GetComponent<AllowTeleportWhileAttachedToHand>();
-                    if(allowTeleportWhileAttachedToHand != null)
-                    {
-                        //Debug.Log("IN TELEPORT: SCRIPT FOUND IN TELEPORT MANAGER");
-                        //Debug.Log(allowTeleportWhileAttachedToHand.teleportAllowed);
-                    }
+
 					if ( allowTeleportWhileAttachedToHand != null && allowTeleportWhileAttachedToHand.teleportAllowed == true )
 					{
 						return true;
@@ -1073,11 +1064,7 @@ namespace Valve.VR.InteractionSystem
 					{
 						return false;
 					}
-                }
-                else
-                {
-                    //Debug.Log("IN TELEPORT: NOTHING ATTACHED TO HAND");
-                }
+				}
 			}
 
 			return true;

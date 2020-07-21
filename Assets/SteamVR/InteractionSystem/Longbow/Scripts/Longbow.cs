@@ -190,7 +190,6 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		public void ArrowReleased()
 		{
-            Debug.Log("ARRROW RELEASED");
 			nocked = false;
 			hand.HoverUnlock( GetComponent<Interactable>() );
 			hand.otherHand.HoverUnlock( arrowHand.GetComponent<Interactable>() );

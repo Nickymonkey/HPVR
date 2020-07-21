@@ -57,7 +57,6 @@ namespace Valve.VR.InteractionSystem
         public Transform hoverSphereTransform;
         public float hoverSphereRadius = 0.05f;
         public LayerMask hoverLayerMask = -1;
-        public LayerMask defaultLayerMask;
         public float hoverUpdateInterval = 0.1f;
 
         public bool useControllerHoverComponent = true;
@@ -134,9 +133,9 @@ namespace Valve.VR.InteractionSystem
 
         private Player playerInstance;
 
-        protected GameObject applicationLostFocusObject;
+        private GameObject applicationLostFocusObject;
 
-        protected SteamVR_Events.Action inputFocusAction;
+        private SteamVR_Events.Action inputFocusAction;
 
         public bool isActive
         {
@@ -305,7 +304,7 @@ namespace Valve.VR.InteractionSystem
             SetVisibility(false);
         }
 
-        public virtual void SetVisibility(bool visible)
+        public void SetVisibility(bool visible)
         {
             if (mainRenderModel != null)
                 mainRenderModel.SetVisibility(visible);
@@ -361,7 +360,6 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         public void AttachObject(GameObject objectToAttach, GrabTypes grabbedWithType, AttachmentFlags flags = defaultAttachmentFlags, Transform attachmentOffset = null)
         {
-            //Debug.Log("IN HAND: ATTACHED OBJECT");
             AttachedObject attachedObject = new AttachedObject();
             attachedObject.attachmentFlags = flags;
             attachedObject.attachedOffsetTransform = attachmentOffset;
@@ -402,13 +400,7 @@ namespace Valve.VR.InteractionSystem
 
             attachedObject.attachedObject = objectToAttach;
             attachedObject.interactable = objectToAttach.GetComponent<Interactable>();
-            //Debug.Log("ATTACHING");
-            //if (objectToAttach.GetComponent<AllowTeleportWhileAttachedToHand>() != null)
-            //{
-            //    //Debug.Log("FOUND SCRIPT");
-            //}
             attachedObject.allowTeleportWhileAttachedToHand = objectToAttach.GetComponent<AllowTeleportWhileAttachedToHand>();
-            //Debug.Log("ATTACHING");
             attachedObject.handAttachmentPointTransform = this.transform;
 
             if (attachedObject.interactable != null)
@@ -606,10 +598,6 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         public void DetachObject(GameObject objectToDetach, bool restoreOriginalParent = true)
         {
-            //Debug.Log("IN HAND: DETATCH OBJECT");
-
-            hoverLayerMask = defaultLayerMask;
-
             int index = attachedObjects.FindIndex(l => l.attachedObject == objectToDetach);
             if (index != -1)
             {
@@ -835,7 +823,6 @@ namespace Valve.VR.InteractionSystem
             else
                 hoverLayerMask &= ~(1 << this.gameObject.layer); //ignore self for hovering
 
-            defaultLayerMask = hoverLayerMask;
             // allocate array for colliders
             overlappingColliders = new Collider[ColliderArraySize];
 
@@ -1103,11 +1090,7 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         protected virtual void OnDisable()
         {
-            if(inputFocusAction != null)
-            {
-                inputFocusAction.enabled = false;
-            }
-            //inputFocusAction.enabled = false;
+            inputFocusAction.enabled = false;
 
             CancelInvoke();
         }

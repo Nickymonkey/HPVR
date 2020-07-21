@@ -7,7 +7,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
-using System;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -92,7 +91,7 @@ namespace Valve.VR.InteractionSystem
 		private int dbgObjectCount = 0;
 		private int dbgObjectIndex = 0;
 
-		public bool driving = false;
+		private bool driving = false;
 
 		// If the drive is limited as is at min/max, angles greater than this are ignored
 		private float minMaxAngularThreshold = 1.0f;
@@ -209,7 +208,7 @@ namespace Valve.VR.InteractionSystem
 
 				for ( ushort i = 0; i < nCount; ++i )
 				{
-					ushort duration = (ushort)UnityEngine.Random.Range( 100, nRangeMax );
+					ushort duration = (ushort)Random.Range( 100, nRangeMax );
 					hand.TriggerHapticPulse( duration );
 					yield return new WaitForSeconds( .01f );
 				}
@@ -276,31 +275,20 @@ namespace Valve.VR.InteractionSystem
 
                 driving = false;
                 grabbedWithType = GrabTypes.None;
-
             }
 
             if ( driving && isGrabEnding == false && hand.hoveringInteractable == this.interactable )
 			{
-                //Debug.Log("updating...");
 				ComputeAngle( hand );
 				UpdateAll();
 			}
 		}
 
+
 		//-------------------------------------------------
 		private Vector3 ComputeToTransformProjected( Transform xForm )
 		{
-            worldPlaneNormal = new Vector3(0.0f, 0.0f, 0.0f);
-            worldPlaneNormal[(int)axisOfRotation] = 1.0f;
-
-            localPlaneNormal = worldPlaneNormal;
-
-            if (transform.parent)
-            {
-                worldPlaneNormal = transform.parent.localToWorldMatrix.MultiplyVector(worldPlaneNormal).normalized;
-            }
-
-            Vector3 toTransform = ( xForm.position - transform.position ).normalized;
+			Vector3 toTransform = ( xForm.position - transform.position ).normalized;
 			Vector3 toTransformProjected = new Vector3( 0.0f, 0.0f, 0.0f );
 
 			// Need a non-zero distance from the hand to the center of the CircularDrive
@@ -421,13 +409,9 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		// Updates the LinearMapping value from the angle
 		//-------------------------------------------------
-		public void UpdateGameObject()
+		private void UpdateGameObject()
 		{
-            worldPlaneNormal = new Vector3(0.0f, 0.0f, 0.0f);
-            worldPlaneNormal[(int)axisOfRotation] = 1.0f;
-
-            localPlaneNormal = worldPlaneNormal;
-            if ( rotateGameObject )
+			if ( rotateGameObject )
 			{
 				transform.localRotation = start * Quaternion.AngleAxis( outAngle, localPlaneNormal );
 			}
@@ -449,12 +433,13 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		// Updates the Debug TextMesh with the linear mapping value and the angle
 		//-------------------------------------------------
-		public void UpdateAll()
+		private void UpdateAll()
 		{
-            UpdateLinearMapping();
+			UpdateLinearMapping();
 			UpdateGameObject();
 			UpdateDebugText();
 		}
+
 
 		//-------------------------------------------------
 		// Computes the angle to rotate the game object based on the change in the transform
@@ -474,7 +459,7 @@ namespace Valve.VR.InteractionSystem
 						float frozenSqDist = ( hand.hoverSphereTransform.position - frozenHandWorldPos ).sqrMagnitude;
 						if ( frozenSqDist > frozenSqDistanceMinMaxThreshold.x )
 						{
-							outAngle = frozenAngle + UnityEngine.Random.Range( -1.0f, 1.0f );
+							outAngle = frozenAngle + Random.Range( -1.0f, 1.0f );
 
 							float magnitude = Util.RemapNumberClamped( frozenSqDist, frozenSqDistanceMinMaxThreshold.x, frozenSqDistanceMinMaxThreshold.y, 0.0f, 1.0f );
 							if ( magnitude > 0 )

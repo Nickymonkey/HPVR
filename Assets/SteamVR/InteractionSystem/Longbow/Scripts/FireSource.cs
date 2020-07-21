@@ -14,7 +14,7 @@ namespace Valve.VR.InteractionSystem
 	{
 		public GameObject fireParticlePrefab;
 		public bool startActive;
-		protected GameObject fireObject;
+		private GameObject fireObject;
 
 		public ParticleSystem customParticles;
 
@@ -22,14 +22,13 @@ namespace Valve.VR.InteractionSystem
 
 		public float burnTime;
 		public float ignitionDelay = 0;
-		protected float ignitionTime;
+		private float ignitionTime;
 
 		private Hand hand;
 
 		public AudioSource ignitionSound;
 
 		public bool canSpreadFromThisSource = true;
-        public bool isDisabled = false;
 
 		//-------------------------------------------------
 		void Start()
@@ -66,21 +65,13 @@ namespace Valve.VR.InteractionSystem
 			{
 				other.SendMessageUpwards( "FireExposure", SendMessageOptions.DontRequireReceiver );
 			}
-            //else if (isBurning)
-            //{
-            //    other.gameObject.SendMessageUpwards("TookDamage", 1);
-            //}
 		}
 
-        //-------------------------------------------------
-        protected void FireExposure()
-		{
-            if (isDisabled)
-            {
-                return;
-            }
 
-            if ( fireObject == null )
+		//-------------------------------------------------
+		private void FireExposure()
+		{
+			if ( fireObject == null )
 			{
 				Invoke( "StartBurning", ignitionDelay );
 			}
@@ -93,13 +84,8 @@ namespace Valve.VR.InteractionSystem
 
 
 		//-------------------------------------------------
-		protected void StartBurning()
+		private void StartBurning()
 		{
-            if (isDisabled)
-            {
-                return;
-            }
-
 			isBurning = true;
 			ignitionTime = Time.time;
 
@@ -117,7 +103,7 @@ namespace Valve.VR.InteractionSystem
 			{
 				if ( fireParticlePrefab != null )
 				{
-                    fireObject = Instantiate( fireParticlePrefab, transform.position, transform.rotation ) as GameObject;
+					fireObject = Instantiate( fireParticlePrefab, transform.position, transform.rotation ) as GameObject;
 					fireObject.transform.parent = transform;
 				}
 			}

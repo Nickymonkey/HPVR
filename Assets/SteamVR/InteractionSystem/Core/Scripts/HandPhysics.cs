@@ -69,7 +69,7 @@ namespace Valve.VR.InteractionSystem
 
             UpdateCenterPoint();
 
-            handCollider.TeleportTo(targetPosition, targetRotation);
+            handCollider.MoveTo(targetPosition, targetRotation);
 
             if ((handCollider.transform.position - targetPosition).sqrMagnitude > handResetDistance * handResetDistance)
                 handCollider.TeleportTo(targetPosition, targetRotation);
@@ -183,7 +183,7 @@ namespace Valve.VR.InteractionSystem
             */
         }
 
-        public void UpdateHand(SteamVR_Behaviour_Pose pose, SteamVR_Input_Sources inputSource)
+        void UpdateHand(SteamVR_Behaviour_Pose pose, SteamVR_Input_Sources inputSource)
         {
             if (!initialized) return;
 
@@ -197,9 +197,8 @@ namespace Valve.VR.InteractionSystem
 
             Vector3 offsetPosition = handCollider.transform.TransformPoint(wristToArmature.inverse.MultiplyPoint3x4(Vector3.zero));
 
-            ///JUST CHANGED THIS
             hand.mainRenderModel.transform.position = offsetPosition;
-            //hand.mainRenderModel.
+
             /*
             Vector3 wristPointInArmatureSpace = transform.InverseTransformPoint(handCollider.transform.position);
 

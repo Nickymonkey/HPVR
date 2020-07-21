@@ -32,7 +32,7 @@ namespace HPVR
             if (GetComponentInChildren<FireSource>() != null)
             {
                 GetComponentInChildren<FireSource>().isBurning = false;
-                GetComponentInChildren<FireSource>().isDisabled = true;
+                //GetComponentInChildren<FireSource>().isDisabled = true;
                 foreach (Transform child in GetComponentInChildren<FireSource>().gameObject.transform)
                 {
                     GameObject.Destroy(child.gameObject);
