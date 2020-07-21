@@ -1912,7 +1912,7 @@ MonoBehaviour:
   nockRestTransform: {fileID: 449820}
   autoSpawnArrowHand: 1
   arrowHandItemPackage: {fileID: 0}
-  arrowHandPrefab: {fileID: 187848, guid: d410d7126dd411c4ea651fc94eae9202, type: 3}
+  arrowHandPrefab: {fileID: 187848, guid: 8e58816445f2b1b47b827a6b2a40ae3d, type: 3}
   nocked: 0
   pulled: 0
   arrowMinVelocity: 3
@@ -2022,8 +2022,10 @@ MonoBehaviour:
   blendEditorExpanded: 0
   poseNames:
   - longbowPose (MAIN)
-  overridePreviewLeftHandPrefab: {fileID: 0}
-  overridePreviewRightHandPrefab: {fileID: 0}
+  overridePreviewLeftHandPrefab: {fileID: 1000013348574242, guid: 638779290bce1af49b356f33dcc6fccf,
+    type: 3}
+  overridePreviewRightHandPrefab: {fileID: 1000010304998954, guid: 6def53d002137b747aec0b29551e0e25,
+    type: 3}
   skeletonMainPose: {fileID: 11400000, guid: b11bd330216ce2944a1928a54925d7de, type: 2}
   skeletonAdditionalPoses: []
   showLeftPreview: 0
