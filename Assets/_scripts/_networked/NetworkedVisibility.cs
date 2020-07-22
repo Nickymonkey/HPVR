@@ -21,9 +21,31 @@ namespace HPVR
             {
                 this.gameObject.GetComponent<HandPhysics>().enabled = false;
                 this.gameObject.GetComponent<SteamVR_Behaviour_Pose>().enabled = false;
-                this.gameObject.GetComponent<NetworkedHand>().enabled = false;
+                handRepresentation.SetActive(true);
+            }
+            else
+            {
+                this.gameObject.GetComponent<Hand>().enabled = true;
+                this.gameObject.GetComponent<HandPhysics>().enabled = true;
+                this.gameObject.GetComponent<SteamVR_Behaviour_Pose>().enabled = true;
             }
         }
+
+        void Update()
+        {
+            if (isMineOrLocal())
+            {
+                if (this.gameObject.GetComponent<Hand>().AttachedObjects.Count > 0)
+                {
+                    handVisible = false;
+                }
+                else
+                {
+                    handVisible = true;
+                }
+            }
+        }
+
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             if (stream.IsWriting)
@@ -43,10 +65,7 @@ namespace HPVR
         {
             if(handRepresentation != null)
             {
-                if (handRepresentation.activeSelf == true)
-                {
-                    handRepresentation.GetComponent<MeshRenderer>().enabled = handVisible;
-                }
+                 handRepresentation.GetComponent<MeshRenderer>().enabled = handVisible;               
             }
         }
 
