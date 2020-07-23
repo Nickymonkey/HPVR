@@ -4170,6 +4170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7135170013601271242}
   - component: {fileID: 1718757116401305091}
+  - component: {fileID: 7261079970372038027}
   m_Layer: 8
   m_Name: Left_Toe_Joint_01
   m_TagString: hittable
@@ -4199,11 +4200,27 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7135170013601271001}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.12, z: 0.18}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7261079970372038027
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135170013601271001}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7135170013601271002
 GameObject:
   m_ObjectHideFlags: 0
@@ -4417,6 +4434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7135170013601271232}
   - component: {fileID: 7967480231994759587}
+  - component: {fileID: 567747897090489084}
   m_Layer: 8
   m_Name: Right_Toe_Joint_01
   m_TagString: hittable
@@ -4446,11 +4464,27 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7135170013601271005}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.12, z: 0.18}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &567747897090489084
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135170013601271005}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7135170013601271006
 GameObject:
   m_ObjectHideFlags: 0

@@ -133,10 +133,10 @@ namespace HPVR
 
         void OnCollisionEnter(Collision col)
         {
-            //if (col.gameObject.isStatic)
-            //{
-            //    KillScript();
-            //}
+            if (col.gameObject.layer == 10)
+            {
+                KillScript();
+            }
         }
 
     }
