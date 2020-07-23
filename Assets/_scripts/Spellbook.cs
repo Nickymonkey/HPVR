@@ -92,12 +92,12 @@ namespace HPVR
             {
                 if (state == PageState.Ontop)
                 {
-                    page.GetComponent<CircularDrive>().startAngle = 0f;
+                    page.GetComponent<PageDrive>().startAngle = 0f;
                     currentPages[1] = page;
                 } else if (state == PageState.Underneath)
                 {
                     page.transform.localPosition = new Vector3(0, -.001f, 0);
-                    page.GetComponent<CircularDrive>().startAngle = 0f;
+                    page.GetComponent<PageDrive>().startAngle = 0f;
                     page.GetComponent<MaxAngleReached>().pageCollider.enabled = false;
                     currentPages[0] = page;
                 }
@@ -107,13 +107,13 @@ namespace HPVR
             {
                 if (state == PageState.Ontop)
                 {
-                    page.GetComponent<CircularDrive>().startAngle = 180f;
+                    page.GetComponent<PageDrive>().startAngle = 180f;
                     currentPages[2] = page;
                 }
                 else if (state == PageState.Underneath)
                 {
                     page.transform.localPosition = new Vector3(0, -.001f, 0);
-                    page.GetComponent<CircularDrive>().startAngle = 180f;
+                    page.GetComponent<PageDrive>().startAngle = 180f;
                     page.GetComponent<MaxAngleReached>().pageCollider.enabled = false;
                     currentPages[3] = page;
                 }

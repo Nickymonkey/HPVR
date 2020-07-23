@@ -20,9 +20,9 @@ namespace Valve.VR.InteractionSystem
 		//Private data
 		private MeshRenderer areaMesh;
 		private int tintColorId = 0;
-		//private Color visibleTintColor = Color.clear;
-		//private Color highlightedTintColor = Color.clear;
-		//private Color lockedTintColor = Color.clear;
+		private Color visibleTintColor = Color.clear;
+		private Color highlightedTintColor = Color.clear;
+		private Color lockedTintColor = Color.clear;
 		private bool highlighted = false;
 
 		//-------------------------------------------------
@@ -39,9 +39,9 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		public void Start()
 		{
-			//visibleTintColor = Teleport.instance.areaVisibleMaterial.GetColor( tintColorId );
-			//highlightedTintColor = Teleport.instance.areaHighlightedMaterial.GetColor( tintColorId );
-			//lockedTintColor = Teleport.instance.areaLockedMaterial.GetColor( tintColorId );
+			visibleTintColor = Teleport.instance.areaVisibleMaterial.GetColor( tintColorId );
+			highlightedTintColor = Teleport.instance.areaHighlightedMaterial.GetColor( tintColorId );
+			lockedTintColor = Teleport.instance.areaLockedMaterial.GetColor( tintColorId );
 		}
 
 
@@ -145,17 +145,17 @@ namespace Valve.VR.InteractionSystem
 		{
 			if ( locked )
 			{
-				return Teleport.instance.areaLockedMaterial.GetColor(tintColorId);
+				return lockedTintColor;
 			}
 			else
 			{
 				if ( highlighted )
 				{
-					return Teleport.instance.areaHighlightedMaterial.GetColor(tintColorId);
+					return highlightedTintColor;
 				}
 				else
 				{
-					return Teleport.instance.areaVisibleMaterial.GetColor(tintColorId);
+					return visibleTintColor;
 				}
 			}
 		}

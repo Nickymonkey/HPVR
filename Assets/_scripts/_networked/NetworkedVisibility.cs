@@ -10,15 +10,13 @@ namespace HPVR
     public class NetworkedVisibility : MonoBehaviourPunCallbacks, IPunObservable
     {
         public bool handVisible = true;
-        private GameObject handRepresentation;
+        public GameObject handRepresentation;
+
         void Start()
         {
-            if(GetComponent<NetworkedHand>() != null)
-            {
-                handRepresentation = GetComponent<NetworkedHand>().NetworkedHandRepresentation;
-            }
             if (!isMineOrLocal())
             {
+                this.gameObject.GetComponent<Hand>().enabled = false;
                 this.gameObject.GetComponent<HandPhysics>().enabled = false;
                 this.gameObject.GetComponent<SteamVR_Behaviour_Pose>().enabled = false;
                 handRepresentation.SetActive(true);

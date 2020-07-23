@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3273526340244230774
+--- !u!1 &123936
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3273526340244230773}
-  - component: {fileID: 3273526340244230772}
+  - component: {fileID: 451722}
+  - component: {fileID: 11450054}
   m_Layer: 0
-  m_Name: '[Launcher]'
+  m_Name: UpdatedLongbowItemPackage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3273526340244230773
+--- !u!4 &451722
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3273526340244230774}
+  m_GameObject: {fileID: 123936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.499392, y: 0.19723786, z: 4.041021}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3273526340244230772
+--- !u!114 &11450054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3273526340244230774}
+  m_GameObject: {fileID: 123936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 864555125971a5640b1c4217914269a0, type: 3}
+  m_Script: {fileID: 11500000, guid: c9f83db71b9a6764abf964ab7679f035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpawnPoint: {fileID: 0}
-  returnSpawnPoint: {fileID: 0}
-  Player: {fileID: 0}
-  Player_VR: {fileID: 0}
-  isPlayerVR: 0
-  nt: {fileID: 0}
-  level: 
-  lobby: 
+  name: Longbow
+  packageType: 2
+  itemPrefab: {fileID: 173346, guid: e6385e3f523d0f242a5a1bf4d098a72c, type: 3}
+  otherHandItemPrefab: {fileID: 187848, guid: 8e58816445f2b1b47b827a6b2a40ae3d, type: 3}
+  previewPrefab: {fileID: 196770, guid: a5b684916cfe6804985d74652a2af09f, type: 3}
+  fadedPreviewPrefab: {fileID: 103010, guid: b9d299b8c6aa86242bec9a060f7e2d81, type: 3}

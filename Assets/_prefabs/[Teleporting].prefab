@@ -1017,7 +1017,7 @@ MonoBehaviour:
   offsetReticleTransform: {fileID: 7765145238380714288}
   floorDebugSphere: {fileID: 7765145238378300680}
   floorDebugLine: {fileID: 7765145238369123840}
-  ta: {fileID: 7765145238369715738}
+  ta: {fileID: 0}
 --- !u!114 &7765145238369715738
 MonoBehaviour:
   m_ObjectHideFlags: 0

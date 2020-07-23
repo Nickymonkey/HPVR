@@ -850,7 +850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7135170013601271294}
-  - component: {fileID: 7135170013601271536}
+  - component: {fileID: 4611047329209307523}
   m_Layer: 8
   m_Name: Snap Turn
   m_TagString: Untagged
@@ -875,7 +875,7 @@ Transform:
   m_Father: {fileID: 7135170013601271173}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7135170013601271536
+--- !u!114 &4611047329209307523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1194,14 +1194,16 @@ MonoBehaviour:
   hmdTransforms:
   - {fileID: 7135170013601271183}
   hands:
-  - {fileID: 7135170013601271545}
-  - {fileID: 7135170013601271524}
+  - {fileID: 6252255361700531878}
+  - {fileID: 865018564875850784}
   headCollider: {fileID: 7135170013601271345}
   rigSteamVR: {fileID: 7135170013601270999}
+  rig2DFallback: {fileID: 0}
   audioListener: {fileID: 7135170013601271295}
   headsetOnHead:
     actionPath: /actions/default/in/HeadsetOnHead
     needsReinit: 0
+  allowToggleTo2D: 1
   ThumbstickInput:
     actionPath: /actions/default/in/TouchPad
     needsReinit: 0
@@ -1434,12 +1436,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7135170013601271236}
-  - component: {fileID: 7135170013601271545}
+  - component: {fileID: 6252255361700531878}
   - component: {fileID: 7135170013601271320}
-  - component: {fileID: 7135170013601271548}
+  - component: {fileID: 697735532728638952}
+  - component: {fileID: 7135170013601271522}
   - component: {fileID: 7135170013601271547}
   - component: {fileID: 7135170013601271323}
-  - component: {fileID: 7135170013601271522}
   m_Layer: 8
   m_Name: LeftHand
   m_TagString: hand
@@ -1464,7 +1466,7 @@ Transform:
   m_Father: {fileID: 7135170013601271182}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7135170013601271545
+--- !u!114 &6252255361700531878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1473,10 +1475,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7135170013601270943}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d615dac2e806c49b26b6eb2eca63b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 29e3e4511966ba94d8ba0b98c6c62f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherHand: {fileID: 7135170013601271524}
+  otherHand: {fileID: 865018564875850784}
   handType: 1
   trackedObject: {fileID: 0}
   grabPinchAction:
@@ -1493,20 +1495,17 @@ MonoBehaviour:
     needsReinit: 0
   useHoverSphere: 1
   hoverSphereTransform: {fileID: 7135170013601271291}
-  hoverSphereRadius: 0.075
+  hoverSphereRadius: 0.05
   hoverLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  defaultLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
   hoverUpdateInterval: 0.1
   useControllerHoverComponent: 1
   controllerHoverComponent: tip
-  controllerHoverRadius: 0.15
+  controllerHoverRadius: 0.075
   useFingerJointHover: 1
   fingerJointHover: 10
-  fingerJointHoverRadius: 0.05
+  fingerJointHoverRadius: 0.025
   objectAttachmentPoint: {fileID: 7135170013601271191}
   noSteamVRFallbackCamera: {fileID: 0}
   noSteamVRFallbackMaxDistanceNoItem: 10
@@ -1519,8 +1518,6 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
-  NetworkedHandRepresentation: {fileID: 748167795328110140}
-  networkedVisibility: {fileID: 7135170013601271522}
 --- !u!114 &7135170013601271320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,7 +1551,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   broadcastDeviceChanges: 1
---- !u!114 &7135170013601271548
+--- !u!114 &697735532728638952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1563,7 +1560,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7135170013601270943}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 975feefbd796a5b42b27ef2e4ac1c6be, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e75fe4b0c190eb4ba97e59f062510e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   handColliderPrefab: {fileID: 114000010572907066, guid: 73f816dd3537a4c44988f340a5da70b9,
@@ -1573,6 +1570,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   hand: {fileID: 0}
+--- !u!114 &7135170013601271522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135170013601270943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cac78d05fd6ac5498c75addd9fcdfc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handVisible: 1
+  handRepresentation: {fileID: 748167795328110140}
 --- !u!114 &7135170013601271547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1611,19 +1622,6 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &7135170013601271522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7135170013601270943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cac78d05fd6ac5498c75addd9fcdfc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handVisible: 1
 --- !u!1 &7135170013601270944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3300,12 +3298,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7135170013601271288}
-  - component: {fileID: 7135170013601271524}
+  - component: {fileID: 865018564875850784}
   - component: {fileID: 7135170013601271546}
-  - component: {fileID: 7135170013601271520}
+  - component: {fileID: 1796120740343559470}
+  - component: {fileID: 7135170013601271539}
   - component: {fileID: 7135170013601271534}
   - component: {fileID: 7135170013601271551}
-  - component: {fileID: 7135170013601271539}
   m_Layer: 8
   m_Name: RightHand
   m_TagString: hand
@@ -3330,7 +3328,7 @@ Transform:
   m_Father: {fileID: 7135170013601271182}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7135170013601271524
+--- !u!114 &865018564875850784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3339,10 +3337,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7135170013601270983}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d615dac2e806c49b26b6eb2eca63b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 29e3e4511966ba94d8ba0b98c6c62f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherHand: {fileID: 7135170013601271545}
+  otherHand: {fileID: 6252255361700531878}
   handType: 2
   trackedObject: {fileID: 0}
   grabPinchAction:
@@ -3359,20 +3357,17 @@ MonoBehaviour:
     needsReinit: 0
   useHoverSphere: 1
   hoverSphereTransform: {fileID: 7135170013601271282}
-  hoverSphereRadius: 0.075
+  hoverSphereRadius: 0.05
   hoverLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  defaultLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
   hoverUpdateInterval: 0.1
   useControllerHoverComponent: 1
   controllerHoverComponent: tip
-  controllerHoverRadius: 0.15
+  controllerHoverRadius: 0.075
   useFingerJointHover: 1
   fingerJointHover: 10
-  fingerJointHoverRadius: 0.05
+  fingerJointHoverRadius: 0.025
   objectAttachmentPoint: {fileID: 7135170013601271287}
   noSteamVRFallbackCamera: {fileID: 0}
   noSteamVRFallbackMaxDistanceNoItem: 10
@@ -3385,8 +3380,6 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
-  NetworkedHandRepresentation: {fileID: 6109578729858915257}
-  networkedVisibility: {fileID: 7135170013601271539}
 --- !u!114 &7135170013601271546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3420,7 +3413,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   broadcastDeviceChanges: 1
---- !u!114 &7135170013601271520
+--- !u!114 &1796120740343559470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3429,7 +3422,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7135170013601270983}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 975feefbd796a5b42b27ef2e4ac1c6be, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e75fe4b0c190eb4ba97e59f062510e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   handColliderPrefab: {fileID: 114000013167804218, guid: 2f378ddf4e9373548a3708d26c1d75a4,
@@ -3439,6 +3432,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   hand: {fileID: 0}
+--- !u!114 &7135170013601271539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135170013601270983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cac78d05fd6ac5498c75addd9fcdfc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handVisible: 1
+  handRepresentation: {fileID: 6109578729858915257}
 --- !u!114 &7135170013601271534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3477,19 +3484,6 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &7135170013601271539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7135170013601270983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cac78d05fd6ac5498c75addd9fcdfc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handVisible: 1
 --- !u!1 &7135170013601270984
 GameObject:
   m_ObjectHideFlags: 0

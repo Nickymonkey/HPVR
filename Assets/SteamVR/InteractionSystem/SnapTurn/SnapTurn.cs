@@ -32,7 +32,7 @@ namespace Valve.VR.InteractionSystem
 
         public static float teleportLastActiveTime;
 
-        protected bool canRotate = true;
+        private bool canRotate = true;
 
         public float canTurnEverySeconds = 0.4f;
 
@@ -42,7 +42,7 @@ namespace Valve.VR.InteractionSystem
             AllOff();
         }
 
-        protected void AllOff()
+        private void AllOff()
         {
             if (rotateLeftFX != null)
                 rotateLeftFX.SetActive(false);
@@ -64,17 +64,16 @@ namespace Valve.VR.InteractionSystem
 
                 // only allow snap turning when not holding something
 
-                //bool rightHandValid = player.rightHand.currentAttachedObject == null ||
-                //    (player.rightHand.currentAttachedObject != null
-                //    && player.rightHand.currentAttachedTeleportManager != null
-                //    && player.rightHand.currentAttachedTeleportManager.teleportAllowed);
+                bool rightHandValid = player.rightHand.currentAttachedObject == null ||
+                    (player.rightHand.currentAttachedObject != null
+                    && player.rightHand.currentAttachedTeleportManager != null
+                    && player.rightHand.currentAttachedTeleportManager.teleportAllowed);
 
-                //bool leftHandValid = player.leftHand.currentAttachedObject == null ||
-                //    (player.leftHand.currentAttachedObject != null
-                //    && player.leftHand.currentAttachedTeleportManager != null
-                //    && player.leftHand.currentAttachedTeleportManager.teleportAllowed);
-                bool rightHandValid = true;
-                bool leftHandValid = true;
+                bool leftHandValid = player.leftHand.currentAttachedObject == null ||
+                    (player.leftHand.currentAttachedObject != null
+                    && player.leftHand.currentAttachedTeleportManager != null
+                    && player.leftHand.currentAttachedTeleportManager.teleportAllowed);
+
 
                 bool leftHandTurnLeft = snapLeftAction.GetStateDown(SteamVR_Input_Sources.LeftHand) && leftHandValid;
                 bool rightHandTurnLeft = snapLeftAction.GetStateDown(SteamVR_Input_Sources.RightHand) && rightHandValid;
@@ -94,8 +93,7 @@ namespace Valve.VR.InteractionSystem
         }
 
 
-        protected Coroutine rotateCoroutine;
-
+        private Coroutine rotateCoroutine;
         public void RotatePlayer(float angle)
         {
             if (rotateCoroutine != null)
@@ -108,7 +106,7 @@ namespace Valve.VR.InteractionSystem
         }
 
         //-----------------------------------------------------
-        protected IEnumerator DoRotatePlayer(float angle)
+        private IEnumerator DoRotatePlayer(float angle)
         {
             Player player = Player.instance;
 
@@ -157,7 +155,7 @@ namespace Valve.VR.InteractionSystem
             canRotate = true;
         }
 
-        protected void ShowRotateFX(GameObject fx)
+        void ShowRotateFX(GameObject fx)
         {
             if (fx == null)
                 return;
@@ -171,7 +169,7 @@ namespace Valve.VR.InteractionSystem
             UpdateOrientation(fx);
         }
 
-        protected void UpdateOrientation(GameObject fx)
+        private void UpdateOrientation(GameObject fx)
         {
             Player player = Player.instance;
 

@@ -3934,11 +3934,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7765145238369715738, guid: b117f7a315af21d40946bfc1dd05954f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7765145238380427720, guid: b117f7a315af21d40946bfc1dd05954f,
         type: 3}
       propertyPath: m_Name
@@ -6617,7 +6612,6 @@ MonoBehaviour:
   dbgPathLimit: 50
   debugText: {fileID: 0}
   outAngle: 0
-  driving: 0
 --- !u!114 &921208225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8180,7 +8174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e53a985809f0949b9a42cc2a6888c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemPackage: {fileID: 11450054, guid: 98a3ad29136d5c04f8a025adf1cbd704, type: 3}
+  _itemPackage: {fileID: 11450054, guid: 7591e6c1289d87b4db8be15102283c4f, type: 3}
   useItemPackagePreview: 1
   requireGrabActionToTake: 1
   requireReleaseActionToReturn: 0
@@ -10451,7 +10445,6 @@ MonoBehaviour:
   dbgPathLimit: 50
   debugText: {fileID: 0}
   outAngle: 0
-  driving: 0
 --- !u!114 &1303331246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12960,7 +12953,6 @@ MonoBehaviour:
   dbgPathLimit: 50
   debugText: {fileID: 0}
   outAngle: 0
-  driving: 0
 --- !u!114 &1654199943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17777,16 +17769,9 @@ PrefabInstance:
       objectReference: {fileID: 1991180040}
     - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
         type: 3}
-      propertyPath: Player
+      propertyPath: nt
       value: 
-      objectReference: {fileID: 5402942782353227516, guid: 45abaf8381b4d8848aef56c1765625a3,
-        type: 3}
-    - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
-        type: 3}
-      propertyPath: Player_VR
-      value: 
-      objectReference: {fileID: 7135170013601270937, guid: 4c76f6f415cf5224a8e6801a414bbe73,
-        type: 3}
+      objectReference: {fileID: 632750702}
     - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
         type: 3}
       propertyPath: isPlayerVR
@@ -17804,9 +17789,16 @@ PrefabInstance:
       objectReference: {fileID: 1428839864}
     - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
         type: 3}
-      propertyPath: nt
+      propertyPath: Player
       value: 
-      objectReference: {fileID: 632750702}
+      objectReference: {fileID: 5402942782353227516, guid: 45abaf8381b4d8848aef56c1765625a3,
+        type: 3}
+    - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
+        type: 3}
+      propertyPath: Player_VR
+      value: 
+      objectReference: {fileID: 7135170013601270937, guid: 4c76f6f415cf5224a8e6801a414bbe73,
+        type: 3}
     - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
         type: 3}
       propertyPath: lobby

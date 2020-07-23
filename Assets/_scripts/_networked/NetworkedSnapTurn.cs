@@ -6,16 +6,11 @@ using Valve.VR.InteractionSystem;
 
 namespace HPVR
 {
-    public class NetworkedSnapTurn : SnapTurn
+    public class NetworkedSnapTurn : MonoBehaviour
     {
-        private void Start()
-        {
-            AllOff();
-        }
-
         private void Update()
         {
-            Player_VR player = Player_VR.LocalPlayerInstance.GetComponent<Player_VR>();
+            //Player_VR player = Player_VR.LocalPlayerInstance.GetComponent<Player_VR>();
 
             if (canRotate && snapLeftAction != null && snapRightAction != null && snapLeftAction.activeBinding && snapRightAction.activeBinding)
             {
@@ -54,7 +49,7 @@ namespace HPVR
             }
         }
 
-        protected new IEnumerator DoRotatePlayer(float angle)
+        protected IEnumerator DoRotatePlayer(float angle)
         {
             Player_VR player = Player_VR.LocalPlayerInstance.GetComponent<Player_VR>();
 
@@ -105,7 +100,7 @@ namespace HPVR
             canRotate = true;
         }
 
-        public new void RotatePlayer(float angle)
+        public void RotatePlayer(float angle)
         {
             if (rotateCoroutine != null)
             {
@@ -116,7 +111,7 @@ namespace HPVR
             rotateCoroutine = StartCoroutine(DoRotatePlayer(angle));
         }
 
-        protected new void ShowRotateFX(GameObject fx)
+        protected void ShowRotateFX(GameObject fx)
         {
             if (fx == null)
                 return;
@@ -130,7 +125,7 @@ namespace HPVR
             UpdateOrientation(fx);
         }
 
-        protected new void UpdateOrientation(GameObject fx)
+        protected void UpdateOrientation(GameObject fx)
         {
             Player_VR player = Player_VR.LocalPlayerInstance.GetComponent<Player_VR>();
 
@@ -140,6 +135,53 @@ namespace HPVR
             this.transform.Translate(additionalOffset, Space.Self);
             this.transform.rotation = Quaternion.LookRotation(player.hmdTransform.position - this.transform.position, Vector3.up);
         }
+
+        //********************************
+
+        public float snapAngle = 90.0f;
+
+        public bool showTurnAnimation = true;
+
+        public AudioSource snapTurnSource;
+        public AudioClip rotateSound;
+
+        public GameObject rotateRightFX;
+        public GameObject rotateLeftFX;
+
+        public SteamVR_Action_Boolean snapLeftAction = SteamVR_Input.GetBooleanAction("SnapTurnLeft");
+        public SteamVR_Action_Boolean snapRightAction = SteamVR_Input.GetBooleanAction("SnapTurnRight");
+
+        public bool fadeScreen = true;
+        public float fadeTime = 0.1f;
+        public Color screenFadeColor = Color.black;
+
+        public float distanceFromFace = 1.3f;
+        public Vector3 additionalOffset = new Vector3(0, -0.3f, 0);
+
+        public static float teleportLastActiveTime;
+
+        private bool canRotate = true;
+
+        public float canTurnEverySeconds = 0.4f;
+
+
+        private void Start()
+        {
+            AllOff();
+        }
+
+        private void AllOff()
+        {
+            if (rotateLeftFX != null)
+                rotateLeftFX.SetActive(false);
+
+            if (rotateRightFX != null)
+                rotateRightFX.SetActive(false);
+        }
+
+
+
+        private Coroutine rotateCoroutine;
 
     }
 }

@@ -31,8 +31,8 @@ namespace Valve.VR.InteractionSystem
 		[Tooltip( "These objects are enabled when SteamVR is available" )]
 		public GameObject rigSteamVR;
 
-		//[Tooltip( "These objects are enabled when SteamVR is not available, or when the user toggles out of VR" )]
-		//public GameObject rig2DFallback;
+		[Tooltip( "These objects are enabled when SteamVR is not available, or when the user toggles out of VR" )]
+		public GameObject rig2DFallback;
 
 		[Tooltip( "The audio listener for this player" )]
 		public Transform audioListener;
@@ -40,7 +40,7 @@ namespace Valve.VR.InteractionSystem
         [Tooltip("This action lets you know when the player has placed the headset on their head")]
         public SteamVR_Action_Boolean headsetOnHead = SteamVR_Input.GetBooleanAction("HeadsetOnHead");
 
-		//public bool allowToggleTo2D = true;
+		public bool allowToggleTo2D = true;
 
 
 		//-------------------------------------------------
@@ -274,9 +274,9 @@ namespace Valve.VR.InteractionSystem
 			else
 			{
 #if !HIDE_DEBUG_UI
-                ActivateRig(rigSteamVR);
+				ActivateRig( rig2DFallback );
 #endif
-            }
+			}
         }
 
         protected virtual void Update()
@@ -365,6 +365,8 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		public void Draw2DDebug()
 		{
+			if ( !allowToggleTo2D )
+				return;
 
 			if ( !SteamVR.active )
 				return;
@@ -380,9 +382,8 @@ namespace Valve.VR.InteractionSystem
 			{
 				if ( rigSteamVR.activeSelf )
 				{
-					//ActivateRig( rig2DFallback );
-                    //ActivateRig(rigSteamVR);
-                }
+					ActivateRig( rig2DFallback );
+				}
 				else
 				{
 					ActivateRig( rigSteamVR );
@@ -395,7 +396,7 @@ namespace Valve.VR.InteractionSystem
 		private void ActivateRig( GameObject rig )
 		{
 			rigSteamVR.SetActive( rig == rigSteamVR );
-			//rig2DFallback.SetActive( rig == rig2DFallback );
+			rig2DFallback.SetActive( rig == rig2DFallback );
 
 			if ( audioListener )
 			{

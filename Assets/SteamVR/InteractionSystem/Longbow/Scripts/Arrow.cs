@@ -77,12 +77,8 @@ namespace Valve.VR.InteractionSystem
 				fireReleaseSound.Play();
 			}
 
-            // Check if arrow is shot inside or too close to an object
-            LayerMask mask = ~(1 << LayerMask.NameToLayer("Player"));
-            //mask = ~(1 << LayerMask.NameToLayer("Player"));
-            mask = ~(1 << LayerMask.NameToLayer("Pickup"));
-            RaycastHit[] hits = Physics.SphereCastAll( transform.position, 0.01f, transform.forward, 0.80f, mask, QueryTriggerInteraction.Ignore );
-
+			// Check if arrow is shot inside or too close to an object
+			RaycastHit[] hits = Physics.SphereCastAll( transform.position, 0.01f, transform.forward, 0.80f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore );
 			foreach ( RaycastHit hit in hits )
 			{
 				if ( hit.collider.gameObject != gameObject && hit.collider.gameObject != arrowHeadRB.gameObject && hit.collider != Player.instance.headCollider )
@@ -184,14 +180,14 @@ namespace Valve.VR.InteractionSystem
 				if ( canStick )
 				{
 					StickInTarget( collision, travelledFrames < 2 );
-                }
+				}
 
 				// Player Collision Check (self hit)
 				if ( Player.instance && collision.collider == Player.instance.headCollider )
 				{
 					Player.instance.PlayerShotSelf();
 				}
-            }
+			}
 		}
 
 
@@ -242,15 +238,11 @@ namespace Valve.VR.InteractionSystem
 			arrowHeadRB.transform.GetComponent<BoxCollider>().enabled = false;
 
 			hitTargetSound.Play();
-            if (collision.gameObject.tag == "mob")
-            {
-                collision.gameObject.SendMessageUpwards("TookDamage", 1);
-                //other.GetComponent<Mob>().tookDamage(healthDamage);
-            }
 
-            // If the hit item has a parent, dock an empty object to that
-            // this fixes an issue with scaling hierarchy. I suspect this is not sustainable for a large object / scaling hierarchy.
-            scaleParentObject = new GameObject( "Arrow Scale Parent" );
+
+			// If the hit item has a parent, dock an empty object to that
+			// this fixes an issue with scaling hierarchy. I suspect this is not sustainable for a large object / scaling hierarchy.
+			scaleParentObject = new GameObject( "Arrow Scale Parent" );
 			Transform parentTransform = collision.collider.transform;
 
 			// Don't do this for weebles because of how it has a fixed joint

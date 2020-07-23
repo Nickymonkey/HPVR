@@ -197,8 +197,7 @@ namespace Valve.VR.InteractionSystem
 			{
 				if ( bow.pulled ) // If bow is pulled back far enough, fire arrow, otherwise reset arrow in arrowhand
 				{
-                    Debug.Log("ARROW FIRED");
-                    FireArrow();
+					FireArrow();
 				}
 				else
 				{
