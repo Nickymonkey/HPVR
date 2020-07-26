@@ -37,11 +37,13 @@ public class Portcullis : MonoBehaviour
 
     public void Open()
     {
+        StopAllCoroutines();
         StartCoroutine(LerpPosition(new Vector3(transform.position.x, OpenPosition, transform.position.z), timeToLerp));
     }
 
     public void Close()
     {
+        StopAllCoroutines();
         StartCoroutine(LerpPosition(new Vector3(transform.position.x, ClosePosition, transform.position.z), timeToLerp));
     }
 }
