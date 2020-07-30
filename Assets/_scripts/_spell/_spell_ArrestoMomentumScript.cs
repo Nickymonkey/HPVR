@@ -23,9 +23,16 @@ namespace HPVR
         IEnumerator freeze()
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            yield
-            return new WaitForSeconds(2.0f);
+            if (GetComponent<Fan>())
+            {
+                GetComponent<Fan>().enabled = false;
+            }
+            yield return new WaitForSeconds(2.0f);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            if (GetComponent<Fan>())
+            {
+                GetComponent<Fan>().enabled = true;
+            }
             Destroy(this);
         }
     }

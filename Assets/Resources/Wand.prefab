@@ -510,7 +510,7 @@ MonoBehaviour:
     m_Bits: 0
   wandReticleIgnoreMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1028
   releaseVelocityTimeOffset: -0.011
   scaleReleaseVelocity: 1.58
   scaleReleaseVelocityThreshold: -1
