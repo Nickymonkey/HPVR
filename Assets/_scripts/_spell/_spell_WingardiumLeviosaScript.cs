@@ -13,10 +13,10 @@ namespace HPVR
         private Vector3 targetPosition;
         private AudioSource currentAudioSource;
         public float speed = 1.0f;
-  public float height = 0.25f;
+        public float height = 0.25f;
 
-  // Use this for initialization
-  void Start()
+        // Use this for initialization
+        void Start()
         {
 
             if (GetComponent<Rigidbody>().useGravity == false)
@@ -83,6 +83,7 @@ namespace HPVR
 
         void OnCollisionEnter(Collision col)
         {
+            GetComponent<Rigidbody>().useGravity = false;
             Destroy(this);
         }
 

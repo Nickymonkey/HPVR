@@ -28,6 +28,7 @@ namespace HPVR
             GetComponent<Rigidbody>().useGravity = true;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             GetComponent<Rigidbody>().mass = 1;
+            GetComponent<Rigidbody>().isKinematic = false;
 
             if (GetComponentInChildren<FireSource>() != null)
             {

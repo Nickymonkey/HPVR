@@ -175,6 +175,15 @@ namespace HPVR
             if (focusSelection != null)
             {
                 LexiconSelectable selectable = focusSelection.SelectedObject.GetComponent<LexiconSelectable>();
+                if(selectable.transform.parent.gameObject.GetComponent<Rigidbody>() != null)
+                {
+                    selectable.transform.parent.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                }
+                //if (selectable.transform.parent.gameObject.GetComponent<Animator>() != null)
+                //{
+                //    Destroy(selectable.transform.parent.gameObject.GetComponent<Animator>());
+                //}
+
                 if (args.text == "levitate" || args.text == "wingardium leviosa")
                 {
                     selectable.transform.parent.gameObject.AddComponent<_spell_WingardiumLeviosaScript>();

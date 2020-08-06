@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class Wind : MonoBehaviour
 {
+    public enum Axis_t
+    {
+        XAxis,
+        YAxis,
+        ZAxis
+    };
+
     public Fan fs;
     public float windStrength = -50f;
+    public Axis_t axisOfRotation = Axis_t.XAxis;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +33,17 @@ public class Wind : MonoBehaviour
         if (other.transform.parent.GetComponent<Rigidbody>() && fs.enabled)
         {
             //Debug.Log("found rigidbody");
-            other.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(windStrength, 0, 0));
+            //if(axisOfRotation)
+            if (axisOfRotation == Axis_t.XAxis)
+            {
+                other.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(windStrength, 0, 0));
+            } else if(axisOfRotation == Axis_t.YAxis)
+            {
+                other.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(0, windStrength, 0));
+            } else if(axisOfRotation == Axis_t.ZAxis)
+            {
+                other.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, windStrength));
+            }         
         }
     }
 }

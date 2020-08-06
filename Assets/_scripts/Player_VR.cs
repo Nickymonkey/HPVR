@@ -118,7 +118,7 @@ namespace HPVR
         void movementUpdate()
         {
             characterController.center = new Vector3(hmdTransform.localPosition.x, characterController.center.y, hmdTransform.transform.localPosition.z);
-            characterController.Move(new Vector3(0, -9.81f, 0) * Time.deltaTime * 10f);
+            characterController.Move(new Vector3(0, -9.81f, 0) * Time.deltaTime);
             if (GameState.Instance.locomotion == "Smooth")
             {
                 SmoothLocomotion();

@@ -22,7 +22,12 @@ namespace HPVR
 
         IEnumerator freeze()
         {
+            if (GetComponent<Animator>() != null)
+            {
+                Destroy(GetComponent<Animator>());
+            }
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            GetComponent<Rigidbody>().isKinematic = false;
             if (GetComponent<Fan>())
             {
                 GetComponent<Fan>().enabled = false;
