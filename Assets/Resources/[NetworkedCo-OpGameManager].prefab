@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dailList: []
   portcullisList: []
+  indicatorList: []
+  leverList: []
 --- !u!114 &4833070250949159926
 MonoBehaviour:
   m_ObjectHideFlags: 0

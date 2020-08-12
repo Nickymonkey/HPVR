@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     public static NetworkedCoOpGameManager Instance;
     public List<NumberDail> dailList;
     public List<Portcullis> portcullisList;
+    public List<Indicator> indicatorList;
+    public List<CircularDrive> leverList;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,18 @@ public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservabl
         {
             dailList.Add(t.gameObject.GetComponentInChildren<NumberDail>());
         }
-        //List<Transform> SpawnPoints = SpawnPointsRoot.Cast<Transform>().ToList();
+        transforms.Clear();
+        transforms = GameObject.Find("[Indicator]").transform.Cast<Transform>().ToList();
+        foreach (Transform t in transforms)
+        {
+            indicatorList.Add(t.gameObject.GetComponent<Indicator>());
+        }
+        transforms.Clear();
+        transforms = GameObject.Find("[Lever]").transform.Cast<Transform>().ToList();
+        foreach (Transform t in transforms)
+        {
+            leverList.Add(t.gameObject.GetComponent<CircularDrive>());
+        }
     }
 
     void Awake()
@@ -48,6 +62,11 @@ public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservabl
             {
                 stream.SendNext(portcullis.currentNumTriggers);
             }
+
+            foreach (Indicator indicator in indicatorList)
+            {
+                stream.SendNext(indicator.isOn);
+            }
             //stream.SendNext(opponentHealth);
 
         }
@@ -57,6 +76,12 @@ public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservabl
             {
                 portcullis.currentNumTriggers = (int)stream.ReceiveNext();
                 portcullis.CheckTriggers();
+            }
+
+            foreach (Indicator indicator in indicatorList)
+            {
+                indicator.isOn = (bool)stream.ReceiveNext();
+                indicator.checkSwitch();
             }
             // Network player, receive data
             //playerHealth = (int)stream.ReceiveNext();

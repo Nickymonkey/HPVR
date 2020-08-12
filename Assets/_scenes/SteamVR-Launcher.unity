@@ -17429,6 +17429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
+  isOn: 0
 --- !u!108 &703081440
 Light:
   m_ObjectHideFlags: 0
@@ -31052,6 +31053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
+  isOn: 0
 --- !u!108 &1163291259
 Light:
   m_ObjectHideFlags: 0
@@ -43311,6 +43313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
+  isOn: 0
 --- !u!108 &1658548900
 Light:
   m_ObjectHideFlags: 0
@@ -50994,6 +50997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
+  isOn: 0
 --- !u!108 &1936814340
 Light:
   m_ObjectHideFlags: 0
@@ -52929,6 +52933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
+  isOn: 0
 --- !u!108 &1997369536
 Light:
   m_ObjectHideFlags: 0
