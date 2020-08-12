@@ -42,16 +42,10 @@ namespace HPVR
         {
             List<Transform> SpawnPoints = SpawnPointsRoot.Cast<Transform>().ToList();
 
-            System.Random random = new System.Random();
-            int objectIndex = random.Next(Objects.Count);
-            Debug.Log(Objects.Count);
-            var prefab = Objects[objectIndex];
-            Debug.Log(prefab.name);
-            foreach (Transform spawn in SpawnPoints)
+            for(int i=0; i<SpawnPoints.Count; i++)
             {
-                PhotonNetwork.Instantiate(prefab.name, spawn.position, Quaternion.identity, 0);
+                PhotonNetwork.Instantiate(Objects[i].name, SpawnPoints[i].position, Quaternion.identity, 0);
             }
-
         }
 
         public void SpawnNetworkedGameManager()
@@ -59,7 +53,7 @@ namespace HPVR
             if(networkedGameManager != null)
             {
                 GameObject networkedGameManagerObject = PhotonNetwork.Instantiate(this.networkedGameManager.name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
-                NetworkedGameManager networkedGameManagerScript = networkedGameManagerObject.GetComponent<NetworkedGameManager>();
+                //NetworkedGameManager networkedGameManagerScript = networkedGameManagerObject.GetComponent<NetworkedGameManager>();
             }
         }
     }

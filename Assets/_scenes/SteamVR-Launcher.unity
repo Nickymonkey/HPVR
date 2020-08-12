@@ -2362,9 +2362,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OpenPosition: 4.5
-  ClosePosition: 1
-  StartPosition: 1
   timeToLerp: 0.5
+  triggersNeeded: -1
+  currentNumTriggers: 0
 --- !u!65 &78924425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5146,9 +5146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OpenPosition: 4.5
-  ClosePosition: 1
-  StartPosition: 1
   timeToLerp: 0.5
+  triggersNeeded: -1
+  currentNumTriggers: 0
 --- !u!65 &194368336
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11142,9 +11142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OpenPosition: 4.5
-  ClosePosition: 1
-  StartPosition: 1
   timeToLerp: 0.5
+  triggersNeeded: -1
+  currentNumTriggers: 0
 --- !u!65 &420660532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12439,9 +12439,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OpenPosition: 4.5
-  ClosePosition: 1
-  StartPosition: 1
   timeToLerp: 0.5
+  triggersNeeded: -1
+  currentNumTriggers: 0
 --- !u!65 &524411208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27818,6 +27818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fs: {fileID: 1976309260}
   windStrength: -50
+  axisOfRotation: 0
 --- !u!1 &1047575713
 GameObject:
   m_ObjectHideFlags: 0
@@ -38126,6 +38127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RequiresPerson: 0
   triggered: 0
+  numOfCollisions: 0
   onTrigger:
     m_PersistentCalls:
       m_Calls: []
@@ -38621,7 +38623,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469374194}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -97.36, y: 0.571, z: -50.55}
+  m_LocalPosition: {x: -0.89, y: 0.571, z: -12.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 406189935}
@@ -40356,6 +40358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RequiresPerson: 0
   triggered: 0
+  numOfCollisions: 0
   onTrigger:
     m_PersistentCalls:
       m_Calls:
@@ -48403,9 +48406,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OpenPosition: 4.5
-  ClosePosition: 1
-  StartPosition: 1
   timeToLerp: 0.5
+  triggersNeeded: -1
+  currentNumTriggers: 0
 --- !u!65 &1843567643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54762,6 +54765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RequiresPerson: 1
   triggered: 0
+  numOfCollisions: 0
   onTrigger:
     m_PersistentCalls:
       m_Calls: []
@@ -54909,6 +54913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RequiresPerson: 0
   triggered: 0
+  numOfCollisions: 0
   onTrigger:
     m_PersistentCalls:
       m_Calls:
@@ -56724,7 +56729,7 @@ PrefabInstance:
     - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
         type: 3}
       propertyPath: isPlayerVR
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
         type: 3}

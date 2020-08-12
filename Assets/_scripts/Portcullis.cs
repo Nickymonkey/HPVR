@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,6 @@ public class Portcullis : MonoBehaviour
     void Start()
     {
         ClosePosition = transform.position.y;
-        //StartCoroutine(LerpPosition(new Vector3(transform.position.x, transform.position.y, transform.position.z), timeToLerp));
     }
 
     // Update is called once per frame
@@ -63,5 +63,17 @@ public class Portcullis : MonoBehaviour
     {
         currentNumTriggers--;        
         Close();
+    }
+
+    public void CheckTriggers()
+    {
+        if (currentNumTriggers == triggersNeeded)
+        {
+            Open();
+        }
+        else
+        {
+            Close();
+        }
     }
 }

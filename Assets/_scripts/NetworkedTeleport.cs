@@ -7,7 +7,7 @@ namespace HPVR
 {
     public class NetworkedTeleport : Teleport
     {
-        protected Player player = null;
+        private Player player = null;
         public TeleportArc ta;
 
         void OnEnable()
