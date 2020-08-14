@@ -6,8 +6,9 @@ using UnityEngine.Events;
 public class PressurePlate : MonoBehaviour
 {
     public bool RequiresPerson = false;
+    public bool RequiresStone = false;
     public bool triggered = false;
-    private bool collisionStay = false;
+    public bool collisionStay = false;
     public int numOfCollisions = 0;
 
     [Tooltip("If pressure plate triggered")]
@@ -35,6 +36,15 @@ public class PressurePlate : MonoBehaviour
             {
                 activated();
             }
+        } else if (RequiresStone)
+        {
+            if (collision.transform.gameObject.GetComponent<Rigidbody>() != null)
+            {
+                if(collision.transform.gameObject.GetComponent<Rigidbody>().mass == 5)
+                {
+                    activated();
+                }
+            }
         }
         else
         {
@@ -47,7 +57,7 @@ public class PressurePlate : MonoBehaviour
         deactivated();
     }
 
-    void activated()
+    private void activated()
     {
         numOfCollisions++;
         //triggered = true;
@@ -59,7 +69,7 @@ public class PressurePlate : MonoBehaviour
         }
     }
 
-    void deactivated()
+    private void deactivated()
     {
         numOfCollisions--;
         if (numOfCollisions <= 0 && collisionStay)
@@ -68,6 +78,18 @@ public class PressurePlate : MonoBehaviour
             this.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
             //triggered = false;
             offTrigger.Invoke();
+        }
+    }
+
+    public void check()
+    {
+        if (collisionStay)
+        {
+            this.gameObject.GetComponent<Renderer>().material.color = Color.green;
+        }
+        else
+        {
+            this.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
         }
     }
 }

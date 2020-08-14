@@ -12,6 +12,7 @@ public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservabl
     public List<Portcullis> portcullisList;
     public List<Indicator> indicatorList;
     public List<CircularDrive> leverList;
+    public List<PressurePlate> pressurePlateList;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,12 @@ public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservabl
         foreach (Transform t in transforms)
         {
             leverList.Add(t.gameObject.GetComponent<CircularDrive>());
+        }
+        transforms.Clear();
+        transforms = GameObject.Find("[PressurePlate]").transform.Cast<Transform>().ToList();
+        foreach (Transform t in transforms)
+        {
+            pressurePlateList.Add(t.gameObject.GetComponentInChildren<PressurePlate>());
         }
     }
 
@@ -67,6 +74,11 @@ public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservabl
             {
                 stream.SendNext(indicator.isOn);
             }
+
+            foreach (PressurePlate pressurePlate in pressurePlateList)
+            {
+                stream.SendNext(pressurePlate.collisionStay);
+            }
             //stream.SendNext(opponentHealth);
 
         }
@@ -82,6 +94,12 @@ public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservabl
             {
                 indicator.isOn = (bool)stream.ReceiveNext();
                 indicator.checkSwitch();
+            }
+
+            foreach (PressurePlate pressurePlate in pressurePlateList)
+            {
+                pressurePlate.collisionStay = (bool)stream.ReceiveNext();
+                pressurePlate.check();
             }
             // Network player, receive data
             //playerHealth = (int)stream.ReceiveNext();

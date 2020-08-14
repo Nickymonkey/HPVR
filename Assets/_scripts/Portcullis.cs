@@ -11,7 +11,7 @@ public class Portcullis : MonoBehaviour
     public float timeToLerp;
     public int triggersNeeded = -1;
     public int currentNumTriggers = 0;
-
+    //public bool stayActivated = false;
     // Start is called before the first frame update
     void Start()
     {
