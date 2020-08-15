@@ -1,13 +1,16 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Indicator : MonoBehaviour
 {
     public Material OnMaterial;
     public Material OffMaterial;
     public bool isOn = false;
-
+    public UnityEvent switchOn;
+    public UnityEvent switchOff;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class Indicator : MonoBehaviour
 
     public void SwitchOn()
     {
+        switchOn.Invoke();
         GetComponent<Light>().color = Color.green;
         GetComponent<Renderer>().sharedMaterial = OnMaterial;
         isOn = true;
@@ -30,6 +34,7 @@ public class Indicator : MonoBehaviour
 
     public void SwitchOff()
     {
+        switchOff.Invoke();
         GetComponent<Light>().color = Color.red;
         GetComponent<Renderer>().sharedMaterial = OffMaterial;
         isOn = false;
@@ -44,6 +49,23 @@ public class Indicator : MonoBehaviour
         else
         {
             SwitchOff();
+        }
+    }
+
+    public void flip()
+    {
+        if (GameObject.Find("[NetworkedCo-OpGameManager](Clone)"))
+        {
+            GameObject.Find("[NetworkedCo-OpGameManager](Clone)").GetComponent<PhotonView>().RequestOwnership();
+        }
+
+        if (isOn)
+        {
+            SwitchOff();
+        }
+        else
+        {
+            SwitchOn();
         }
     }
 }
