@@ -52,6 +52,34 @@ public class PressurePlate : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (!collisionStay)
+        {
+            if (RequiresPerson)
+            {
+                if (collision.collider.gameObject.layer == 8)
+                {
+                    activated();
+                }
+            }
+            else if (RequiresStone)
+            {
+                if (collision.transform.gameObject.GetComponent<Rigidbody>() != null)
+                {
+                    if (collision.transform.gameObject.GetComponent<Rigidbody>().mass == 5)
+                    {
+                        activated();
+                    }
+                }
+            }
+            else
+            {
+                activated();
+            }
+        }
+    }
+
     private void OnCollisionExit(Collision collision)
     {
         deactivated();

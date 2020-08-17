@@ -13,6 +13,7 @@ public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservabl
     public List<Indicator> indicatorList;
     public List<CircularDrive> leverList;
     public List<PressurePlate> pressurePlateList;
+    public List<HoverButton> buttonList;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,12 @@ public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservabl
         foreach (Transform t in transforms)
         {
             pressurePlateList.Add(t.gameObject.GetComponentInChildren<PressurePlate>());
+        }
+        transforms.Clear();
+        transforms = GameObject.Find("[Button]").transform.Cast<Transform>().ToList();
+        foreach (Transform t in transforms)
+        {
+            buttonList.Add(t.gameObject.GetComponentInChildren<HoverButton>());
         }
     }
 
@@ -79,6 +86,11 @@ public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservabl
             {
                 stream.SendNext(pressurePlate.collisionStay);
             }
+
+            //foreach (HoverButton button in buttonList)
+            //{
+            //    stream.SendNext(button.);
+            //}
             //stream.SendNext(opponentHealth);
 
         }

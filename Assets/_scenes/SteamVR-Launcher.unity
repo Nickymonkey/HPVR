@@ -2457,6 +2457,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: -1
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &78924425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5569,6 +5570,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: -1
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &194368336
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12171,6 +12173,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: -1
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &420660532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13751,6 +13754,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: -1
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &524411208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24721,6 +24725,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: 5
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &849965231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53239,6 +53244,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: -1
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &1843567643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62604,7 +62610,7 @@ PrefabInstance:
     - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
         type: 3}
       propertyPath: isPlayerVR
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3273526340244230772, guid: a8594ebb7e729c54c903334d8f5f3621,
         type: 3}

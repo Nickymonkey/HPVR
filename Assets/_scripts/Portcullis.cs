@@ -11,7 +11,7 @@ public class Portcullis : MonoBehaviour
     public float timeToLerp;
     public int triggersNeeded = -1;
     public int currentNumTriggers = 0;
-    //public bool stayActivated = false;
+    public bool stayActivated = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,10 +38,32 @@ public class Portcullis : MonoBehaviour
         transform.position = targetPosition;
     }
 
+    private IEnumerator LerpPositionThenDisable(Vector3 targetPosition, float duration)
+    {
+        float time = 0;
+        Vector3 startPosition = transform.position;
+
+        while (time < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = targetPosition;
+        this.gameObject.SetActive(false);
+    }
+
     public void Open()
     {
         StopAllCoroutines();
-        StartCoroutine(LerpPosition(new Vector3(transform.position.x, ClosePosition+OpenPosition, transform.position.z), timeToLerp));
+        if (stayActivated)
+        {
+            StartCoroutine(LerpPositionThenDisable(new Vector3(transform.position.x, ClosePosition + OpenPosition, transform.position.z), timeToLerp));
+        }
+        else
+        {
+            StartCoroutine(LerpPosition(new Vector3(transform.position.x, ClosePosition + OpenPosition, transform.position.z), timeToLerp));
+        }
     }
 
     public void Close()
@@ -76,4 +98,5 @@ public class Portcullis : MonoBehaviour
             Close();
         }
     }
+
 }

@@ -99,5 +99,13 @@ namespace HPVR
                 }
             }
         }
+
+        public void requestAccess()
+        {
+            if (GameObject.Find("[NetworkedCo-OpGameManager](Clone)"))
+            {
+                GameObject.Find("[NetworkedCo-OpGameManager](Clone)").GetComponent<PhotonView>().RequestOwnership();
+            }
+        }
     }
 }

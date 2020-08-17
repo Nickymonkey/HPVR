@@ -54,11 +54,6 @@ public class Indicator : MonoBehaviour
 
     public void flip()
     {
-        if (GameObject.Find("[NetworkedCo-OpGameManager](Clone)"))
-        {
-            GameObject.Find("[NetworkedCo-OpGameManager](Clone)").GetComponent<PhotonView>().RequestOwnership();
-        }
-
         if (isOn)
         {
             SwitchOff();

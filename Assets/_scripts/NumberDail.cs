@@ -9,6 +9,7 @@ public class NumberDail : MonoBehaviour
 {
     public int correctNum = 0;
     public int currentNum = 1;
+    public bool correctTriggered = false;
     public UnityEvent onCorrectNum;
     public UnityEvent onIncorrectNum;
 
@@ -32,13 +33,9 @@ public class NumberDail : MonoBehaviour
             int newNum = Int32.Parse(other.gameObject.name);
             if(currentNum != newNum)
             {
-                if (GameObject.Find("[NetworkedCo-OpGameManager](Clone)"))
-                {
-                    GameObject.Find("[NetworkedCo-OpGameManager](Clone)").GetComponent<PhotonView>().RequestOwnership();
-                }
-
                 if (currentNum == correctNum)
                 {
+                    correctTriggered = false;
                     onIncorrectNum.Invoke();
                 }
 
@@ -46,6 +43,7 @@ public class NumberDail : MonoBehaviour
 
                 if (currentNum == correctNum)
                 {
+                    correctTriggered = true;
                     onCorrectNum.Invoke();
                 }
             }
@@ -53,6 +51,38 @@ public class NumberDail : MonoBehaviour
         catch (FormatException e)
         {
             Console.WriteLine(e.Message);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        //Debug.Log(other.gameObject.name);
+        if (!correctTriggered)
+        {
+            try
+            {
+                int newNum = Int32.Parse(other.gameObject.name);
+                if (currentNum != newNum)
+                {
+                    if (currentNum == correctNum)
+                    {
+                        correctTriggered = false;
+                        onIncorrectNum.Invoke();
+                    }
+
+                    currentNum = newNum;
+
+                    if (currentNum == correctNum)
+                    {
+                        correctTriggered = true;
+                        onCorrectNum.Invoke();
+                    }
+                }
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 
