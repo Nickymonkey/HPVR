@@ -3482,6 +3482,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: -1
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &78924425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7652,6 +7653,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: -1
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &194368336
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16762,6 +16764,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: -1
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &420660532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17388,6 +17391,12 @@ MonoBehaviour:
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
   isOn: 0
+  switchOn:
+    m_PersistentCalls:
+      m_Calls: []
+  switchOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!108 &429807382
 Light:
   m_ObjectHideFlags: 0
@@ -20039,6 +20048,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: -1
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &524411208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25536,6 +25546,12 @@ MonoBehaviour:
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
   isOn: 0
+  switchOn:
+    m_PersistentCalls:
+      m_Calls: []
+  switchOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!108 &703081440
 Light:
   m_ObjectHideFlags: 0
@@ -39422,6 +39438,12 @@ MonoBehaviour:
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
   isOn: 0
+  switchOn:
+    m_PersistentCalls:
+      m_Calls: []
+  switchOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!108 &1084540734
 Light:
   m_ObjectHideFlags: 0
@@ -42295,6 +42317,12 @@ MonoBehaviour:
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
   isOn: 0
+  switchOn:
+    m_PersistentCalls:
+      m_Calls: []
+  switchOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!108 &1163291259
 Light:
   m_ObjectHideFlags: 0
@@ -43925,6 +43953,12 @@ MonoBehaviour:
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
   isOn: 0
+  switchOn:
+    m_PersistentCalls:
+      m_Calls: []
+  switchOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!108 &1221299601
 Light:
   m_ObjectHideFlags: 0
@@ -44433,6 +44467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctNum: 4
   currentNum: 1
+  correctTriggered: 0
   onCorrectNum:
     m_PersistentCalls:
       m_Calls: []
@@ -61257,6 +61292,12 @@ MonoBehaviour:
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
   isOn: 0
+  switchOn:
+    m_PersistentCalls:
+      m_Calls: []
+  switchOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!108 &1658548900
 Light:
   m_ObjectHideFlags: 0
@@ -66427,6 +66468,12 @@ MonoBehaviour:
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
   isOn: 0
+  switchOn:
+    m_PersistentCalls:
+      m_Calls: []
+  switchOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!108 &1792360364
 Light:
   m_ObjectHideFlags: 0
@@ -68754,6 +68801,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: -1
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &1843567643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72967,6 +73015,12 @@ MonoBehaviour:
   OnMaterial: {fileID: 2100000, guid: b76587b34a2dc8c49a78c329d8a4d425, type: 2}
   OffMaterial: {fileID: 2100000, guid: c8f25108aba81644da21f8d8f2b889ad, type: 2}
   isOn: 0
+  switchOn:
+    m_PersistentCalls:
+      m_Calls: []
+  switchOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!108 &1936814340
 Light:
   m_ObjectHideFlags: 0
@@ -74043,6 +74097,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: -1
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &1961271320
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -81494,6 +81549,7 @@ MonoBehaviour:
   timeToLerp: 0.5
   triggersNeeded: 3
   currentNumTriggers: 0
+  stayActivated: 0
 --- !u!65 &2142511698
 BoxCollider:
   m_ObjectHideFlags: 0

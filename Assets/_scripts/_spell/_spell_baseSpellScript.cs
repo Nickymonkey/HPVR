@@ -14,7 +14,7 @@ namespace HPVR
         public float knockbackRadius = 0f;
         public bool hasExplosion = false;
         public bool spellActivated = false;
-        public string SpellExplosion = "SpellExplosion";
+        public string SpellExplosion = "Flash";
         public string SpellExplosionSoundClip = "spellExplosionSound";
         private Color spellColor;
         private string spellColorName;
@@ -30,10 +30,10 @@ namespace HPVR
             spellColor = color;
             spellColorName = colorName;
             GetComponent<Renderer>().material.SetColor("_Color", spellColor);
-            if (SpellExplosion.Contains("SpellExplosion"))
-            {
-                SpellExplosion = SpellExplosion + spellColorName;
-            }
+            //if (SpellExplosion.Contains("SpellExplosion"))
+            //{
+            //    SpellExplosion = SpellExplosion + spellColorName;
+            //}
             //SpellExplosion = SpellExplosion+ spellColorName;
         }
 

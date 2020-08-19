@@ -45,7 +45,8 @@ namespace HPVR
         private static string minorSpellString = "MinorBaseSpell";
         [Tooltip("The time offset used when releasing the object with the RawFromHand option")]
         public float releaseVelocityTimeOffset = -0.011f;
-
+        public ParticleSystem flash;
+        public ParticleSystem primedGlow;
         public float scaleReleaseVelocity = 1.1f;
 
   [Tooltip("The release velocity magnitude representing the end of the scale release velocity curve. (-1 to disable)")]
@@ -290,6 +291,8 @@ namespace HPVR
             baseSpell.transform.parent = gameObject.transform;
             currentSpell = baseSpell;
             currentSpell.AddComponent<_spell_baseSpellScript>();
+            primedGlow.gameObject.SetActive(true);
+            primedGlow.Play();
             return baseSpell;
         }
 
@@ -310,6 +313,8 @@ namespace HPVR
                     currentSpell.GetComponent<Rigidbody>().AddForce(wandTip.transform.forward * 1500);
                     currentSpell.GetComponent<_spell_baseSpellScript>().activate();
                     currentSpell = null;
+                    flash.Play();
+                    primedGlow.gameObject.SetActive(false);
                 }
             }
             else if (indexPressedDown && currentSpell == null)
@@ -339,6 +344,9 @@ namespace HPVR
                         currentSpell.GetComponent<Rigidbody>().angularVelocity = angularVelocity;
                         currentSpell.GetComponent<_spell_baseSpellScript>().activate();
                         currentSpell = null;
+                        flash.Play();
+                        primedGlow.gameObject.SetActive(false);
+                        //primedGlow.Play();
                     } else {
                         destroyCurrentSpell();
                     }
