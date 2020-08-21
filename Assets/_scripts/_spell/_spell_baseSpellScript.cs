@@ -138,7 +138,7 @@ namespace HPVR
         private IEnumerator SpellExplosionSound()
         {
             AudioSource source = GetComponent<AudioSource>();
-            source.PlayOneShot(Resources.Load(SpellExplosionSoundClip) as AudioClip, 0.5f);
+            source.PlayOneShot(Resources.Load(SpellExplosionSoundClip) as AudioClip, 1.0f);
             yield return new WaitWhile(() => source.isPlaying);
             DestroyThis();
         }

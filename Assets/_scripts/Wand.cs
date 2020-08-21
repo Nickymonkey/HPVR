@@ -157,6 +157,7 @@ namespace HPVR
                 NetworkedFireSource fs = currentSpell.AddComponent<NetworkedFireSource>();
                 fs.fireParticlePrefab = (GameObject)Resources.Load("FireSmall");
                 fs.startActive = true;
+                currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosionSoundClip = "incendioSound_2";
             }
 
             if (args.text == "nox" || args.text == "extinguish")
@@ -170,6 +171,7 @@ namespace HPVR
                 spawnBaseSpell(wandTip.gameObject.transform.position, wandTip.transform.rotation, majorSpellString);
                 updateSpell(2, 1, 7f, 7f, true, Color.black, "Black");
                 currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosion = "DustExplosion";
+                currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosionSoundClip = "bombardaSound";
             }
 
             FocusSelection focusSelection = focusManager.GetFocusData<FocusSelection>(Time.realtimeSinceStartup);
@@ -309,13 +311,9 @@ namespace HPVR
             if (indexPressedDown && currentSpell != null)
             {
                 if (currentSpell.tag.Contains("spell"))
-                {
-                    currentSpell.transform.parent = null;
+                {                   
                     currentSpell.GetComponent<Rigidbody>().AddForce(wandTip.transform.forward * 1500);
-                    currentSpell.GetComponent<_spell_baseSpellScript>().activate();
-                    currentSpell = null;
-                    flash.Play();
-                    primedGlow.gameObject.SetActive(false);
+                    fireSpell();
                 }
             }
             else if (indexPressedDown && currentSpell == null)
@@ -340,14 +338,9 @@ namespace HPVR
                     velocity *= (scaleFactor * scaleReleaseVelocity);
                     //Debug.Log(velocity.magnitude);
                     if (velocity.magnitude >= 3.0f) {
-                        currentSpell.transform.parent = null;
                         currentSpell.GetComponent<Rigidbody>().velocity = velocity;
                         currentSpell.GetComponent<Rigidbody>().angularVelocity = angularVelocity;
-                        currentSpell.GetComponent<_spell_baseSpellScript>().activate();
-                        currentSpell = null;
-                        flash.Play();
-                        primedGlow.gameObject.SetActive(false);
-                        //primedGlow.Play();
+                        fireSpell();
                     } else {
                         destroyCurrentSpell();
                         primedGlow.gameObject.SetActive(false);
@@ -368,6 +361,16 @@ namespace HPVR
             {
                 despawnShield();
             }
+        }
+
+        private void fireSpell()
+        {
+            currentSpell.GetComponent<_spell_baseSpellScript>().activate();
+            currentSpell.transform.parent = null;
+            currentSpell = null;
+            flash.Play();
+            flash.GetComponent<AudioSource>().Play();
+            primedGlow.gameObject.SetActive(false);
         }
 
         //trigger shield either on or off
@@ -521,7 +524,6 @@ namespace HPVR
             Destroy(pointerSphere);
             Destroy(gameObject);
         }
-
 
         //-------------------------------------------------
         void OnDestroy()

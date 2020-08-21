@@ -18,6 +18,7 @@ namespace HPVR
         private Texture originalTexture;
         private Color originalColor;
         private string slimeExplosionString = "EnemyExplosion";
+        public GameObject itemDrop;
 
         // Start is called before the first frame update
         void Start()
@@ -76,6 +77,10 @@ namespace HPVR
 
         public void split()
         {
+            if (splits == 2)
+            {
+                Instantiate(itemDrop, transform.position, transform.rotation);
+            }
             Instantiate(Resources.Load(slimeExplosionString), transform.position, transform.rotation);
             if (splits > 0)
             {
