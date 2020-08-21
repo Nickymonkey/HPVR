@@ -146,7 +146,7 @@ namespace HPVR
             {
                 spawnBaseSpell(wandTip.gameObject.transform.position, wandTip.transform.rotation, majorSpellString);
                 updateSpell(2, 1, 2f, 1.5f, true, Color.blue, "Blue");
-                currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosionSoundClip = "magicalExplosion";
+                currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosionSoundClip = "spellExplosion_4";
             }
 
             if (args.text == "incendio" || args.text == "fireball")
@@ -178,12 +178,14 @@ namespace HPVR
                 LexiconSelectable selectable = focusSelection.SelectedObject.GetComponent<LexiconSelectable>();
                 if(selectable.transform.parent.gameObject.GetComponent<Rigidbody>() != null)
                 {
-                    selectable.transform.parent.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                    if(selectable.transform.parent.gameObject.GetComponent<Interactable>() != null)
+                    {
+                        if(selectable.transform.parent.gameObject.GetComponent<Interactable>().attachedToHand == null)
+                        {
+                            selectable.transform.parent.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                        }
+                    }
                 }
-                //if (selectable.transform.parent.gameObject.GetComponent<Animator>() != null)
-                //{
-                //    Destroy(selectable.transform.parent.gameObject.GetComponent<Animator>());
-                //}
 
                 if (args.text == "levitate" || args.text == "wingardium leviosa")
                 {
@@ -230,7 +232,6 @@ namespace HPVR
 
                 if (args.text == "finite incantatem" || args.text == "nullify")
                 {
-                    //selectable.Revert();
                     selectable.transform.parent.gameObject.AddComponent<_spell_FiniteIncantatemScript>();
                     destroyCurrentSpell();
                 }
@@ -321,7 +322,7 @@ namespace HPVR
             {
                 spawnBaseSpell(wandTip.gameObject.transform.position, wandTip.transform.rotation, minorSpellString);
                 updateSpell(1, 1, 2f, 2f, true, Color.white, "White");
-                currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosionSoundClip = "magicalExplosion";
+                currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosionSoundClip = "spellExplosion_4";
             }
             else if (indexLiftedUp && currentSpell != null)
             {
@@ -349,6 +350,7 @@ namespace HPVR
                         //primedGlow.Play();
                     } else {
                         destroyCurrentSpell();
+                        primedGlow.gameObject.SetActive(false);
                     }
                 }
             }
@@ -435,6 +437,7 @@ namespace HPVR
         //destroy whatever spell is currently on the wand
         private void destroyCurrentSpell()
         {
+            primedGlow.gameObject.SetActive(false);
             if (!PhotonNetwork.InRoom)
             {
                 if (currentSpell != null)

@@ -15,7 +15,7 @@ namespace HPVR
         public bool hasExplosion = false;
         public bool spellActivated = false;
         public string SpellExplosion = "Flash";
-        public string SpellExplosionSoundClip = "spellExplosionSound";
+        public string SpellExplosionSoundClip = "";
         private Color spellColor;
         private string spellColorName;
 
