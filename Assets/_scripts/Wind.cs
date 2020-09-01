@@ -30,20 +30,29 @@ public class Wind : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         //Debug.Log("triggered");
-        if (other.transform.parent.GetComponent<Rigidbody>() && fs.enabled)
+
+        if(other.transform.parent != null)
         {
-            //Debug.Log("found rigidbody");
-            //if(axisOfRotation)
-            if (axisOfRotation == Axis_t.XAxis)
+            if (other.transform.parent.GetComponent<Rigidbody>() != null)
             {
-                other.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(windStrength, 0, 0));
-            } else if(axisOfRotation == Axis_t.YAxis)
-            {
-                other.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(0, windStrength, 0));
-            } else if(axisOfRotation == Axis_t.ZAxis)
-            {
-                other.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, windStrength));
-            }         
+                if (fs.enabled)
+                {
+                    //Debug.Log("found rigidbody");
+                    //if(axisOfRotation)
+                    if (axisOfRotation == Axis_t.XAxis)
+                    {
+                        other.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(windStrength, 0, 0));
+                    }
+                    else if (axisOfRotation == Axis_t.YAxis)
+                    {
+                        other.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(0, windStrength, 0));
+                    }
+                    else if (axisOfRotation == Axis_t.ZAxis)
+                    {
+                        other.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, windStrength));
+                    }
+                }
+            }
         }
     }
 }

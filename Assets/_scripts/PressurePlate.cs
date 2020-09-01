@@ -10,6 +10,7 @@ public class PressurePlate : MonoBehaviour
     public bool triggered = false;
     public bool collisionStay = false;
     public int numOfCollisions = 0;
+    public Collision currCollission;
 
     [Tooltip("If pressure plate triggered")]
     public UnityEvent onTrigger;
@@ -25,11 +26,35 @@ public class PressurePlate : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        if (!collisionStay && currCollission != null)
+        {
+            if (RequiresPerson)
+            {
+                if (currCollission.collider.gameObject.layer == 8)
+                {
+                    activated();
+                }
+            }
+            else if (RequiresStone)
+            {
+                if (currCollission.transform.gameObject.GetComponent<Rigidbody>() != null)
+                {
+                    if (currCollission.transform.gameObject.GetComponent<Rigidbody>().mass == 5)
+                    {
+                        activated();
+                    }
+                }
+            }
+            else
+            {
+                activated();
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        currCollission = collision;
         if (RequiresPerson)
         {
             if (collision.collider.gameObject.layer == 8)
@@ -83,6 +108,13 @@ public class PressurePlate : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         deactivated();
+        if(currCollission != null)
+        {
+            if (currCollission.transform == collision.transform)
+            {
+                currCollission = null;
+            }
+        }
     }
 
     private void activated()

@@ -46,7 +46,7 @@ namespace HPVR
         [Tooltip("The time offset used when releasing the object with the RawFromHand option")]
         public float releaseVelocityTimeOffset = -0.011f;
         public ParticleSystem flash;
-        public ParticleSystem primedGlow;
+        //public ParticleSystem primedGlow;
         public float scaleReleaseVelocity = 1.1f;
 
   [Tooltip("The release velocity magnitude representing the end of the scale release velocity curve. (-1 to disable)")]
@@ -294,8 +294,8 @@ namespace HPVR
             baseSpell.transform.parent = gameObject.transform;
             currentSpell = baseSpell;
             currentSpell.AddComponent<_spell_baseSpellScript>();
-            primedGlow.gameObject.SetActive(true);
-            primedGlow.Play();
+            //primedGlow.gameObject.SetActive(true);
+            //primedGlow.Play();
             return baseSpell;
         }
 
@@ -343,7 +343,7 @@ namespace HPVR
                         fireSpell();
                     } else {
                         destroyCurrentSpell();
-                        primedGlow.gameObject.SetActive(false);
+                        //primedGlow.gameObject.SetActive(false);
                     }
                 }
             }
@@ -370,7 +370,7 @@ namespace HPVR
             currentSpell = null;
             flash.Play();
             flash.GetComponent<AudioSource>().Play();
-            primedGlow.gameObject.SetActive(false);
+            //primedGlow.gameObject.SetActive(false);
         }
 
         //trigger shield either on or off
@@ -440,7 +440,7 @@ namespace HPVR
         //destroy whatever spell is currently on the wand
         private void destroyCurrentSpell()
         {
-            primedGlow.gameObject.SetActive(false);
+            //primedGlow.gameObject.SetActive(false);
             if (!PhotonNetwork.InRoom)
             {
                 if (currentSpell != null)

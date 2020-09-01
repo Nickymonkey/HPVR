@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3479183663429448958}
   - component: {fileID: -243994847321288649}
   - component: {fileID: -2229110237965014603}
+  - component: {fileID: 3036421109026086050}
   m_Layer: 0
   m_Name: Flash
   m_TagString: Untagged
@@ -4948,6 +4949,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3036421109026086050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526584886613147864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83dd57cd4249f2f45a769addf6da5f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &526899149341490546
 GameObject:
   m_ObjectHideFlags: 0

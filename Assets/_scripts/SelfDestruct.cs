@@ -20,6 +20,10 @@ public class SelfDestruct : MonoBehaviour
             {
                 PhotonNetwork.Destroy(this.gameObject);
             }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

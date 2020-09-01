@@ -30,7 +30,8 @@ namespace HPVR
             currentController = (RuntimeAnimatorController)Resources.Load("shakeController");
             if (GetComponent<Animator>() != null)
             {
-                currentAnimator = GetComponent<Animator>();
+                DestroyImmediate(gameObject.GetComponent<Animator>());
+                currentAnimator = (Animator)gameObject.AddComponent<Animator>();
                 currentAnimator.runtimeAnimatorController = currentController;
             }
             else
@@ -42,13 +43,12 @@ namespace HPVR
             if (gameObject.GetComponent<AudioSource>() != null)
             {
                 currentAudioSource = gameObject.GetComponent<AudioSource>();
-                currentAudioSource.spatialBlend = 1; // we do want to hear spatialized audio
             }
             else
             {
                 currentAudioSource = gameObject.AddComponent<AudioSource>();
-                currentAudioSource.spatialBlend = 1; // we do want to hear spatialized audio
             }
+            currentAudioSource.spatialBlend = 1; // we do want to hear spatialized audio
             StartCoroutine(Shake());
         }
 
@@ -113,6 +113,7 @@ namespace HPVR
             currentAudioSource.Stop();
             if (GetComponent<Rigidbody>() != null)
             {
+                GetComponent<Rigidbody>().isKinematic = false;
                 GetComponent<Rigidbody>().useGravity = originalGravity;
                 if (!GetComponent<Rigidbody>().useGravity)
                 {

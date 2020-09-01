@@ -80,6 +80,7 @@ public class NetworkedCoOpGameManager : MonoBehaviourPunCallbacks, IPunObservabl
             foreach (Indicator indicator in indicatorList)
             {
                 stream.SendNext(indicator.isOn);
+                indicator.checkSwitch();
             }
 
             foreach (PressurePlate pressurePlate in pressurePlateList)
