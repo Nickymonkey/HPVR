@@ -19,12 +19,16 @@ namespace HPVR
         public bool attacking = false;
         public bool recovering = false;
         public bool dead = false;
+        public AudioClip spiderWalking;
+        public AudioClip spiderAttack;
         private Renderer renderer;
         private Color originalColor;
+        private AudioSource source;
 
         // Start is called before the first frame update
         void Start()
         {
+            source = GetComponent<AudioSource>();
             //player = Launcher.LocalPlayerInstance;
         }
 
@@ -41,6 +45,11 @@ namespace HPVR
 
                 if (Vector3.Distance(transform.position, target.transform.position) > followingDistance && !attacking)
                 {
+                    if (!source.isPlaying)
+                    {
+                        source.loop = true;
+                        source.PlayOneShot(spiderWalking);
+                    }
                     following = true;
                     transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z), movementSpeed);
                 }
@@ -107,10 +116,17 @@ namespace HPVR
 
         private IEnumerator attack(float waitTime)
         {
-            attacking = true;
-            anim.SetBool("attacking", attacking);
-            yield return new WaitForSeconds(waitTime);
-            StartCoroutine(recover(2.5f));
+            if (!attacking)
+            {
+                attacking = true;
+                source.loop = false;
+                source.PlayOneShot(spiderAttack);
+                anim.SetBool("attacking", attacking);
+                //source.loop = false;
+                //source.PlayOneShot(spiderAttack);
+                yield return new WaitForSeconds(waitTime);
+                StartCoroutine(recover(2.5f));
+            }
         }
 
         private IEnumerator recover(float waitTime)

@@ -14,7 +14,7 @@ namespace HPVR
         private AudioSource currentAudioSource;
         public float speed = 1.0f;
         public float height = 0.25f;
-
+        public bool timerStarted = false;
         // Use this for initialization
         void Start()
         {
@@ -37,7 +37,7 @@ namespace HPVR
                 currentAudioSource.spread = 0; // we dont want to reduce our angle of hearing
                 currentAudioSource.spatialBlend = 1; // we do want to hear spatialized audio
                 AudioClip wingardiumLeviosaSound = Resources.Load("wingardiumLeviosaSound") as AudioClip;
-                currentAudioSource.volume = 0.1f;
+                currentAudioSource.volume = 0.25f;
                 currentAudioSource.clip = wingardiumLeviosaSound;
                 currentAudioSource.loop = true;
                 currentAudioSource.Play();
@@ -49,7 +49,7 @@ namespace HPVR
                 currentAudioSource.spread = 0; // we dont want to reduce our angle of hearing
                 currentAudioSource.spatialBlend = 1; // we do want to hear spatialized audio
                 AudioClip wingardiumLeviosaSound = Resources.Load("wingardiumLeviosaSound") as AudioClip;
-                currentAudioSource.volume = 0.1f;
+                currentAudioSource.volume = 0.25f;
                 currentAudioSource.clip = wingardiumLeviosaSound;
                 currentAudioSource.loop = true;
                 currentAudioSource.Play();
@@ -59,7 +59,10 @@ namespace HPVR
 
             if (this.transform.parent != null)
             {
-                Destroy(this);
+                if (this.transform.parent.name.Contains("Hand"))
+                {
+                    Destroy(this);
+                }
             }
 
             targetPosition = new Vector3(transform.position.x, transform.position.y + height, transform.position.z);
@@ -81,16 +84,19 @@ namespace HPVR
             }
         }
 
-        void OnCollisionEnter(Collision col)
+        private void OnCollisionStay(Collision collision)
         {
-            GetComponent<Rigidbody>().useGravity = false;
-            Destroy(this);
+            //if (timerStarted)
+            //{
+            //    GetComponent<Rigidbody>().useGravity = false;
+            //    Destroy(this);
+            //}
         }
 
         public IEnumerator TimerStart()
         {
-            yield
-            return new WaitForSeconds(3.0f);
+            timerStarted = true;
+            yield return new WaitForSeconds(3.0f);
             Destroy(this);
         }
     }

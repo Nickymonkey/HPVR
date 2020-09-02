@@ -6187,9 +6187,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RequiresPerson: 0
   RequiresStone: 0
+  requiresSpecific: 0
   triggered: 0
   collisionStay: 0
   numOfCollisions: 0
+  specificName: 
   onTrigger:
     m_PersistentCalls:
       m_Calls:
@@ -7356,6 +7358,14 @@ PrefabInstance:
     - target: {fileID: 499868, guid: 4ee10cfc58ab48419acdbb43c0c35ca5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599868, guid: 4ee10cfc58ab48419acdbb43c0c35ca5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08267212
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599868, guid: 4ee10cfc58ab48419acdbb43c0c35ca5, type: 3}
+      propertyPath: m_Center.x
+      value: -0.04133606
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ee10cfc58ab48419acdbb43c0c35ca5, type: 3}

@@ -17,7 +17,9 @@ namespace HPVR
         public Transform middle;
         public int leftMost = -1;
         public int rightMost = 2;
+        public AudioClip pageTurn;
         private SpellDictionary sd = null;
+        private AudioSource source;
 
         private void Awake()
         {
@@ -29,6 +31,7 @@ namespace HPVR
         // Start is called before the first frame update
         void Start()
         {
+            source = GetComponent<AudioSource>();
             sd = new SpellDictionary();
             //Debug.Log(sd.SpellList.Count);
             //pages = Enumerable.Range(0, sd.SpellList.Count-1).ToList();
@@ -51,6 +54,7 @@ namespace HPVR
         public void resetPages()
         {
             BroadcastMessage("lerpPages");
+            source.PlayOneShot(pageTurn);
             //for (int i=0; i<currentPages.Length; i++)
             //{
             //    currentPages[i].Invoke("lerpPages");

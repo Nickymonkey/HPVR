@@ -7,10 +7,12 @@ public class PressurePlate : MonoBehaviour
 {
     public bool RequiresPerson = false;
     public bool RequiresStone = false;
+    public bool requiresSpecific = false;
     public bool triggered = false;
     public bool collisionStay = false;
     public int numOfCollisions = 0;
     public Collision currCollission;
+    public string specificName = "";
 
     [Tooltip("If pressure plate triggered")]
     public UnityEvent onTrigger;
@@ -45,6 +47,12 @@ public class PressurePlate : MonoBehaviour
                     }
                 }
             }
+            else if (requiresSpecific)
+            {
+                if (currCollission.gameObject.name.Contains(specificName)){
+                    activated();
+                }
+            }
             else
             {
                 activated();
@@ -57,18 +65,26 @@ public class PressurePlate : MonoBehaviour
         currCollission = collision;
         if (RequiresPerson)
         {
-            if (collision.collider.gameObject.layer == 8)
+            if (currCollission.collider.gameObject.layer == 8)
             {
                 activated();
             }
-        } else if (RequiresStone)
+        }
+        else if (RequiresStone)
         {
-            if (collision.transform.gameObject.GetComponent<Rigidbody>() != null)
+            if (currCollission.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
-                if(collision.transform.gameObject.GetComponent<Rigidbody>().mass == 5)
+                if (currCollission.transform.gameObject.GetComponent<Rigidbody>().mass == 5)
                 {
                     activated();
                 }
+            }
+        }
+        else if (requiresSpecific)
+        {
+            if (currCollission.gameObject.name.Contains(specificName))
+            {
+                activated();
             }
         }
         else
@@ -83,19 +99,26 @@ public class PressurePlate : MonoBehaviour
         {
             if (RequiresPerson)
             {
-                if (collision.collider.gameObject.layer == 8)
+                if (currCollission.collider.gameObject.layer == 8)
                 {
                     activated();
                 }
             }
             else if (RequiresStone)
             {
-                if (collision.transform.gameObject.GetComponent<Rigidbody>() != null)
+                if (currCollission.transform.gameObject.GetComponent<Rigidbody>() != null)
                 {
-                    if (collision.transform.gameObject.GetComponent<Rigidbody>().mass == 5)
+                    if (currCollission.transform.gameObject.GetComponent<Rigidbody>().mass == 5)
                     {
                         activated();
                     }
+                }
+            }
+            else if (requiresSpecific)
+            {
+                if (currCollission.gameObject.name.Contains(specificName))
+                {
+                    activated();
                 }
             }
             else

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 namespace HPVR
 {
@@ -49,6 +50,7 @@ namespace HPVR
                 currentAudioSource = gameObject.AddComponent<AudioSource>();
             }
             currentAudioSource.spatialBlend = 1; // we do want to hear spatialized audio
+            StartCoroutine(Countdown(10));
             StartCoroutine(Shake());
         }
 
@@ -85,8 +87,7 @@ namespace HPVR
             shaking = true;
             currentAnimator.Play("ShakeAnim", 0, 0.0f);
             currentAudioSource.PlayOneShot(Resources.Load("shakeSound") as AudioClip, 0.10F);
-            yield
-            return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(1.0f);
             shaking = false;
             if (GetComponent<Rigidbody>() != null)
             {
@@ -113,7 +114,17 @@ namespace HPVR
             currentAudioSource.Stop();
             if (GetComponent<Rigidbody>() != null)
             {
-                GetComponent<Rigidbody>().isKinematic = false;
+                if (GetComponent<Interactable>() != null)
+                {
+                    if (GetComponent<Interactable>().attachedToHand != null)
+                    {
+
+                    }
+                    else
+                    {
+                        GetComponent<Rigidbody>().isKinematic = false;
+                    }
+                }
                 GetComponent<Rigidbody>().useGravity = originalGravity;
                 if (!GetComponent<Rigidbody>().useGravity)
                 {
@@ -130,6 +141,17 @@ namespace HPVR
             }
             // Destroy this script
             Destroy(this);
+        }
+
+        IEnumerator Countdown(int seconds)
+        {
+            int counter = seconds;
+            while (counter > 0)
+            {
+                yield return new WaitForSeconds(1);
+                counter--;
+            }
+            KillScript();
         }
 
         void OnCollisionEnter(Collision col)

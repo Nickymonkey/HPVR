@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 namespace HPVR
 {
@@ -27,7 +28,17 @@ namespace HPVR
                 Destroy(GetComponent<Animator>());
             }
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            GetComponent<Rigidbody>().isKinematic = false;
+            if (GetComponent<Interactable>() != null)
+            {
+                if (GetComponent<Interactable>().attachedToHand != null)
+                {
+
+                }
+                else
+                {
+                    GetComponent<Rigidbody>().isKinematic = false;
+                }
+            }
             if (GetComponent<Fan>())
             {
                 GetComponent<Fan>().enabled = false;

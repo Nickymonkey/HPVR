@@ -19,11 +19,14 @@ namespace HPVR
         private Color originalColor;
         private string slimeExplosionString = "EnemyExplosion";
         public GameObject itemDrop;
+        public AudioClip jumpSound;
+        //public AudioClip deathSound;
+        private AudioSource source;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            source = GetComponent<AudioSource>();
         }
 
         // Update is called once per frame
@@ -41,9 +44,10 @@ namespace HPVR
         {
             while (true)
             {
-                yield
-                return new WaitForSeconds(2.0f);
+                int wait_time = Random.Range(1, 3);
+                yield return new WaitForSeconds(wait_time);
                 //Debug.Log("JUMP!");
+                source.PlayOneShot(jumpSound);
                 transform.LookAt(player.transform);
                 Vector3 ray = Vector3.Normalize(player.transform.position - transform.position);
                 GetComponent<Rigidbody>().AddForce(ray.x * power / 2, GetComponent<Rigidbody>().mass * power, ray.z * power / 2);
@@ -77,6 +81,7 @@ namespace HPVR
 
         public void split()
         {
+            //source.PlayOneShot(deathSound);
             if (splits == 2)
             {
                 Instantiate(itemDrop, transform.position, transform.rotation);
