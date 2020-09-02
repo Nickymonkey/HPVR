@@ -29,36 +29,21 @@ namespace Photon.Pun.Demo.PunBasics
 		#region Public Fields
 
 		static public GameManager Instance;
-        public bool useNonVRPrefabInEditor = true;
+
 		#endregion
 
 		#region Private Fields
 
 		private GameObject instance;
-        private GameObject prefabToInstantiate;
 
         [Tooltip("The prefab to use for representing the player")]
         [SerializeField]
-        private GameObject playerPrefabVR;
-        [Tooltip("The prefab to use for representing the player")]
-        [SerializeField]
-        private GameObject playerPrefabNormal;
+        private GameObject playerPrefab;
 
         #endregion
 
         #region MonoBehaviour CallBacks
 
-        private void Awake()
-        {
-            if (Application.isEditor && useNonVRPrefabInEditor)
-            {
-                prefabToInstantiate = playerPrefabNormal;
-            }
-            else
-            {
-                prefabToInstantiate = playerPrefabVR;
-            }
-        }
         /// <summary>
         /// MonoBehaviour method called on GameObject by Unity during initialization phase.
         /// </summary>
@@ -69,12 +54,12 @@ namespace Photon.Pun.Demo.PunBasics
 			// in case we started this demo with the wrong scene being active, simply load the menu scene
 			if (!PhotonNetwork.IsConnected)
 			{
-				SceneManager.LoadScene("SteamVR-Lobby");
+				SceneManager.LoadScene("PunBasics-Launcher");
 
 				return;
 			}
 
-			if (prefabToInstantiate == null) { // #Tip Never assume public properties of Components are filled up properly, always check and inform the developer of it.
+			if (playerPrefab == null) { // #Tip Never assume public properties of Components are filled up properly, always check and inform the developer of it.
 
 				Debug.LogError("<Color=Red><b>Missing</b></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
 			} else {
@@ -85,7 +70,7 @@ namespace Photon.Pun.Demo.PunBasics
 				    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
 
 					// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-					PhotonNetwork.Instantiate(this.prefabToInstantiate.name, new Vector3(0f,5f,0f), Quaternion.identity, 0);
+					PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f,5f,0f), Quaternion.identity, 0);
 				}else{
 
 					Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
@@ -118,7 +103,7 @@ namespace Photon.Pun.Demo.PunBasics
         /// <param name="other">Other.</param>
         public override void OnPlayerEnteredRoom( Player other  )
 		{
-			Debug.Log( "OnPlayerEnteredRoom() "); // not seen if you're the player connecting
+			Debug.Log( "OnPlayerEnteredRoom() " + other.NickName); // not seen if you're the player connecting
 
 			if ( PhotonNetwork.IsMasterClient )
 			{
@@ -134,7 +119,7 @@ namespace Photon.Pun.Demo.PunBasics
 		/// <param name="other">Other.</param>
 		public override void OnPlayerLeftRoom( Player other  )
 		{
-			Debug.Log( "OnPlayerLeftRoom() "); // seen when other disconnects
+			Debug.Log( "OnPlayerLeftRoom() " + other.NickName ); // seen when other disconnects
 
 			if ( PhotonNetwork.IsMasterClient )
 			{
@@ -149,7 +134,7 @@ namespace Photon.Pun.Demo.PunBasics
 		/// </summary>
 		public override void OnLeftRoom()
 		{
-			SceneManager.LoadScene("SteamVR-Lobby");
+			SceneManager.LoadScene("PunBasics-Launcher");
 		}
 
 		#endregion
@@ -179,7 +164,7 @@ namespace Photon.Pun.Demo.PunBasics
 
 			Debug.LogFormat( "PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount );
 
-			PhotonNetwork.LoadLevel("SteamVR-Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
+			PhotonNetwork.LoadLevel("PunBasics-Room for "+PhotonNetwork.CurrentRoom.PlayerCount);
 		}
 
 		#endregion
