@@ -117,7 +117,9 @@ namespace HPVR
 
         void movementUpdate()
         {
-            characterController.center = new Vector3(hmdTransform.localPosition.x, characterController.center.y, hmdTransform.transform.localPosition.z);
+            //float y = floored();
+            //transform.position = new Vector3(transform.position.x, y, transform.position.z);
+            characterController.center = new Vector3(hmdTransform.localPosition.x, characterController.center.y, hmdTransform.localPosition.z);
             characterController.Move(new Vector3(0, -9.81f, 0) * Time.deltaTime);
             if (GameState.Instance.locomotion == "Smooth")
             {
@@ -154,7 +156,32 @@ namespace HPVR
 
         void TeleportLocomotion()
         {
+            characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(new Vector3(0, 0, 0), Vector3.up));
+        }
 
+        private float floored()
+        {
+            RaycastHit hit;
+            float distance = 100f;
+
+            if (Physics.Raycast(characterController.center, Vector3.down, out hit, distance))
+            {
+                /*
+                 * Set the target location to the location of the hit.
+                 */
+                Vector3 targetLocation = hit.point;
+                /*
+                 * Modify the target location so that the object is being perfectly aligned with the ground (if it's flat).
+                 */
+                //targetLocation += new Vector3(0, transform.localScale.y+groundAlignment, 0);
+                /*
+                 * Move the object to the target location.
+                 */
+                Debug.Log(targetLocation);
+                return targetLocation.y;
+            }
+
+            return gameObject.transform.position.y;
         }
     }
 }
