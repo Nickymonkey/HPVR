@@ -120,7 +120,7 @@ namespace HPVR
             //float y = floored();
             //transform.position = new Vector3(transform.position.x, y, transform.position.z);
             characterController.center = new Vector3(hmdTransform.localPosition.x, characterController.center.y, hmdTransform.localPosition.z);
-            characterController.Move(new Vector3(0, -9.81f, 0) * Time.deltaTime);
+            characterController.Move(new Vector3(0, -100f, 0) * Time.deltaTime);
             if (GameState.Instance.locomotion == "Smooth")
             {
                 SmoothLocomotion();

@@ -1365,7 +1365,7 @@ MonoBehaviour:
   attacking: 0
   recovering: 0
   dead: 0
-  spiderWalking: {fileID: 8300000, guid: 0760c137103b06a41996eda59abd2776, type: 3}
+  spiderWalking: {fileID: 8300000, guid: d5319087ef4da1c4f80775fa82174c83, type: 3}
   spiderAttack: {fileID: 8300000, guid: 4acb83139c706c240adca8dcdbb5b491, type: 3}
 --- !u!54 &826695016101669735
 Rigidbody:

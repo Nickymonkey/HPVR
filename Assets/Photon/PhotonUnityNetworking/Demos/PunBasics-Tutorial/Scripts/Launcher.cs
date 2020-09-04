@@ -114,8 +114,8 @@ namespace Photon.Pun.Demo.PunBasics
 				LogFeedback("Connecting...");
 				
 				// #Critical, we must first and foremost connect to Photon Online Server.
-			    PhotonNetwork.GameVersion = this.gameVersion;
 				PhotonNetwork.ConnectUsingSettings();
+                PhotonNetwork.GameVersion = this.gameVersion;
 			}
 		}
 
@@ -185,7 +185,7 @@ namespace Photon.Pun.Demo.PunBasics
 			Debug.LogError("PUN Basics Tutorial/Launcher:Disconnected");
 
 			// #Critical: we failed to connect or got disconnected. There is not much we can do. Typically, a UI system should be in place to let the user attemp to connect again.
-			//loaderAnime.StopLoaderAnimation();
+			loaderAnime.StopLoaderAnimation();
 
 			isConnecting = false;
 			controlPanel.SetActive(true);
@@ -215,7 +215,7 @@ namespace Photon.Pun.Demo.PunBasics
 
 				// #Critical
 				// Load the Room Level. 
-				PhotonNetwork.LoadLevel("SteamVR-Room for 1");
+				PhotonNetwork.LoadLevel("PunBasics-Room for 1");
 
 			}
 		}

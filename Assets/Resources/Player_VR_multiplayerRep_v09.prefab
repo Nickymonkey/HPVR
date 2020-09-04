@@ -1262,6 +1262,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
+  observableSearch: 0
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
@@ -1599,6 +1600,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
+  observableSearch: 0
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
@@ -2981,6 +2983,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
+  observableSearch: 0
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
@@ -3461,6 +3464,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
+  observableSearch: 0
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
@@ -3640,6 +3644,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
+  observableSearch: 0
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
@@ -4833,6 +4838,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7117689662945892073, guid: c2876899b2685774da20849abef611fa,
+        type: 3}
+      propertyPath: hideHandOnAttach
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7117689662945892073, guid: c2876899b2685774da20849abef611fa,
+        type: 3}
+      propertyPath: hideSkeletonOnAttach
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7117689662945892076, guid: c2876899b2685774da20849abef611fa,
         type: 3}
       propertyPath: m_Name
@@ -4863,6 +4878,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7135170013601271295}
     m_Modifications:
+    - target: {fileID: 2678569537592032858, guid: 2573113ffae1a794f99093d806cef1a1,
+        type: 3}
+      propertyPath: hideSkeletonOnAttach
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678569537592032858, guid: 2573113ffae1a794f99093d806cef1a1,
+        type: 3}
+      propertyPath: hideHandOnAttach
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2929116544506069577, guid: 2573113ffae1a794f99093d806cef1a1,
         type: 3}
       propertyPath: m_LocalPosition.x
