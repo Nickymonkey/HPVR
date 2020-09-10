@@ -37,16 +37,16 @@ public class VRRig : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = headConstraint.position + headBodyOffset;
-        var angle = Vector3.Angle(transform.forward, Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized);
-        if (angle > currentThresholdAngle)
-        {
-            currentThresholdAngle = 5f;
-            transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized, Time.deltaTime * turnSmoothness);
-        }
-        else if(currentThresholdAngle != thresholdAngle)
-        {
-            currentThresholdAngle = thresholdAngle;
-        }
+        //var angle = Vector3.Angle(transform.forward, Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized);
+        //if (angle > currentThresholdAngle)
+        //{
+        //    currentThresholdAngle = 5f;
+        //    transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized, Time.deltaTime * turnSmoothness);
+        //}
+        //else if(currentThresholdAngle != thresholdAngle)
+        //{
+        //    currentThresholdAngle = thresholdAngle;
+        //}
         head.Map();
         leftHand.Map();
         rightHand.Map();

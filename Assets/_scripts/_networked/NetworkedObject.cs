@@ -21,7 +21,11 @@ namespace HPVR
         void Start()
         {
             Renderer _renderer = GetComponentInChildren<Renderer>();
-            currentMaterial = defaultMaterial.name;
+
+            if(defaultMaterial != null)
+            {
+                currentMaterial = defaultMaterial.name;
+            }
             if (!PhotonNetwork.InLobby && !PhotonNetwork.InRoom)
             {
                 if(GetComponent<PhotonTransformView>() != null)

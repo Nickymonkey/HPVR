@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Valve.VR.InteractionSystem;
 
 namespace HPVR
 {
@@ -16,6 +17,7 @@ namespace HPVR
         private List<Transform> SpawnPoints;
         private GameObject prefabToInstantiate;
         public NetworkedTeleport nt;
+        public TeleportArc ta;
 
         public void Awake()
         {
@@ -47,6 +49,7 @@ namespace HPVR
             {
                 nt.gameObject.SetActive(true);
                 nt.enabled = true;
+                ta.enabled = true;
             }
         }
 

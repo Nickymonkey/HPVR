@@ -27,11 +27,6 @@ namespace HPVR
             }
         }
 
-        private void OnDisable()
-        {
-            ta.enabled = false;
-        }
-
     }
 }
 

@@ -319,4 +319,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportAllowed: 1
-  overrideHoverLock: 1
+  overrideHoverLock: 0

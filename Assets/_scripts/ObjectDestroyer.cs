@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using HPVR;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectDestroyer : MonoBehaviour
 {
@@ -18,6 +20,13 @@ public class ObjectDestroyer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+        if (other.tag.Contains("Player"))
+        {
+            Destroy(Launcher.LocalPlayerInstance);
+            SceneManager.LoadScene("SteamVR-Launcher", LoadSceneMode.Single);
+        } else
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

@@ -1439,6 +1439,11 @@ PrefabInstance:
       propertyPath: nt
       value: 
       objectReference: {fileID: 1953245113}
+    - target: {fileID: 3600922735055068700, guid: 5167828e1ba8d7e4aab652f6a5f0b814,
+        type: 3}
+      propertyPath: ta
+      value: 
+      objectReference: {fileID: 1953245114}
     - target: {fileID: 7852684581416398650, guid: 5167828e1ba8d7e4aab652f6a5f0b814,
         type: 3}
       propertyPath: m_Name

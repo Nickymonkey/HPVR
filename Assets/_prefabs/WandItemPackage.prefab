@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 823443972618342044}
   - component: {fileID: 823443972628290768}
   m_Layer: 0
-  m_Name: SphereItemPackage
+  m_Name: WandItemPackage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 4912580634089927017, guid: 881454148d9c34c4991906fc122d3ded,
     type: 3}
   otherHandItemPrefab: {fileID: 0}
-  previewPrefab: {fileID: 4803326699588332837, guid: d8e1d1ebe3728de489a95c7a17e26e60,
+  previewPrefab: {fileID: 4803326699588332837, guid: aa818bf2ee3def2489a166367cd9d821,
     type: 3}
-  fadedPreviewPrefab: {fileID: 4803326699588332837, guid: 12c8240e3115be541b7936dc7a815447,
+  fadedPreviewPrefab: {fileID: 4803326699588332837, guid: 7f936b01f2213984abf037ab061c2c7d,
     type: 3}

@@ -12,10 +12,15 @@ public class Portcullis : MonoBehaviour
     public int triggersNeeded = -1;
     public int currentNumTriggers = 0;
     public bool stayActivated = false;
+    private AudioSource source;
     // Start is called before the first frame update
     void Start()
     {
         ClosePosition = transform.position.y;
+        if(GetComponent<AudioSource>() != null)
+        {
+            source = GetComponent<AudioSource>();
+        }
     }
 
     // Update is called once per frame
@@ -63,6 +68,10 @@ public class Portcullis : MonoBehaviour
         else
         {
             StartCoroutine(LerpPosition(new Vector3(transform.position.x, ClosePosition + OpenPosition, transform.position.z), timeToLerp));
+        }
+        if (source != null)
+        {
+            source.Play();
         }
     }
 

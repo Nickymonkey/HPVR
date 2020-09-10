@@ -420,7 +420,7 @@ Transform:
   - {fileID: 2550651420925910463}
   - {fileID: 4520401252809516970}
   - {fileID: 9138528920885952507}
-  - {fileID: 3348757932687207398}
+  - {fileID: 2971977150325302498}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -513,7 +513,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1028
   releaseVelocityTimeOffset: -0.011
-  flash: {fileID: 3348757932687207198}
+  flash: {fileID: 3166478183286117804}
   scaleReleaseVelocity: 1.58
   scaleReleaseVelocityThreshold: -1
   scaleReleaseVelocityCurve:
@@ -593,6 +593,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
+  observableSearch: 0
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
@@ -740,7 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportAllowed: 1
-  overrideHoverLock: 1
+  overrideHoverLock: 0
 --- !u!1 &7019855213397982449
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,13 +911,13 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3036421109026086050, guid: 7946d956d7af2c547b1d23f210843c67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7946d956d7af2c547b1d23f210843c67, type: 3}
---- !u!4 &3348757932687207398 stripped
+--- !u!4 &2971977150325302498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 524591154849647874, guid: 7946d956d7af2c547b1d23f210843c67,
     type: 3}
   m_PrefabInstance: {fileID: 3348757932687206880}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &3348757932687207198 stripped
+--- !u!198 &3166478183286117804 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 398773872622353484, guid: 7946d956d7af2c547b1d23f210843c67,
     type: 3}

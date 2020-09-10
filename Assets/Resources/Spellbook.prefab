@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportAllowed: 1
-  overrideHoverLock: 1
+  overrideHoverLock: 0
 --- !u!114 &2970836842216163333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +261,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
+  observableSearch: 0
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:

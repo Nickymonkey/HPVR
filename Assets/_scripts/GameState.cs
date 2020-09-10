@@ -48,11 +48,13 @@ namespace HPVR
                 {
                     GameState.Instance.locomotion = "Smooth";
                     Launcher.Instance.nt.enabled = false;
+                    Launcher.Instance.ta.enabled = false;
                 }
                 else if (GameState.Instance.locomotion == "Smooth")
                 {
                     GameState.Instance.locomotion = "Teleport";
                     Launcher.Instance.nt.enabled = true;
+                    Launcher.Instance.ta.enabled = true;
                 }
             } else if (GameManager.Instance != null)
             {
@@ -60,11 +62,13 @@ namespace HPVR
                 {
                     GameState.Instance.locomotion = "Smooth";
                     GameManager.Instance.nt.enabled = false;
+                    GameManager.Instance.ta.enabled = false;
                 }
                 else if (GameState.Instance.locomotion == "Smooth")
                 {
                     GameState.Instance.locomotion = "Teleport";
                     GameManager.Instance.nt.enabled = true;
+                    GameManager.Instance.ta.enabled = true;
                 }
             }
 

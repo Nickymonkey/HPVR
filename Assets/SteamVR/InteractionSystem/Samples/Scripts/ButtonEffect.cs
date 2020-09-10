@@ -11,13 +11,13 @@ namespace Valve.VR.InteractionSystem.Sample
     {
         public void OnButtonDown(Hand fromHand)
         {
-            ColorSelf(Color.cyan);
+            ColorSelf(Color.green);
             fromHand.TriggerHapticPulse(1000);
         }
 
         public void OnButtonUp(Hand fromHand)
         {
-            ColorSelf(Color.white);
+            ColorSelf(Color.yellow);
         }
 
         private void ColorSelf(Color newColor)
