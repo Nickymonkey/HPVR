@@ -20,6 +20,7 @@ namespace HPVR
         public AudioClip pageTurn;
         private SpellDictionary sd = null;
         private AudioSource source;
+        public bool pageTurned = false;
 
         private void Awake()
         {
@@ -126,6 +127,7 @@ namespace HPVR
 
         public void PageFlipped(bool nextPage)
         {
+            pageTurned = true;
             resetPages();
             //move forward
             if (nextPage)
