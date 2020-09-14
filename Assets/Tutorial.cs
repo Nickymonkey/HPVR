@@ -16,7 +16,7 @@ public class Tutorial : MonoBehaviour
     public SteamVR_Action_Boolean blockInput;
     public SteamVR_Action_Boolean snapLeftAction;
     public SteamVR_Action_Boolean snapRightAction;
-    public SteamVR_Action_Boolean teleportAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Teleport");
+    public SteamVR_Action_Boolean teleportAction;
     public SteamVR_Action_Boolean ButtonInput;
     public SteamVR_Action_Vector2 ThumbstickInput;
     private Player_VR player;
@@ -43,7 +43,7 @@ public class Tutorial : MonoBehaviour
         instructions.Add("Amazing! This spellbook has a lot of different spells but lets start with a basic one. Try pointing your wand at the object in front of you and say the word 'engorgio'.");
         instructions.Add("Great! Now let's try one last spell, this is your weakest most basic form of magic. It requires no spoken word, simply hold your index finger grip down with whichever hand you are holding your wand in.");
         instructions.Add("You have now primed a basic spell onto your wand, to shoot it flick your wrist and release the index finger grip on your wand hand, if you performed it properly you should see the spell shot out.");
-        instructions.Add("Lastly, your wand also has a protego charm on it. On your wand hand at any time you can summon your protego charm by holding the index finger grip button down, it will also nullify any spell you have primed on your wand.");
+        instructions.Add("Lastly, your wand also has a protego charm on it. On your wand hand at any time you can summon your protego charm by holding the middle finger grip button down, it will also nullify any spell you have primed on your wand.");
         instructions.Add("Go ahead and put your wand away by placing your wand hand in the same spot where you pulled it from.");
         instructions.Add("Likewise, do the same with your spellbook.");
         instructions.Add("You are now ready to explore! When you are ready explore the room, portkeys will send you too different locations. I would reccomend starting with Singleplayer first to get your bearings!");
@@ -52,9 +52,9 @@ public class Tutorial : MonoBehaviour
 
         player = Launcher.LocalPlayerInstance.GetComponent<Player_VR>();
 
-        for(int i=0; i<player.handCount; i++)
+        for (int i = 0; i < player.handCount; i++)
         {
-            if(player.hands[i].handType == SteamVR_Input_Sources.RightHand)
+            if (player.hands[i].handType == SteamVR_Input_Sources.RightHand)
             {
                 RightHand = player.hands[i];
             }
@@ -100,8 +100,9 @@ public class Tutorial : MonoBehaviour
                 }
                 break;
             case 1:
-                bool rightHandTeleport = teleportAction.GetLastStateUp(RightHand.handType);
-                bool leftHandTeleport = teleportAction.GetLastStateUp(LeftHand.handType);
+                //bool rightHandTeleport = teleportAction.GetLastStateUp(RightHand.handType);
+                bool rightHandTeleport = teleportAction.GetStateUp(SteamVR_Input_Sources.RightHand);
+                bool leftHandTeleport = teleportAction.GetStateUp(SteamVR_Input_Sources.LeftHand);
 
                 if(rightHandTeleport || leftHandTeleport)
                 {
@@ -109,8 +110,8 @@ public class Tutorial : MonoBehaviour
                 }
                 break;
             case 2:
-                bool rightHandButtonPress = ButtonInput.GetLastStateUp(RightHand.handType);
-                bool leftHandButtonPress = ButtonInput.GetLastStateUp(LeftHand.handType);
+                bool rightHandButtonPress = ButtonInput.GetStateUp(SteamVR_Input_Sources.RightHand);
+                bool leftHandButtonPress = ButtonInput.GetStateUp(SteamVR_Input_Sources.LeftHand);
 
                 if (rightHandButtonPress || leftHandButtonPress)
                 {
@@ -124,8 +125,8 @@ public class Tutorial : MonoBehaviour
                 }
                 break;
             case 4:
-                bool rightHandButtonToggle = ButtonInput.GetLastStateUp(RightHand.handType);
-                bool leftHandButtonToggle = ButtonInput.GetLastStateUp(LeftHand.handType);
+                bool rightHandButtonToggle = ButtonInput.GetStateUp(SteamVR_Input_Sources.RightHand);
+                bool leftHandButtonToggle = ButtonInput.GetStateUp(SteamVR_Input_Sources.LeftHand);
 
                 if (rightHandButtonToggle || leftHandButtonToggle)
                 {
@@ -133,19 +134,9 @@ public class Tutorial : MonoBehaviour
                 }
                 break;
             case 5:
-                if(RightHand.currentAttachedObject != null)
+                if (GameObject.Find("Wand(Clone)") != null)
                 {
-                    if (RightHand.currentAttachedObject.name.Contains("Wand"))
-                    {
-                        updateInstructions();
-                    }
-                }
-                if (LeftHand.currentAttachedObject != null)
-                {
-                    if (LeftHand.currentAttachedObject.name.Contains("Wand"))
-                    {
-                        updateInstructions();
-                    }
+                    updateInstructions();
                 }
                 break;
             case 6:
@@ -161,19 +152,9 @@ public class Tutorial : MonoBehaviour
                 }
                 break;
             case 8:
-                if (RightHand.currentAttachedObject != null)
+                if (GameObject.Find("Spellbook(Clone)") != null)
                 {
-                    if (RightHand.currentAttachedObject.name.Contains("Spellbook"))
-                    {
-                        updateInstructions();
-                    }
-                }
-                if (LeftHand.currentAttachedObject != null)
-                {
-                    if (LeftHand.currentAttachedObject.name.Contains("Spellbook"))
-                    {
-                        updateInstructions();
-                    }
+                    updateInstructions();
                 }
                 break;
             case 9:

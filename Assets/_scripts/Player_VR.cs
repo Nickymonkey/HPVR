@@ -20,6 +20,7 @@ namespace HPVR
         public GameObject steamVRIntializer;
 
         private CharacterController characterController;
+        private AudioSource source;
         //-------------------------------------------------
         // Singleton instance of the Player. Only one can exist at a time.
         //-------------------------------------------------
@@ -40,7 +41,7 @@ namespace HPVR
         {
             DontDestroyOnLoad(gameObject);
             characterController = GetComponent<CharacterController>();
-
+            source = GetComponent<AudioSource>();
             if (isMineOrLocal())
             {
                 _instance = this;
@@ -140,6 +141,15 @@ namespace HPVR
                     if (isMineOrLocal())
                     {
                         Vector3 direction = this.hmdTransform.TransformDirection(new Vector3(ThumbstickInput.axis.x, 0, ThumbstickInput.axis.y));
+                        Vector3 thumbstickInput = new Vector3(ThumbstickInput.axis.x, 0, ThumbstickInput.axis.y);
+                        if (thumbstickInput != Vector3.zero && !source.isPlaying)
+                        {
+                            source.Play();
+                        }
+                        else if (thumbstickInput == Vector3.zero && source.isPlaying)
+                        {
+                            source.Stop();
+                        }
                         characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up));
                     }
                 }
@@ -149,7 +159,18 @@ namespace HPVR
                 if (isMineOrLocal())
                 {
                     Vector3 direction = this.hmdTransform.TransformDirection(new Vector3(ThumbstickInput.axis.x, 0, ThumbstickInput.axis.y));
+                    Vector3 thumbstickInput = new Vector3(ThumbstickInput.axis.x, 0, ThumbstickInput.axis.y);
+                    if (thumbstickInput != Vector3.zero && !source.isPlaying)
+                    {
+                        source.Play();
+                    }
+                    else if(thumbstickInput == Vector3.zero && source.isPlaying)
+                    {
+                        source.Stop();
+                    }
                     characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up));
+
+                    //if(characterController)
                 }
             }
         }
@@ -157,6 +178,10 @@ namespace HPVR
         void TeleportLocomotion()
         {
             characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(new Vector3(0, 0, 0), Vector3.up));
+            if (source.isPlaying)
+            {
+                source.Stop();
+            }
         }
 
         private float floored()

@@ -244,6 +244,11 @@ namespace HPVR
                     destroyCurrentSpell();
                 }
 
+                if (args.text == "alohomora" || args.text == "unlock")
+                {
+                    selectable.transform.parent.gameObject.AddComponent<_spell_AlohomoraScript>();
+                    destroyCurrentSpell();
+                }
             }
 
             if (hand != null)

@@ -17,6 +17,7 @@ namespace HPVR
             Tuple<string, string, string> tpInstructions2 = new Tuple<string, string, string>("Spellcasting", "", "Every spell is different but to cast any spells you must have your wand in hand! Go ahead and pull out your wand and try!");
             Tuple<string, string, string> tp1 = new Tuple<string, string, string>("Accio", "To me", "Summons the affected non-living object to the user's free hand");
             Tuple<string, string, string> tp2 = new Tuple<string, string, string>("Alarte", "Up", "Flings the affected non-living object upwards into the air");
+            Tuple<string, string, string> tp15 = new Tuple<string, string, string>("Alohomora", "Unlock", "Unlocks a non-living locked object such as doors or windows");
             Tuple<string, string, string> tp3 = new Tuple<string, string, string>("Arresto Momentum", "Freeze", "Briefly freezes a non-living object in place");
             Tuple<string, string, string> tp4 = new Tuple<string, string, string>("Bombarda", "Bomb", "Creates a spell that can be shot and has explosive power");
             Tuple<string, string, string> tp5 = new Tuple<string, string, string>("Diminuendo", "Smaller", "Makes the affected non-living object shrink in size");
@@ -32,6 +33,7 @@ namespace HPVR
 
             SpellList.Add(tp1);
             SpellList.Add(tp2);
+            SpellList.Add(tp15);
             SpellList.Add(tp3);
             SpellList.Add(tp4);
             SpellList.Add(tp5);
