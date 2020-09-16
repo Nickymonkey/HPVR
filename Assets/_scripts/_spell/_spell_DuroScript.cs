@@ -38,6 +38,11 @@ namespace HPVR
                     GameObject.Destroy(child.gameObject);
                 }
             }
+
+            if(GetComponent<Breakable>() != null)
+            {
+                GetComponent<Breakable>().BreakOnCollision = false;
+            }
             Destroy(this);
         }
     }

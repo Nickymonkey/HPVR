@@ -149,6 +149,13 @@ namespace HPVR
                 currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosionSoundClip = "spellExplosion_4";
             }
 
+            if (args.text == "avada kedavra")
+            {
+                spawnBaseSpell(wandTip.gameObject.transform.position, wandTip.transform.rotation, majorSpellString);
+                updateSpell(10, 2, 2f, 1.5f, true, Color.green, "Green");
+                currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosionSoundClip = "avadaKedavraSound";
+            }
+
             if (args.text == "incendio" || args.text == "fireball")
             {
                 spawnBaseSpell(wandTip.gameObject.transform.position, wandTip.transform.rotation, majorSpellString);
@@ -178,77 +185,99 @@ namespace HPVR
             if (focusSelection != null)
             {
                 LexiconSelectable selectable = focusSelection.SelectedObject.GetComponent<LexiconSelectable>();
-                if(selectable.transform.parent.gameObject.GetComponent<Rigidbody>() != null)
+
+                if(selectable.transform.parent != null)
                 {
-                    if(selectable.transform.parent.gameObject.GetComponent<Interactable>() != null)
+                    if (selectable.transform.parent.gameObject.GetComponent<Rigidbody>() != null)
                     {
-                        if(selectable.transform.parent.gameObject.GetComponent<Interactable>().attachedToHand == null)
+                        if (selectable.transform.parent.gameObject.GetComponent<Interactable>() != null)
                         {
-                            selectable.transform.parent.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                            if (selectable.transform.parent.gameObject.GetComponent<Interactable>().attachedToHand == null)
+                            {
+                                selectable.transform.parent.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                            }
                         }
                     }
                 }
 
+
+                GameObject affectedObject;
+
+                if(selectable.GetComponent<Rigidbody>() != null)
+                {
+                    affectedObject = selectable.gameObject;
+                }
+                else
+                {
+                    affectedObject = selectable.transform.parent.gameObject;
+                }
+
                 if (args.text == "levitate" || args.text == "wingardium leviosa")
                 {
-                    selectable.transform.parent.gameObject.AddComponent<_spell_WingardiumLeviosaScript>();
+                    affectedObject.AddComponent<_spell_WingardiumLeviosaScript>();
                     destroyCurrentSpell();
                 }
 
                 if (args.text == "to me" || args.text == "accio")
                 {
-                    selectable.transform.parent.gameObject.AddComponent<_spell_AccioScript>();
-                    selectable.transform.parent.gameObject.GetComponent<_spell_AccioScript>().hand = hand.otherHand.gameObject;
+                    affectedObject.AddComponent<_spell_AccioScript>();
+                    affectedObject.GetComponent<_spell_AccioScript>().hand = hand.otherHand.gameObject;
                     destroyCurrentSpell();
                 }
 
                 if (args.text == "bigger" || args.text == "engorgio")
                 {
-                    selectable.transform.parent.gameObject.AddComponent<_spell_EngorgioScript>();
+                    affectedObject.AddComponent<_spell_EngorgioScript>();
                     destroyCurrentSpell();
                 }
 
                 if (args.text == "smaller" || args.text == "diminuendo")
                 {
-                    selectable.transform.parent.gameObject.AddComponent<_spell_DiminuendoScript>();
+                    affectedObject.AddComponent<_spell_DiminuendoScript>();
                     destroyCurrentSpell();
                 }
 
                 if (args.text == "alarte" || args.text == "up")
                 {
-                    selectable.transform.parent.gameObject.AddComponent<_spell_AlarteScript>();
+                    affectedObject.AddComponent<_spell_AlarteScript>();
                     destroyCurrentSpell();
                 }
 
                 if (args.text == "geminio" || args.text == "duplicate")
                 {
-                    selectable.transform.parent.gameObject.AddComponent<_spell_GeminioScript>();
+                    affectedObject.AddComponent<_spell_GeminioScript>();
                     destroyCurrentSpell();
                 }
 
                 if (args.text == "arresto momentum" || args.text == "freeze")
                 {
-                    selectable.transform.parent.gameObject.AddComponent<_spell_ArrestoMomentumScript>();
+                    affectedObject.AddComponent<_spell_ArrestoMomentumScript>();
                     destroyCurrentSpell();
                 }
 
                 if (args.text == "finite incantatem" || args.text == "nullify")
                 {
-                    selectable.transform.parent.gameObject.AddComponent<_spell_FiniteIncantatemScript>();
+                    affectedObject.AddComponent<_spell_FiniteIncantatemScript>();
                     destroyCurrentSpell();
                 }
 
                 if (args.text == "duro" || args.text == "stone")
                 {
-                    selectable.transform.parent.gameObject.AddComponent<_spell_DuroScript>();
+                    affectedObject.AddComponent<_spell_DuroScript>();
                     destroyCurrentSpell();
                 }
 
                 if (args.text == "alohomora" || args.text == "unlock")
                 {
-                    selectable.transform.parent.gameObject.AddComponent<_spell_AlohomoraScript>();
+                    affectedObject.AddComponent<_spell_AlohomoraScript>();
                     destroyCurrentSpell();
                 }
+
+                //if (args.text == "colloportus" || args.text == "unlock")
+                //{
+                //    //affectedObject.AddComponent<_spell_AlohomoraScript>();
+                //    destroyCurrentSpell();
+                //}
             }
 
             if (hand != null)

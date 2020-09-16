@@ -19,7 +19,9 @@ namespace HPVR
             Tuple<string, string, string> tp2 = new Tuple<string, string, string>("Alarte", "Up", "Flings the affected non-living object upwards into the air");
             Tuple<string, string, string> tp15 = new Tuple<string, string, string>("Alohomora", "Unlock", "Unlocks a non-living locked object such as doors or windows");
             Tuple<string, string, string> tp3 = new Tuple<string, string, string>("Arresto Momentum", "Freeze", "Briefly freezes a non-living object in place");
+            Tuple<string, string, string> tp16 = new Tuple<string, string, string>("Avada Kedavra", "Kill", "Kills any living thing instantly");
             Tuple<string, string, string> tp4 = new Tuple<string, string, string>("Bombarda", "Bomb", "Creates a spell that can be shot and has explosive power");
+            //Tuple<string, string, string> tp17 = new Tuple<string, string, string>("Colloportus", "Lock", "Locks a non-living open object such as a door or chest");
             Tuple<string, string, string> tp5 = new Tuple<string, string, string>("Diminuendo", "Smaller", "Makes the affected non-living object shrink in size");
             Tuple<string, string, string> tp6 = new Tuple<string, string, string>("Duro", "Stone", "Turns the affected non-living object to stone increasing its mass");
             Tuple<string, string, string> tp7 = new Tuple<string, string, string>("Engorgio", "Bigger", "Makes the affected non-living object grow in size");
@@ -33,9 +35,11 @@ namespace HPVR
 
             SpellList.Add(tp1);
             SpellList.Add(tp2);
-            SpellList.Add(tp15);
+            SpellList.Add(tp15);            
             SpellList.Add(tp3);
+            SpellList.Add(tp16);
             SpellList.Add(tp4);
+            //SpellList.Add(tp17);
             SpellList.Add(tp5);
             SpellList.Add(tp6);
             SpellList.Add(tp7);

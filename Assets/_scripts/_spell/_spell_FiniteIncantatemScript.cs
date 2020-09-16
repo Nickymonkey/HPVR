@@ -29,7 +29,12 @@ namespace HPVR
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             GetComponent<Rigidbody>().mass = 1;
 
-            if(GetComponent<Interactable>() != null)
+            if (GetComponent<Breakable>() != null)
+            {
+                GetComponent<Breakable>().BreakOnCollision = true;
+            }
+
+            if (GetComponent<Interactable>() != null)
             {
                 if(GetComponent<Interactable>().attachedToHand != null)
                 {
@@ -49,7 +54,7 @@ namespace HPVR
 
             if (GetComponent<AudioSource>() != null)
             {
-                Destroy(GetComponent<AudioSource>());
+                GetComponent<AudioSource>().Stop();
             }
 
             if (GetComponent<Animator>() != null)

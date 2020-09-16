@@ -30,6 +30,15 @@ namespace HPVR
             spellColor = color;
             spellColorName = colorName;
             GetComponent<Renderer>().material.SetColor("_Color", spellColor);
+            if(GetComponentInChildren<ParticleSystem>() != null)
+            {
+                ParticleSystem.MainModule ma = GetComponentInChildren<ParticleSystem>().main;
+                ma.startColor = color;
+            }
+            if(GetComponentInChildren<Light>() != null)
+            {
+                GetComponentInChildren<Light>().color = color;
+            }
             //if (SpellExplosion.Contains("SpellExplosion"))
             //{
             //    SpellExplosion = SpellExplosion + spellColorName;
@@ -85,6 +94,11 @@ namespace HPVR
                 if (other.gameObject.tag == "mob" && healthDamage > 0)
                 {
                     other.gameObject.SendMessageUpwards("TookDamage", healthDamage);
+                }
+
+                if(other.gameObject.GetComponent<Breakable>() != null)
+                {
+                    other.gameObject.GetComponent<Breakable>().BreakFunction();
                 }
 
                 if (hasExplosion)
@@ -162,25 +176,48 @@ namespace HPVR
             {
                 if (hit.gameObject.transform.parent)
                 {
-                    if (hit.gameObject.transform.parent.gameObject.GetComponent<NetworkedObject>())
+                    if (hit.gameObject.transform.parent.GetComponent<Rigidbody>() != null)
                     {
-                        hit.gameObject.transform.parent.gameObject.GetComponent<NetworkedObject>().requestThenTransfer();
+                        if (hit.gameObject.transform.parent.gameObject.GetComponent<NetworkedObject>())
+                        {
+                            hit.gameObject.transform.parent.gameObject.GetComponent<NetworkedObject>().requestThenTransfer();
+                        }
+
+                        Rigidbody rb = hit.gameObject.transform.parent.GetComponent<Rigidbody>();
+
+                        if (rb != null)
+                        {
+                            rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, 0f, ForceMode.Impulse);
+                        }
+                    }
+                    else
+                    {
+                        if (hit.gameObject.GetComponent<NetworkedObject>())
+                        {
+                            hit.gameObject.GetComponent<NetworkedObject>().requestThenTransfer();
+                        }
+
+                        Rigidbody rb = hit.gameObject.GetComponent<Rigidbody>();
+
+                        if (rb != null)
+                        {
+                            rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, 0f, ForceMode.Impulse);
+                        }
+                    }
+                }
+                else
+                {
+                    if (hit.gameObject.GetComponent<NetworkedObject>())
+                    {
+                        hit.gameObject.GetComponent<NetworkedObject>().requestThenTransfer();
                     }
 
-                    Rigidbody rb = hit.gameObject.transform.parent.GetComponent<Rigidbody>();
+                    Rigidbody rb = hit.gameObject.GetComponent<Rigidbody>();
 
                     if (rb != null)
                     {
                         rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, 0f, ForceMode.Impulse);
                     }
-
-                    //if(GetComponent<FireSource>() != null)
-                    //{
-                    //    if (GetComponent<FireSource>().isBurning && GetComponent<FireSource>().canSpreadFromThisSource)
-                    //    {
-                    //        hit.gameObject.SendMessageUpwards("FireExposure", SendMessageOptions.DontRequireReceiver);
-                    //    }
-                    //}
                 }
             }
         }
