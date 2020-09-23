@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 5031693182670174855}
   - component: {fileID: 3850558061112777756}
   - component: {fileID: 3406473221347046773}
+  - component: {fileID: 6198694330515123250}
   m_Layer: 0
   m_Name: Retort_Preset_01
   m_TagString: Untagged
@@ -321,3 +322,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportAllowed: 1
   overrideHoverLock: 0
+--- !u!114 &6198694330515123250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636514345312361437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0

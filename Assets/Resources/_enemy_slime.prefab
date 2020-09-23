@@ -147,7 +147,7 @@ MonoBehaviour:
   power: 200
   health: 3
   splits: 2
-  itemDrop: {fileID: 6351807696395858513, guid: 72867e5bddebf814f8054e72fab4f121,
+  itemDrop: {fileID: 6351807696395858513, guid: 2e0f67618d7baba4fba7eb7dcb348338,
     type: 3}
   jumpSound: {fileID: 8300000, guid: 9ddc20c3ef9412e4583f7f5345e08dc5, type: 3}
 --- !u!54 &6130281812660345579

@@ -14,6 +14,12 @@ TagManager:
   - fire
   - mob
   - grate
+  - BreakableGlass
+  - ShatteredGlass
+  - GlassAccessory
+  - Head
+  - Pointer
+  - Page
   layers:
   - Default
   - TransparentFX
@@ -26,8 +32,8 @@ TagManager:
   - Player
   - Pickup
   - Grate
-  - 
-  - 
+  - Spellbook
+  - Page
   - 
   - 
   - 

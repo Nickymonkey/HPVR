@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4052053396973817393}
   - component: {fileID: 4052053396973817359}
   - component: {fileID: 4052053396973817396}
+  - component: {fileID: 1107378416030208282}
   m_Layer: 0
   m_Name: Teapot
   m_TagString: BreakableGlass
@@ -150,7 +151,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2c2da1c25a62c9c47968f8748db76182, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.75
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -437,6 +438,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3709937, y: 0.5947079, z: 0.33447838}
   m_Center: {x: 0.000000014901161, y: -0.0014662789, z: 0.16724433}
+--- !u!114 &1107378416030208282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052053396973817356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0
 --- !u!1 &7061079776130651104
 GameObject:
   m_ObjectHideFlags: 0

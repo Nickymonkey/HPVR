@@ -118,6 +118,20 @@ namespace Valve.VR.InteractionSystem
                     useHandObjectAttachmentPoint = false;
                 }
             }
+
+            //player = Launcher.LocalPlayerInstance.GetComponent<Player_VR>();
+
+            //for (int i = 0; i < player.handCount; i++)
+            //{
+            //    if (player.hands[i].handType == SteamVR_Input_Sources.RightHand)
+            //    {
+            //        RightHand = player.hands[i];
+            //    }
+            //    else
+            //    {
+            //        LeftHand = player.hands[i];
+            //    }
+            //}
         }
 
         protected virtual bool ShouldIgnoreHighlight(Component component)

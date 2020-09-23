@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 4718822048683959253}
   - component: {fileID: 4718822048683959254}
   - component: {fileID: 1183672449127600721}
+  - component: {fileID: -5611790947771158806}
   m_Layer: 0
   m_Name: Potion_02
   m_TagString: Untagged
@@ -320,3 +321,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportAllowed: 1
   overrideHoverLock: 0
+--- !u!114 &-5611790947771158806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4718822048683959258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0

@@ -27,29 +27,27 @@ namespace HPVR
 
         public void setColor(Color color, string colorName)
         {
-            spellColor = color;
-            spellColorName = colorName;
-            GetComponent<Renderer>().material.SetColor("_Color", spellColor);
-            if(GetComponentInChildren<ParticleSystem>() != null)
+            if (!colorName.Contains("None"))
             {
-                ParticleSystem.MainModule ma = GetComponentInChildren<ParticleSystem>().main;
-                ma.startColor = color;
+                spellColor = color;
+                spellColorName = colorName;
+                GetComponent<Renderer>().material.SetColor("_Color", spellColor);
+                if (GetComponentInChildren<ParticleSystem>() != null)
+                {
+                    ParticleSystem.MainModule ma = GetComponentInChildren<ParticleSystem>().main;
+                    ma.startColor = color;
+                }
+                if (GetComponentInChildren<Light>() != null)
+                {
+                    GetComponentInChildren<Light>().color = color;
+                }
             }
-            if(GetComponentInChildren<Light>() != null)
-            {
-                GetComponentInChildren<Light>().color = color;
-            }
-            //if (SpellExplosion.Contains("SpellExplosion"))
-            //{
-            //    SpellExplosion = SpellExplosion + spellColorName;
-            //}
-            //SpellExplosion = SpellExplosion+ spellColorName;
         }
 
         private void OnTriggerEnter(Collider other)
         {
 
-            if (other.name != "Wand(Clone)" && spellActivated)
+            if ((other.name != "Wand(Clone)" && spellActivated) && other.gameObject.layer != 2)
             {
                 spellActivated = false;
                 GetComponent<Renderer>().enabled = false;

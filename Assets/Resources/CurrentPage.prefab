@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8130051571785004023}
   - component: {fileID: 6025013461353705421}
   - component: {fileID: 6280009484769887234}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 8903251176772823705}
   - component: {fileID: 2313598421359632328}
   - component: {fileID: 1483126617461781605}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 7981931888361966735}
   - component: {fileID: 7877835177324010496}
   - component: {fileID: 3303459256251356784}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 5934741731066932820}
   - component: {fileID: 5707538473931172781}
   - component: {fileID: 2406642584452618779}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 6233919825221642184}
   - component: {fileID: 4953621107408171720}
   - component: {fileID: 1628050879781006619}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PageCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 7502414736387674947}
   - component: {fileID: 9172616126121082964}
   - component: {fileID: 5338125874432914589}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CurrentPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,7 +823,7 @@ MonoBehaviour:
   axisOfRotation: 0
   childCollider: {fileID: 0}
   linearMapping: {fileID: 0}
-  hoverLock: 1
+  hoverLock: 0
   limited: 1
   frozenDistanceMinMaxThreshold: {x: 0.1, y: 0.2}
   onFrozenDistanceThreshold:
@@ -906,6 +906,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
+  observableSearch: 0
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
@@ -940,7 +941,7 @@ GameObject:
   - component: {fileID: 7502414736877050801}
   - component: {fileID: 7502414736877050800}
   - component: {fileID: 7502414736877050807}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1034,7 +1035,7 @@ GameObject:
   - component: {fileID: 7502414737919229257}
   - component: {fileID: 7502414737919229256}
   - component: {fileID: 7502414737919229263}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PageCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

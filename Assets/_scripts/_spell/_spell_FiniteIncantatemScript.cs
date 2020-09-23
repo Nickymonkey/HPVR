@@ -21,7 +21,7 @@ namespace HPVR
                 GetComponent<NetworkedObject>().requestThenTransfer();
                 GetComponent<NetworkedObject>().currentSpell = spellName;
                 _renderer.material = GetComponent<NetworkedObject>().defaultMaterial;
-                GetComponent<NetworkedObject>().currentMaterial = _renderer.sharedMaterial.name;
+                //GetComponent<NetworkedObject>().currentMaterial = _renderer.sharedMaterial.name;
             }
 
             transform.localScale = new Vector3(1, 1, 1);

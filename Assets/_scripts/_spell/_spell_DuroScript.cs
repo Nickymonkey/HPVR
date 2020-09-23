@@ -25,7 +25,7 @@ namespace HPVR
             //originalMaterial = _renderer.material;
             //rockMaterial = Resources.Load("Mat_Stone", typeof(Material)) as Material;            
             _renderer.material = Resources.Load("Mat_Stone", typeof(Material)) as Material;
-            GetComponent<NetworkedObject>().currentMaterial = _renderer.sharedMaterial.name;
+            GetComponent<NetworkedObject>().currentMaterial = _renderer.sharedMaterial;
             //Debug.Log(_renderer.sharedMaterial.name);
             GetComponent<Rigidbody>().mass = 5;
 

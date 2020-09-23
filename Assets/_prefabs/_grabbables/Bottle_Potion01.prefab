@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 6617843421501361887}
   - component: {fileID: 6617843421501361886}
   - component: {fileID: 6617843421501361888}
+  - component: {fileID: 5057958730474199841}
   m_Layer: 0
   m_Name: Bottle_Potion01
   m_TagString: BreakableGlass
@@ -241,7 +242,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2c2da1c25a62c9c47968f8748db76182, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.75
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -515,3 +516,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54b9659ca66a4a69a9f63391ec25fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5057958730474199841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6617843421501361891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0

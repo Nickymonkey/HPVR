@@ -6,17 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_scenes/SteamVR-Intro.unity
+    guid: c0b99c6c9efd08249a10ccda3cd8d76a
+  - enabled: 1
     path: Assets/_scenes/SteamVR-Launcher.unity
     guid: 353391f13c6f3914591ccaf0b1408e26
   - enabled: 1
     path: Assets/_scenes/SteamVR-Singleplayer-Puzzle-Base.unity
     guid: bda828b74d87a4c42a6c013426a74d66
-  - enabled: 1
-    path: Assets/_scenes/SteamVR-PvP Lobby.unity
-    guid: b6637a46b7e487741b7505710eec245d
-  - enabled: 1
-    path: Assets/_scenes/SteamVR-PvP Arena.unity
-    guid: 26ff8366a3b5de643a8e22aecdb8ca80
   - enabled: 1
     path: Assets/_scenes/SteamVR-Co Op Lobby.unity
     guid: a729721ca60e51c45b45acf5f8d4f443

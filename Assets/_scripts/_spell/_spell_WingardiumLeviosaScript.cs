@@ -39,7 +39,7 @@ namespace HPVR
                 AudioClip wingardiumLeviosaSound = Resources.Load("wingardiumLeviosaSound") as AudioClip;
                 currentAudioSource.volume = 0.25f;
                 currentAudioSource.clip = wingardiumLeviosaSound;
-                currentAudioSource.loop = true;
+                //currentAudioSource.loop = true;
                 currentAudioSource.Play();
             }
             else
@@ -51,7 +51,7 @@ namespace HPVR
                 AudioClip wingardiumLeviosaSound = Resources.Load("wingardiumLeviosaSound") as AudioClip;
                 currentAudioSource.volume = 0.25f;
                 currentAudioSource.clip = wingardiumLeviosaSound;
-                currentAudioSource.loop = true;
+                //currentAudioSource.loop = true;
                 currentAudioSource.Play();
             }
 

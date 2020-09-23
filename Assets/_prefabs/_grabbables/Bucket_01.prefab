@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 6701681176691842181}
   - component: {fileID: 6246016195731543578}
   - component: {fileID: 5441306495750151468}
+  - component: {fileID: 7776104514849974474}
   m_Layer: 0
   m_Name: Bucket_01
   m_TagString: Untagged
@@ -320,3 +321,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportAllowed: 1
   overrideHoverLock: 0
+--- !u!114 &7776104514849974474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686557406892397970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0

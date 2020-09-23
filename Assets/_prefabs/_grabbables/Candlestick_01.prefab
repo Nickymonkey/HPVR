@@ -14393,6 +14393,7 @@ GameObject:
   - component: {fileID: 129562135989636519}
   - component: {fileID: 4615120146864258752}
   - component: {fileID: 3952133751654793788}
+  - component: {fileID: -7119967154811370731}
   m_Layer: 0
   m_Name: Candlestick_01
   m_TagString: Untagged
@@ -14593,3 +14594,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportAllowed: 1
   overrideHoverLock: 0
+--- !u!114 &-7119967154811370731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4097162223869191656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0

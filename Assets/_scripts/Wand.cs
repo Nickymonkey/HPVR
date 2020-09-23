@@ -38,7 +38,7 @@ namespace HPVR
         private Vector3 lastPosition;
         public float dwellSpeed = 0.1f;
         public LexiconFocusManager focusManager;
-        public LayerMask defaultLayerMask;
+        private LayerMask defaultLayerMask;
         public LayerMask wandReticleIgnoreMask;
         private KeywordRecognizer m_Recognizer;
         private static string majorSpellString = "MajorBaseSpell";
@@ -46,6 +46,7 @@ namespace HPVR
         [Tooltip("The time offset used when releasing the object with the RawFromHand option")]
         public float releaseVelocityTimeOffset = -0.011f;
         public ParticleSystem flash;
+        public ParticleSystem successfulSpellcast;
         //public ParticleSystem primedGlow;
         public float scaleReleaseVelocity = 1.1f;
 
@@ -70,13 +71,16 @@ namespace HPVR
             }
 
             //enable wand canvas
-            wandCanvas.SetActive(true);
+            //wandCanvas.SetActive(true);
 
             //create wand reticle
             pointerSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             pointerSphere.GetComponent<Renderer>().material = pointerMaterial;
             pointerSphere.transform.localScale = new Vector3(pointerSize, pointerSize, pointerSize);
-            Destroy(pointerSphere.GetComponent<Collider>());
+            pointerSphere.GetComponent<Collider>().isTrigger = true;
+            pointerSphere.gameObject.tag = "Pointer";
+            pointerSphere.gameObject.layer = 2;
+            //Destroy(pointerSphere.GetComponent<Collider>());
             sd = new SpellDictionary();
             m_Keywords = new string[sd.SpellList.Count];
             for (int i=0; i<sd.SpellList.Count; i++)
@@ -139,7 +143,7 @@ namespace HPVR
             if (args.text == "light" || args.text == "lumos")
             {
                 spawnBaseSpell(wandTip.gameObject.transform.position, wandTip.transform.rotation, "_PS_lumos");
-                updateSpell(0, 0, 0f, 0f, false, Color.white, "White");
+                updateSpell(0, 0, 0f, 0f, false, Color.white, "None");
             }
 
             if (args.text == "stupify")
@@ -203,81 +207,132 @@ namespace HPVR
 
                 GameObject affectedObject;
 
-                if(selectable.GetComponent<Rigidbody>() != null)
+                if(selectable.transform.parent != null)
                 {
-                    affectedObject = selectable.gameObject;
+                    if (selectable.GetComponent<Rigidbody>() != null && selectable.transform.parent.GetComponent<CircularDrive>() == null)
+                    {
+                        affectedObject = selectable.gameObject;
+                    }
+                    else
+                    {
+                        affectedObject = selectable.transform.parent.gameObject;
+                    }
                 }
                 else
                 {
-                    affectedObject = selectable.transform.parent.gameObject;
+                    if (selectable.GetComponent<Rigidbody>() != null)
+                    {
+                        affectedObject = selectable.gameObject;
+                    }
+                    else
+                    {
+                        affectedObject = selectable.transform.parent.gameObject;
+                    }
                 }
 
-                if (args.text == "levitate" || args.text == "wingardium leviosa")
+                if (isLockedorFan(affectedObject))
                 {
-                    affectedObject.AddComponent<_spell_WingardiumLeviosaScript>();
-                    destroyCurrentSpell();
-                }
 
-                if (args.text == "to me" || args.text == "accio")
+                    if (args.text == "arresto momentum" || args.text == "freeze")
+                    {
+                        affectedObject.AddComponent<_spell_ArrestoMomentumScript>();
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
+
+                    if (args.text == "alohomora" || args.text == "unlock")
+                    {
+                        affectedObject.AddComponent<_spell_AlohomoraScript>();
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
+                }
+                else
                 {
-                    affectedObject.AddComponent<_spell_AccioScript>();
-                    affectedObject.GetComponent<_spell_AccioScript>().hand = hand.otherHand.gameObject;
-                    destroyCurrentSpell();
+                    if (args.text == "levitate" || args.text == "wingardium leviosa")
+                    {
+                        affectedObject.AddComponent<_spell_WingardiumLeviosaScript>();
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
+
+                    if (args.text == "to me" || args.text == "accio")
+                    {
+                        affectedObject.AddComponent<_spell_AccioScript>();
+                        affectedObject.GetComponent<_spell_AccioScript>().hand = hand.otherHand.gameObject;
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
+
+                    if (args.text == "bigger" || args.text == "engorgio")
+                    {
+                        affectedObject.AddComponent<_spell_EngorgioScript>();
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
+
+                    if (args.text == "smaller" || args.text == "diminuendo")
+                    {
+                        affectedObject.AddComponent<_spell_DiminuendoScript>();
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
+
+                    if (args.text == "alarte" || args.text == "up")
+                    {
+                        affectedObject.AddComponent<_spell_AlarteScript>();
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
+
+                    if (args.text == "geminio" || args.text == "duplicate")
+                    {
+                        affectedObject.AddComponent<_spell_GeminioScript>();
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
+
+                    if (args.text == "finite incantatem" || args.text == "nullify")
+                    {
+                        affectedObject.AddComponent<_spell_FiniteIncantatemScript>();
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
+
+                    if (args.text == "duro" || args.text == "stone")
+                    {
+                        affectedObject.AddComponent<_spell_DuroScript>();
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
+
+                    if (args.text == "arresto momentum" || args.text == "freeze")
+                    {
+                        affectedObject.AddComponent<_spell_ArrestoMomentumScript>();
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
+
+                    if (args.text == "alohomora" || args.text == "unlock")
+                    {
+                        affectedObject.AddComponent<_spell_AlohomoraScript>();
+                        destroyCurrentSpell();
+                        GetComponent<AudioSource>().Play();
+                        successfulSpellcast.Play();
+                    }
                 }
 
-                if (args.text == "bigger" || args.text == "engorgio")
-                {
-                    affectedObject.AddComponent<_spell_EngorgioScript>();
-                    destroyCurrentSpell();
-                }
-
-                if (args.text == "smaller" || args.text == "diminuendo")
-                {
-                    affectedObject.AddComponent<_spell_DiminuendoScript>();
-                    destroyCurrentSpell();
-                }
-
-                if (args.text == "alarte" || args.text == "up")
-                {
-                    affectedObject.AddComponent<_spell_AlarteScript>();
-                    destroyCurrentSpell();
-                }
-
-                if (args.text == "geminio" || args.text == "duplicate")
-                {
-                    affectedObject.AddComponent<_spell_GeminioScript>();
-                    destroyCurrentSpell();
-                }
-
-                if (args.text == "arresto momentum" || args.text == "freeze")
-                {
-                    affectedObject.AddComponent<_spell_ArrestoMomentumScript>();
-                    destroyCurrentSpell();
-                }
-
-                if (args.text == "finite incantatem" || args.text == "nullify")
-                {
-                    affectedObject.AddComponent<_spell_FiniteIncantatemScript>();
-                    destroyCurrentSpell();
-                }
-
-                if (args.text == "duro" || args.text == "stone")
-                {
-                    affectedObject.AddComponent<_spell_DuroScript>();
-                    destroyCurrentSpell();
-                }
-
-                if (args.text == "alohomora" || args.text == "unlock")
-                {
-                    affectedObject.AddComponent<_spell_AlohomoraScript>();
-                    destroyCurrentSpell();
-                }
-
-                //if (args.text == "colloportus" || args.text == "unlock")
-                //{
-                //    //affectedObject.AddComponent<_spell_AlohomoraScript>();
-                //    destroyCurrentSpell();
-                //}
             }
 
             if (hand != null)
@@ -383,18 +438,24 @@ namespace HPVR
             }
 
             //trigger shield
-            if (gripPressedDown)
-            {
-                if (getShieldCount() > 0)
-                {
-                    destroyCurrentSpell();
-                    spawnShield();
-                }
-            }
-            else if (gripLiftedUp)
-            {
-                despawnShield();
-            }
+            //if (gripPressedDown)
+            //{
+            //    if (hand.AttachedObjects.Count == 1)
+            //    {
+            //        if(hand.AttachedObjects[0].attachedObject.gameObject.layer != 12)
+            //        {
+            //            if (getShieldCount() > 0)
+            //            {
+            //                destroyCurrentSpell();
+            //                spawnShield();
+            //            }
+            //        }
+            //    }
+            //}
+            //else if (gripLiftedUp)
+            //{
+            //    despawnShield();
+            //}
         }
 
         private void fireSpell()
@@ -516,7 +577,11 @@ namespace HPVR
             hand = attachedHand;
             //Debug.Log("LOCAL BOOK INTERACTABlE: ATTACHED TO HAND");
             defaultLayerMask = hand.hoverLayerMask;
-            LayerMask mask = LayerMask.GetMask("Pickup");
+            string[] masks = new string[2];
+            masks[0] = "Pickup";
+            masks[1] = "Page";
+            LayerMask mask = LayerMask.GetMask(masks);
+            //LayerMask pageMask = 
             mask &= ~(1 << this.gameObject.layer);
             hand.hoverLayerMask = mask;
             //hand.HoverLock(interactable);
@@ -557,6 +622,15 @@ namespace HPVR
             LexiconFocusManager.OnCaptureFocus -= CaptureFocus;
             Destroy(pointerSphere);
             Destroy(gameObject);
+        }
+
+        private bool isLockedorFan(GameObject affectedObject)
+        {
+            if(affectedObject.GetComponent<Door>() != null || affectedObject.GetComponent<Fan>() != null)
+            {
+                return true;
+            }
+            return false;
         }
 
         //-------------------------------------------------

@@ -50,7 +50,7 @@ namespace HPVR
                 currentAudioSource = gameObject.AddComponent<AudioSource>();
             }
             currentAudioSource.spatialBlend = 1; // we do want to hear spatialized audio
-            StartCoroutine(Countdown(10));
+            StartCoroutine(Countdown(5));
             StartCoroutine(Shake());
         }
 
@@ -105,7 +105,7 @@ namespace HPVR
             AudioClip flyingSound = Resources.Load("flyingSound") as AudioClip;
             currentAudioSource.volume = 1f;
             currentAudioSource.clip = flyingSound;
-            currentAudioSource.loop = true;
+            //currentAudioSource.loop = true;
             currentAudioSource.Play();
         }
 
@@ -131,12 +131,8 @@ namespace HPVR
                     AudioClip wingardiumLeviosaSound = Resources.Load("wingardiumLeviosaSound") as AudioClip;
                     currentAudioSource.volume = 0.1f;
                     currentAudioSource.clip = wingardiumLeviosaSound;
-                    currentAudioSource.loop = true;
+                    //currentAudioSource.loop = true;
                     currentAudioSource.Play();
-                }
-                else
-                {
-                    Destroy(currentAudioSource);
                 }
             }
             // Destroy this script
@@ -157,6 +153,9 @@ namespace HPVR
         void OnCollisionEnter(Collision col)
         {
             if (col.gameObject.layer == 10)
+            {
+                KillScript();
+            } else if(col.gameObject.layer == 8)
             {
                 KillScript();
             }

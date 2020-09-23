@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7173090622860286692}
   - component: {fileID: 7173090622860286695}
   - component: {fileID: 7173090622860286714}
+  - component: {fileID: 1256491806030359125}
+  - component: {fileID: 9129536707980869025}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -105,6 +107,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54b9659ca66a4a69a9f63391ec25fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1256491806030359125
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7173090622860286689}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &9129536707980869025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7173090622860286689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0
 --- !u!1 &7173090623055714101
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +388,8 @@ GameObject:
   - component: {fileID: 7173090623279757910}
   - component: {fileID: 7173090623279757905}
   - component: {fileID: 7173090623279757908}
+  - component: {fileID: 6649770127897435522}
+  - component: {fileID: 8764884843619849416}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -447,6 +483,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54b9659ca66a4a69a9f63391ec25fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &6649770127897435522
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7173090623279757907}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8764884843619849416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7173090623279757907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0
 --- !u!1 &7173090623394959781
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +528,8 @@ GameObject:
   - component: {fileID: 7173090623394959803}
   - component: {fileID: 7173090623394959802}
   - component: {fileID: 7173090623394959806}
+  - component: {fileID: 6784238546308563388}
+  - component: {fileID: 4514106344737806278}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -552,6 +622,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54b9659ca66a4a69a9f63391ec25fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &6784238546308563388
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7173090623394959781}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &4514106344737806278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7173090623394959781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0
 --- !u!1 &7173090623726169019
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +667,8 @@ GameObject:
   - component: {fileID: 7173090623726169022}
   - component: {fileID: 7173090623726169017}
   - component: {fileID: 7173090623726169020}
+  - component: {fileID: 7339407388010636777}
+  - component: {fileID: 7609813184432688163}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -657,3 +761,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54b9659ca66a4a69a9f63391ec25fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7339407388010636777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7173090623726169019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0
+--- !u!54 &7609813184432688163
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7173090623726169019}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

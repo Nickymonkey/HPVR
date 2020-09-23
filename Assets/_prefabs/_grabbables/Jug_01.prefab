@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6212350160449813511}
   - component: {fileID: 2107040813176712085}
   - component: {fileID: 6876034885670607138}
+  - component: {fileID: -6175848899803656031}
   m_Layer: 0
   m_Name: Jug_01
   m_TagString: Untagged
@@ -215,6 +216,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportAllowed: 1
   overrideHoverLock: 0
+--- !u!114 &-6175848899803656031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509988408366267478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0
 --- !u!1 &4602374310103281230
 GameObject:
   m_ObjectHideFlags: 0

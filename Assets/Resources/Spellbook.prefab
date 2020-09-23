@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2970836841559616867}
   - component: {fileID: 2970836841559616893}
   - component: {fileID: 2970836841559616892}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RightCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7407676708582124045}
   - component: {fileID: 3960984160545789147}
   - component: {fileID: 3746320077871729471}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spellbook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,6 +139,7 @@ MonoBehaviour:
   leftMost: -1
   rightMost: 2
   pageTurn: {fileID: 8300000, guid: 10220c9af9c5cb34da35d28c17447722, type: 3}
+  pageTurned: 0
 --- !u!114 &2970836842216163330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +393,7 @@ GameObject:
   - component: {fileID: 2970836842270379564}
   - component: {fileID: 2970836842270379987}
   - component: {fileID: 2970836842270379986}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +471,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.25, z: 4}
+  m_Size: {x: 1, y: 2.08, z: 2.65}
   m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!1 &2970836842909601016
 GameObject:
@@ -483,7 +484,7 @@ GameObject:
   - component: {fileID: 2970836842909601017}
   - component: {fileID: 2970836842909601019}
   - component: {fileID: 2970836842909601018}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LeftCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,7 +560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2970836843593820171}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +594,7 @@ GameObject:
   - component: {fileID: 8157225394559977418}
   - component: {fileID: 3361994320778240584}
   - component: {fileID: 8751400233190413718}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2292561061783351689}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CurrentPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +703,7 @@ GameObject:
   - component: {fileID: 5031121761898310807}
   - component: {fileID: 5031121761898310800}
   - component: {fileID: 5031121761898310801}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -778,7 +779,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5031121762215191651}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CurrentPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4939,6 +4939,7 @@ GameObject:
   - component: {fileID: 5184371109029935641}
   - component: {fileID: 8217496040459395227}
   - component: {fileID: 95505967846996522}
+  - component: {fileID: -1809754776873371749}
   m_Layer: 0
   m_Name: FloatingCandle_02
   m_TagString: Untagged
@@ -5139,3 +5140,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportAllowed: 1
   overrideHoverLock: 0
+--- !u!114 &-1809754776873371749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7981337293028333307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcfed6208333c14d891835ee75a8106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightOnHover: 1
+  hideHighlight: []
+  highlight: 0
+  highlighted: 0

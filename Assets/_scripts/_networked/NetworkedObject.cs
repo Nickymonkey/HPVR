@@ -14,7 +14,7 @@ namespace HPVR
         bool kinematicOn = false;
         float mass = 1;
         public Material defaultMaterial;
-        public string currentMaterial;
+        public Material currentMaterial;
         public string currentSpell = "";
 
         // Start is called before the first frame update
@@ -24,7 +24,7 @@ namespace HPVR
 
             if(defaultMaterial != null)
             {
-                currentMaterial = defaultMaterial.name;
+                defaultMaterial = _renderer.material;
             }
             if (!PhotonNetwork.InLobby && !PhotonNetwork.InRoom)
             {
@@ -48,7 +48,7 @@ namespace HPVR
                 stream.SendNext(this.GetComponent<Rigidbody>().useGravity);
                 stream.SendNext(this.GetComponent<Rigidbody>().isKinematic);
                 stream.SendNext(this.GetComponent<Rigidbody>().mass);
-                stream.SendNext(currentMaterial);
+                //stream.SendNext(currentMaterial);
             }
             else
             {
@@ -56,7 +56,7 @@ namespace HPVR
                 gravityOn = (bool)stream.ReceiveNext();
                 kinematicOn = (bool)stream.ReceiveNext();
                 mass = (float)stream.ReceiveNext();
-                currentMaterial = (string)stream.ReceiveNext();
+                //currentMaterial = (string)stream.ReceiveNext();
                 updateObject();
             }
         }
@@ -78,7 +78,7 @@ namespace HPVR
             GetComponent<Rigidbody>().useGravity = gravityOn;
             GetComponent<Rigidbody>().isKinematic = kinematicOn;
             GetComponent<Rigidbody>().mass = mass;
-            GetComponentInChildren<Renderer>().material = Resources.Load(currentMaterial, typeof(Material)) as Material;
+            //GetComponentInChildren<Renderer>().material = Resources.Load(currentMaterial, typeof(Material)) as Material;
         }
 
         public void requestThenTransfer()
