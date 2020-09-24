@@ -10,7 +10,7 @@ namespace HPVR
         public Animator anim;
         public GameObject player;
         public Transform target;
-        public float movementSpeed;
+        public float movementSpeed = 2.0f;
         public float rotationSpeed = 1.0f;
         public int health = 3;
         public float followingDistance;
@@ -51,7 +51,9 @@ namespace HPVR
                         source.PlayOneShot(spiderWalking);
                     }
                     following = true;
-                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z), movementSpeed);
+                    float step = movementSpeed * Time.deltaTime; // calculate distance to move
+                    //Debug.Log(step);
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z), step);
                 }
                 else if (!recovering)
                 {

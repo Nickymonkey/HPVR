@@ -40,11 +40,12 @@ public class VRRig : MonoBehaviour
         transform.position = headConstraint.position + headBodyOffset;
         var angle = Vector3.Angle(transform.forward, Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized);
         //Debug.Log(headConstraint.up.y);
-        if ((angle > currentThresholdAngle) && headConstraint.up.y >= -0.5f)
+        if (headConstraint.up.y >= -0.5f)
         {
             //currentThresholdAngle = 5f;
             transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized, Time.deltaTime * turnSmoothness);
         }
+        //transform.forward = Vector3.Lerp(transform.forward, Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized, Time.deltaTime * turnSmoothness);
         //else if ((currentThresholdAngle != thresholdAngle) && Math.Abs(headConstraint.localRotation.z) <= 130.0f)
         //{
         //    currentThresholdAngle = thresholdAngle;

@@ -1356,7 +1356,7 @@ MonoBehaviour:
   anim: {fileID: 7753482657567516719}
   player: {fileID: 0}
   target: {fileID: 0}
-  movementSpeed: 0.04
+  movementSpeed: 2
   rotationSpeed: 2.5
   health: 3
   followingDistance: 3

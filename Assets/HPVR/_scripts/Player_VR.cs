@@ -18,9 +18,15 @@ namespace HPVR
         public GameObject snapTurn;
         public GameObject inputModule;
         public GameObject steamVRIntializer;
+        public GameObject playerModel;
+        public GameObject spellbookPickup;
+        public GameObject wandPickup;
+        public GameObject pointer;
+        public GameObject pauseCanvas;
 
         private CharacterController characterController;
         private AudioSource source;
+        private bool gamePaused = false;
         //-------------------------------------------------
         // Singleton instance of the Player. Only one can exist at a time.
         //-------------------------------------------------
@@ -104,19 +110,60 @@ namespace HPVR
 
             if (buttonPressedDown)
             {
-                GameState.Instance.ToggleLocomotionType();
+                //GameState.Instance.ToggleLocomotionType();
+            }
+
+            if (!gamePaused && buttonPressedDown)
+            {
+                Pause();
+            }
+            else if (gamePaused && buttonPressedDown)
+            {
+                Unpause();
             }
 
             movementUpdate();
         }
 
-        bool isMineOrLocal()
+        private bool isMineOrLocal()
         {
             bool photonViewIsMine = GetComponent<PhotonView>().IsMine;
             return photonViewIsMine || PhotonNetwork.InRoom == false;
         }
 
-        void movementUpdate()
+        public void EnableTeleportLocomotion()
+        {
+            GameState.Instance.EnableTeleportLocmotion();
+        }
+
+        public void EnableSmoothLocomotion()
+        {
+            GameState.Instance.EnableSmoothLocmotion();
+        }
+
+        public void Pause()
+        {
+            playerModel.SetActive(false);
+            spellbookPickup.SetActive(false);
+            wandPickup.SetActive(false);
+            pointer.SetActive(true);
+            pauseCanvas.SetActive(true);
+            gamePaused = true;
+            Time.timeScale = 0f;
+        }
+
+        public void Unpause()
+        {
+            playerModel.SetActive(true);
+            spellbookPickup.SetActive(true);
+            wandPickup.SetActive(true);
+            pointer.SetActive(false);
+            pauseCanvas.SetActive(false);
+            gamePaused = false;
+            Time.timeScale = 1f;
+        }
+
+        private void movementUpdate()
         {
             //float y = floored();
             //transform.position = new Vector3(transform.position.x, y, transform.position.z);
@@ -132,7 +179,7 @@ namespace HPVR
             }
         }
 
-        void SmoothLocomotion()
+        private void SmoothLocomotion()
         {
             if (NetworkedGameManager.Instance != null)
             {
@@ -175,7 +222,7 @@ namespace HPVR
             }
         }
 
-        void TeleportLocomotion()
+        private void TeleportLocomotion()
         {
             characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(new Vector3(0, 0, 0), Vector3.up));
             if (source.isPlaying)

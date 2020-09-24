@@ -71,7 +71,38 @@ namespace HPVR
                     GameManager.Instance.ta.enabled = true;
                 }
             }
+        }
 
+        public void EnableTeleportLocmotion()
+        {
+            if (Launcher.Instance != null)
+            {
+                GameState.Instance.locomotion = "Teleport";
+                Launcher.Instance.nt.enabled = true;
+                Launcher.Instance.ta.enabled = true;
+            }
+            else if (GameManager.Instance != null)
+            {
+                GameState.Instance.locomotion = "Teleport";
+                GameManager.Instance.nt.enabled = true;
+                GameManager.Instance.ta.enabled = true;
+            }
+        }
+
+        public void EnableSmoothLocmotion()
+        {
+            if (Launcher.Instance != null)
+            {
+                GameState.Instance.locomotion = "Smooth";
+                Launcher.Instance.nt.enabled = false;
+                Launcher.Instance.ta.enabled = false;
+            }
+            else if (GameManager.Instance != null)
+            {
+                GameState.Instance.locomotion = "Smooth";
+                GameManager.Instance.nt.enabled = false;
+                GameManager.Instance.ta.enabled = false;
+            }
         }
     }
 }

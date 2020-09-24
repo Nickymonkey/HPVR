@@ -6,39 +6,39 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Intro.unity
+    path: Assets/HPVR/_scenes/SteamVR-Intro.unity
     guid: c0b99c6c9efd08249a10ccda3cd8d76a
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Launcher.unity
+    path: Assets/HPVR/_scenes/SteamVR-Launcher.unity
     guid: 353391f13c6f3914591ccaf0b1408e26
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Singleplayer-Puzzle-Base.unity
+    path: Assets/HPVR/_scenes/SteamVR-Singleplayer-Puzzle-Base.unity
     guid: bda828b74d87a4c42a6c013426a74d66
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Co Op Lobby.unity
+    path: Assets/HPVR/_scenes/SteamVR-Co Op Lobby.unity
     guid: a729721ca60e51c45b45acf5f8d4f443
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Co Op Puzzle A.unity
+    path: Assets/HPVR/_scenes/SteamVR-Co Op Puzzle A.unity
     guid: d4604097fb73ca14cbdf1f33934f83e1
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Singleplayer-Puzzle-1.unity
+    path: Assets/HPVR/_scenes/SteamVR-Singleplayer-Puzzle-1.unity
     guid: a5fe47737ebbdc4448ba4de9aeed03bd
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Singleplayer-Puzzle-2.unity
+    path: Assets/HPVR/_scenes/SteamVR-Singleplayer-Puzzle-2.unity
     guid: f4ce2968c764a4148831583b6485e548
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Singleplayer-Puzzle-3.unity
+    path: Assets/HPVR/_scenes/SteamVR-Singleplayer-Puzzle-3.unity
     guid: 7c569e4d438608b4899c57a7dc714750
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Singleplayer-Puzzle-4.unity
+    path: Assets/HPVR/_scenes/SteamVR-Singleplayer-Puzzle-4.unity
     guid: ded98393a40ff49478b306842beb4a2b
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Singleplayer-Puzzle-5.unity
+    path: Assets/HPVR/_scenes/SteamVR-Singleplayer-Puzzle-5.unity
     guid: 26f3facf4232c1f45be4368584f01f27
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Singleplayer-Puzzle-6.unity
+    path: Assets/HPVR/_scenes/SteamVR-Singleplayer-Puzzle-6.unity
     guid: a8da0ef0e570ca24f88174fb16807f9b
   - enabled: 1
-    path: Assets/_scenes/SteamVR-Singleplayer-Puzzle-7.unity
+    path: Assets/HPVR/_scenes/SteamVR-Singleplayer-Puzzle-7.unity
     guid: 42b4bf13bcd8e1247bf65c2925a743db
   m_configObjects: {}
