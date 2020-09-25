@@ -8,7 +8,7 @@ namespace HPVR
     {
         //public static GameState instance;
         public bool isPlayerVR;
-        public string locomotion = "Teleport";
+        public string locomotion;
         public GameObject VRPrefab;
         public GameObject NormalPrefab;
         public string lobbyToLoad = "";
@@ -22,7 +22,7 @@ namespace HPVR
 
         void Awake()
         {
-
+            locomotion = "Teleport";
         }
 
         // Update is called once per frame

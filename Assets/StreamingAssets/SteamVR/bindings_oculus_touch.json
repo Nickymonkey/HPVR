@@ -273,24 +273,6 @@
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/left/input/x"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/buttonpress"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/y"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/buttonpress"
-                  }
-               },
-               "mode" : "button",
                "path" : "/user/hand/right/input/a"
             },
             {

@@ -30,7 +30,11 @@ namespace HPVR
             GameState.Instance.isPlayerVR = isPlayerVR;
             GameState.Instance.VRPrefab = Player_VR;
             GameState.Instance.NormalPrefab = Player;
-            GameState.Instance.locomotion = "Teleport";
+            ////GameState.Instance.locomotion = "Teleport";
+            //if(!GameState.Instance.locomotion.Contains("Teleport") && !GameState.Instance.locomotion.Contains("Smooth"))
+            //{
+            //    GameState.Instance.locomotion = "Teleport";
+            //}
 
             prefabToInstantiate = GameState.Instance.PrefabToInstantiate();
         }
@@ -54,13 +58,13 @@ namespace HPVR
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown("space"))
-            {
-                Destroy(Launcher.LocalPlayerInstance);
-                GameState.Instance.lobbyToLoad = lobby;
-                GameState.Instance.levelToLoad = level;
-                NetworkManager.Instance.Connect();
-            }
+            //if (Input.GetKeyDown("space"))
+            //{
+            //    Destroy(Launcher.LocalPlayerInstance);
+            //    GameState.Instance.lobbyToLoad = lobby;
+            //    GameState.Instance.levelToLoad = level;
+            //    NetworkManager.Instance.Connect();
+            //}
 
             //if (Input.GetKeyDown("tab"))
             //{

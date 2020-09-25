@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
@@ -23,10 +24,14 @@ namespace HPVR
         public GameObject wandPickup;
         public GameObject pointer;
         public GameObject pauseCanvas;
+        public GameObject loadingPauseCanvas;
+        public Image loadingBar;
 
         private CharacterController characterController;
         private AudioSource source;
         private bool gamePaused = false;
+        private float currentAmount = 0f;
+        private float pauseSpeed = 90f;
         //-------------------------------------------------
         // Singleton instance of the Player. Only one can exist at a time.
         //-------------------------------------------------
@@ -98,28 +103,42 @@ namespace HPVR
             if (SteamVR.initializedState != SteamVR.InitializedStates.InitializeSuccess)
                 return;
 
-            bool buttonPressedDown = false;
+            //bool buttonPressedDown = false;
 
-            for (int i = 0; i < hands.Length; i++)
+            //for (int i = 0; i < hands.Length; i++)
+            //{
+            //    if (!buttonPressedDown)
+            //    {
+            //        buttonPressedDown = ButtonInput.GetStateDown(hands[i].handType);
+            //        //ButtonInput.state
+            //        loadingPauseCanvas.SetActive(true);
+            //    }
+            //}
+
+            if (ButtonInput.lastStateDown)
             {
-                if (!buttonPressedDown)
+                loadingPauseCanvas.SetActive(true);
+            }
+
+            if (ButtonInput.state && !gamePaused)
+            {
+                if(currentAmount < 100)
                 {
-                    buttonPressedDown = ButtonInput.GetStateDown(hands[i].handType);
+                    currentAmount += pauseSpeed * Time.deltaTime;
+                    loadingBar.fillAmount = currentAmount / 100;
+                }
+                else
+                {
+                    if (!gamePaused)
+                    {
+                        Pause();
+                    }
                 }
             }
-
-            if (buttonPressedDown)
+            else
             {
-                //GameState.Instance.ToggleLocomotionType();
-            }
-
-            if (!gamePaused && buttonPressedDown)
-            {
-                Pause();
-            }
-            else if (gamePaused && buttonPressedDown)
-            {
-                Unpause();
+                currentAmount = 0;
+                loadingPauseCanvas.SetActive(false);
             }
 
             movementUpdate();
