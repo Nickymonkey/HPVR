@@ -76,11 +76,11 @@ namespace HPVR
             //create wand reticle
             pointerSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             pointerSphere.GetComponent<Renderer>().material = pointerMaterial;
+            pointerSphere.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             pointerSphere.transform.localScale = new Vector3(pointerSize, pointerSize, pointerSize);
             pointerSphere.GetComponent<Collider>().isTrigger = true;
             pointerSphere.gameObject.tag = "Pointer";
             pointerSphere.gameObject.layer = 2;
-            //Destroy(pointerSphere.GetComponent<Collider>());
             sd = new SpellDictionary();
             m_Keywords = new string[sd.SpellList.Count];
             for (int i=0; i<sd.SpellList.Count; i++)
@@ -124,12 +124,15 @@ namespace HPVR
 
         public void updateSpell(int healthDamage, int shieldDamage, float knockbackStrength, float knockbackRadius, bool hasExplosion, Color color, String colorName)
         {
-            currentSpell.GetComponent<_spell_baseSpellScript>().healthDamage = healthDamage;
-            currentSpell.GetComponent<_spell_baseSpellScript>().shieldDamage = shieldDamage;
-            currentSpell.GetComponent<_spell_baseSpellScript>().knockbackStrength = knockbackStrength;
-            currentSpell.GetComponent<_spell_baseSpellScript>().knockbackRadius = knockbackRadius;
-            currentSpell.GetComponent<_spell_baseSpellScript>().hasExplosion = hasExplosion;
-            currentSpell.GetComponent<_spell_baseSpellScript>().setColor(color, colorName);
+            if(currentSpell.GetComponent<_spell_baseSpellScript>() != null)
+            {
+                currentSpell.GetComponent<_spell_baseSpellScript>().healthDamage = healthDamage;
+                currentSpell.GetComponent<_spell_baseSpellScript>().shieldDamage = shieldDamage;
+                currentSpell.GetComponent<_spell_baseSpellScript>().knockbackStrength = knockbackStrength;
+                currentSpell.GetComponent<_spell_baseSpellScript>().knockbackRadius = knockbackRadius;
+                currentSpell.GetComponent<_spell_baseSpellScript>().hasExplosion = hasExplosion;
+                currentSpell.GetComponent<_spell_baseSpellScript>().setColor(color, colorName);
+            }
         }
 
         private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
@@ -151,6 +154,7 @@ namespace HPVR
                 spawnBaseSpell(wandTip.gameObject.transform.position, wandTip.transform.rotation, majorSpellString);
                 updateSpell(2, 1, 2f, 1.5f, true, Color.blue, "Blue");
                 currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosionSoundClip = "spellExplosion_4";
+                currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosion = "Effect6_Collision";
             }
 
             if (args.text == "avada kedavra")
@@ -158,6 +162,7 @@ namespace HPVR
                 spawnBaseSpell(wandTip.gameObject.transform.position, wandTip.transform.rotation, majorSpellString);
                 updateSpell(10, 2, 2f, 1.5f, true, Color.green, "Green");
                 currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosionSoundClip = "avadaKedavraSound";
+                currentSpell.GetComponent<_spell_baseSpellScript>().SpellExplosion = "Effect12_Explosion";
             }
 
             if (args.text == "incendio" || args.text == "fireball")
@@ -382,7 +387,7 @@ namespace HPVR
 
             baseSpell.transform.parent = gameObject.transform;
             currentSpell = baseSpell;
-            currentSpell.AddComponent<_spell_baseSpellScript>();
+            //currentSpell.AddComponent<_spell_baseSpellScript>();
             //primedGlow.gameObject.SetActive(true);
             //primedGlow.Play();
             return baseSpell;
@@ -460,7 +465,11 @@ namespace HPVR
 
         private void fireSpell()
         {
-            currentSpell.GetComponent<_spell_baseSpellScript>().activate();
+            if(currentSpell.GetComponent<_spell_baseSpellScript>() != null)
+            {
+                currentSpell.GetComponent<_spell_baseSpellScript>().activate();
+            }
+            //currentSpell.GetComponent<_spell_baseSpellScript>().activate();
             currentSpell.transform.parent = null;
             currentSpell = null;
             flash.Play();

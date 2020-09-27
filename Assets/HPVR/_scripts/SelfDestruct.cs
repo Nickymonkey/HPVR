@@ -14,7 +14,7 @@ public class SelfDestruct : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GetComponent<ParticleSystem>().IsAlive())
+        if (!GetComponentInChildren<ParticleSystem>().IsAlive())
         {
             if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
             {

@@ -20,10 +20,11 @@ namespace HPVR
             {
                 GetComponent<NetworkedObject>().requestThenTransfer();
                 GetComponent<NetworkedObject>().currentSpell = spellName;
-                _renderer.material = GetComponent<NetworkedObject>().defaultMaterial;
+               // _renderer.material = GetComponent<NetworkedObject>().getDefaultMaterial();
                 //GetComponent<NetworkedObject>().currentMaterial = _renderer.sharedMaterial.name;
             }
 
+            _renderer.material = GetComponent<NetworkedObject>().getDefaultMaterial();
             transform.localScale = new Vector3(1, 1, 1);
             GetComponent<Rigidbody>().useGravity = true;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;

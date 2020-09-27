@@ -16,13 +16,16 @@ namespace HPVR
         public bool spellActivated = false;
         public string SpellExplosion = "Flash";
         public string SpellExplosionSoundClip = "";
+        public GameObject initilizationParticle;
+        public GameObject primedParticle;
+        public GameObject shootingParticle;
         private Color spellColor;
         private string spellColorName;
 
         // Start is called before the first frame update
         void Start()
         {
-            
+
         }
 
         public void setColor(Color color, string colorName)
@@ -31,16 +34,26 @@ namespace HPVR
             {
                 spellColor = color;
                 spellColorName = colorName;
-                GetComponent<Renderer>().material.SetColor("_Color", spellColor);
-                if (GetComponentInChildren<ParticleSystem>() != null)
-                {
-                    ParticleSystem.MainModule ma = GetComponentInChildren<ParticleSystem>().main;
-                    ma.startColor = color;
-                }
-                if (GetComponentInChildren<Light>() != null)
-                {
-                    GetComponentInChildren<Light>().color = color;
-                }
+                colorUpdate(initilizationParticle);
+                colorUpdate(primedParticle);
+                colorUpdate(shootingParticle);
+                initilizationParticle.SetActive(true);
+                primedParticle.SetActive(true);
+            }
+        }
+
+        public void colorUpdate(GameObject particleSystem)
+        {
+            if (particleSystem.GetComponentInChildren<ParticleSystem>() != null)
+            {
+                ParticleSystem ps = particleSystem.GetComponentInChildren<ParticleSystem>();
+                ParticleSystem.MainModule ma = ps.main;
+                ma.startColor = spellColor;
+            }
+            if (particleSystem.GetComponentInChildren<Light>() != null)
+            {
+                Light light = particleSystem.GetComponentInChildren<Light>();
+                light.color = spellColor;
             }
         }
 
@@ -54,11 +67,6 @@ namespace HPVR
 
                 if (GetComponent<FireSource>() != null)
                 {
-                    //if (GetComponent<FireSource>().isBurning && GetComponent<FireSource>().canSpreadFromThisSource)
-                    //{
-                    //    other.SendMessageUpwards("FireExposure", SendMessageOptions.DontRequireReceiver);
-                    //}
-
                     for (int i = 0; i < gameObject.transform.childCount; i++)
                     {
                         GameObject child = gameObject.transform.GetChild(i).gameObject;
@@ -121,6 +129,7 @@ namespace HPVR
         {
             spellActivated = true;
             StartCoroutine(SpellLifeTimer(5.0f));
+            shootingParticle.SetActive(true);
         }
 
         public void DestroyThis()
@@ -151,21 +160,31 @@ namespace HPVR
         {
             AudioSource source = GetComponent<AudioSource>();
             source.PlayOneShot(Resources.Load(SpellExplosionSoundClip) as AudioClip, 1.0f);
+            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            primedParticle.SetActive(false);
             yield return new WaitWhile(() => source.isPlaying);
             DestroyThis();
         }
 
         void Knockback(Collider other)
         {
-            //Debug.Log("knockback");
-
             if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
             {
                 PhotonNetwork.Instantiate(SpellExplosion, transform.position, transform.rotation, 0);
             }
             else
             {
-                Instantiate(Resources.Load(SpellExplosion), transform.position, transform.rotation);
+                GameObject explosion = (GameObject)Instantiate(Resources.Load(SpellExplosion), transform.position, transform.rotation);
+                if (explosion.GetComponentInChildren<ParticleSystem>() != null)
+                {
+                    ParticleSystem.MainModule ma = explosion.GetComponentInChildren<ParticleSystem>().main;
+                    ma.startColor = spellColor;
+                }
+                if (GetComponentInChildren<Light>() != null)
+                {
+                    GetComponentInChildren<Light>().color = spellColor;
+                }
             }
 
             Collider[] colliders = Physics.OverlapSphere(transform.position, knockbackRadius);

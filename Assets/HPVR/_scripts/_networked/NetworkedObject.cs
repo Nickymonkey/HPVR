@@ -13,7 +13,7 @@ namespace HPVR
         bool gravityOn = true;
         bool kinematicOn = false;
         float mass = 1;
-        public Material defaultMaterial;
+        public Material defaultMaterial = null;
         public Material currentMaterial;
         public string currentSpell = "";
 
@@ -21,8 +21,7 @@ namespace HPVR
         void Start()
         {
             Renderer _renderer = GetComponentInChildren<Renderer>();
-
-            if(defaultMaterial != null)
+            if (defaultMaterial == null)
             {
                 defaultMaterial = _renderer.material;
             }
@@ -108,5 +107,9 @@ namespace HPVR
             throw new System.NotImplementedException();
         }
 
+        public Material getDefaultMaterial()
+        {
+            return defaultMaterial;
+        }
     }
 }
