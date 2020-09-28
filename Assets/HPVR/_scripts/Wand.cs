@@ -305,7 +305,7 @@ namespace HPVR
                         successfulSpellcast.Play();
                     }
 
-                    if (args.text == "finite incantatem" || args.text == "nullify")
+                    if (args.text == "finito" || args.text == "nullify")
                     {
                         affectedObject.AddComponent<_spell_FiniteIncantatemScript>();
                         destroyCurrentSpell();

@@ -823,7 +823,7 @@ MonoBehaviour:
   axisOfRotation: 0
   childCollider: {fileID: 0}
   linearMapping: {fileID: 0}
-  hoverLock: 0
+  hoverLock: 1
   limited: 1
   frozenDistanceMinMaxThreshold: {x: 0.1, y: 0.2}
   onFrozenDistanceThreshold:

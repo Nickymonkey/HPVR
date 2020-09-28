@@ -119,7 +119,7 @@ MonoBehaviour:
   - {fileID: 156098, guid: 053b3de2ccbc8554a8a9fad0daf4a16f, type: 3}
   - {fileID: 169306, guid: 0b3c46301ecf81e47989abb63ade5a88, type: 3}
   BreakOnCollision: 1
-  SpeedRequiredToBreak: 3
+  SpeedRequiredToBreak: 2
   CleanUpShards: 1
   MinShardLife: 3
   MaxShardLife: 6
@@ -422,8 +422,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
-  defaultMaterial: {fileID: 2100000, guid: 1f15b1587ee00da41bf93ac27b2faeb5, type: 2}
-  currentMaterial: 
+  currentMaterial: {fileID: 0}
   currentSpell: 
 --- !u!114 &7464411838110755645
 MonoBehaviour:

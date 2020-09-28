@@ -25,7 +25,7 @@ namespace HPVR
             Tuple<string, string, string> tp5 = new Tuple<string, string, string>("Diminuendo", "Smaller", "Makes the affected non-living object shrink in size");
             Tuple<string, string, string> tp6 = new Tuple<string, string, string>("Duro", "Stone", "Turns the affected non-living object to stone increasing its mass");
             Tuple<string, string, string> tp7 = new Tuple<string, string, string>("Engorgio", "Bigger", "Makes the affected non-living object grow in size");
-            Tuple<string, string, string> tp8 = new Tuple<string, string, string>("Finite Incantatem", "Nullify", "Nullifies the affects of any spell on an object returning it to it's original state");
+            Tuple<string, string, string> tp8 = new Tuple<string, string, string>("Finito", "Nullify", "Nullifies the affects of any spell on an object returning it to it's original state");
             Tuple<string, string, string> tp9 = new Tuple<string, string, string>("Geminio", "Duplicate", "Duplicates the affected non-living object");
             Tuple<string, string, string> tp10 = new Tuple<string, string, string>("Nox", "Extinguish", "Extinguishes any spell currently on the tip of your wand");
             Tuple<string, string, string> tp11 = new Tuple<string, string, string>("Incendio", "Fireball", "Creates a ball of fire that can be shot");

@@ -95,8 +95,6 @@ GameObject:
   - component: {fileID: 7407676708582124045}
   - component: {fileID: 3960984160545789147}
   - component: {fileID: 3746320077871729471}
-  - component: {fileID: 8167403837802940144}
-  - component: {fileID: 3233608036900081875}
   m_Layer: 11
   m_Name: Spellbook
   m_TagString: Untagged
@@ -383,30 +381,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8167403837802940144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2970836842216163334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5240357a2468cdc4291b266bee3cb9b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3233608036900081875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2970836842216163334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6d6653511aff5409d0827d4e3b79ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2970836842270379985
 GameObject:
   m_ObjectHideFlags: 0

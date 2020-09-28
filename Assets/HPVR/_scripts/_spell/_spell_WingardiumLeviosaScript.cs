@@ -33,27 +33,20 @@ namespace HPVR
             if (gameObject.GetComponent<AudioSource>() != null)
             {
                 currentAudioSource = gameObject.GetComponent<AudioSource>();
-                currentAudioSource.spatialize = true; // we DO want spatialized audio
-                currentAudioSource.spread = 0; // we dont want to reduce our angle of hearing
-                currentAudioSource.spatialBlend = 1; // we do want to hear spatialized audio
-                AudioClip wingardiumLeviosaSound = Resources.Load("wingardiumLeviosaSound") as AudioClip;
-                currentAudioSource.volume = 0.25f;
-                currentAudioSource.clip = wingardiumLeviosaSound;
-                //currentAudioSource.loop = true;
-                currentAudioSource.Play();
             }
             else
             {
                 currentAudioSource = gameObject.AddComponent<AudioSource>();
-                currentAudioSource.spatialize = true; // we DO want spatialized audio
-                currentAudioSource.spread = 0; // we dont want to reduce our angle of hearing
-                currentAudioSource.spatialBlend = 1; // we do want to hear spatialized audio
-                AudioClip wingardiumLeviosaSound = Resources.Load("wingardiumLeviosaSound") as AudioClip;
-                currentAudioSource.volume = 0.25f;
-                currentAudioSource.clip = wingardiumLeviosaSound;
-                //currentAudioSource.loop = true;
-                currentAudioSource.Play();
             }
+
+            currentAudioSource.spatialize = true; // we DO want spatialized audio
+            currentAudioSource.spread = 0; // we dont want to reduce our angle of hearing
+            currentAudioSource.spatialBlend = 1; // we do want to hear spatialized audio
+            AudioClip wingardiumLeviosaSound = Resources.Load("wingardiumLeviosaSound") as AudioClip;
+            currentAudioSource.volume = 0.25f;
+            currentAudioSource.clip = wingardiumLeviosaSound;
+            currentAudioSource.playOnAwake = false;
+            currentAudioSource.Play();
 
             GetComponent<Rigidbody>().useGravity = false;
 

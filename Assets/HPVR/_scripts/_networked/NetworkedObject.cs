@@ -13,7 +13,8 @@ namespace HPVR
         bool gravityOn = true;
         bool kinematicOn = false;
         float mass = 1;
-        public Material defaultMaterial = null;
+        //private Material defaultMaterial = null;
+        public Material _defaultMaterial = null;
         public Material currentMaterial;
         public string currentSpell = "";
 
@@ -21,9 +22,9 @@ namespace HPVR
         void Start()
         {
             Renderer _renderer = GetComponentInChildren<Renderer>();
-            if (defaultMaterial == null)
+            if (_defaultMaterial == null)
             {
-                defaultMaterial = _renderer.material;
+                _defaultMaterial = _renderer.material;
             }
             if (!PhotonNetwork.InLobby && !PhotonNetwork.InRoom)
             {
@@ -109,7 +110,7 @@ namespace HPVR
 
         public Material getDefaultMaterial()
         {
-            return defaultMaterial;
+            return _defaultMaterial;
         }
     }
 }

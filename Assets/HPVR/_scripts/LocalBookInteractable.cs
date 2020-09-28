@@ -58,17 +58,17 @@ namespace HPVR
         //-------------------------------------------------
         // Called every Update() while a Hand is hovering over this object
         //-------------------------------------------------
-        private void HandHoverUpdate(Hand hand)
-        {
+        //private void HandHoverUpdate(Hand hand)
+        //{
 
-            GrabTypes startingGrabType = hand.GetGrabStarting();
+        //    GrabTypes startingGrabType = hand.GetGrabStarting();
 
-            if (startingGrabType != GrabTypes.None)
-            {
-                hand.AttachObject(gameObject, startingGrabType, attachmentFlags);               
-                hand.HideGrabHint();
-            }
-        }
+        //    if (startingGrabType != GrabTypes.None)
+        //    {
+        //        hand.AttachObject(gameObject, startingGrabType, attachmentFlags);               
+        //        hand.HideGrabHint();
+        //    }
+        //}
 
 
         //-------------------------------------------------
@@ -76,14 +76,19 @@ namespace HPVR
         //-------------------------------------------------
         private void OnAttachedToHand(Hand hand)
         {
+            //hand = attachedHand;
             //Debug.Log("LOCAL BOOK INTERACTABlE: ATTACHED TO HAND");
             defaultLayerMask = hand.hoverLayerMask;
-            LayerMask mask = LayerMask.GetMask("Pickup");
+            string[] masks = new string[2];
+            masks[0] = "Pickup";
+            //masks[1] = "Page";
+            LayerMask mask = LayerMask.GetMask(masks);
+            //LayerMask pageMask = 
             mask &= ~(1 << this.gameObject.layer);
             hand.hoverLayerMask = mask;
             //hand.HoverLock(interactable);
-            attached = true;
-            onPickUp.Invoke();
+            //attached = true;
+            //onPickUp.Invoke();
         }
 
 
@@ -94,34 +99,39 @@ namespace HPVR
         private void OnDetachedFromHand(Hand hand)
         {
             hand.hoverLayerMask = defaultLayerMask;
-            attached = false;
-            onDetachFromHand.Invoke();
+            //attached = false;
+            //onDetachFromHand.Invoke();
+
+            //m_Recognizer.Dispose();
+            //LexiconFocusManager.OnCaptureFocus -= CaptureFocus;
+            //Destroy(pointerSphere);
+            Destroy(gameObject);
         }
 
 
         //-------------------------------------------------
         // Called every Update() while this GameObject is attached to the hand
         //-------------------------------------------------
-        private void HandAttachedUpdate(Hand hand)
-        {
-            //if(hand.)
-            if (hand.IsGrabEnding(this.gameObject))
-            {
-                //Debug.Log("LOCAL BOOK INTERACTABLE: GRAB IS ENDING");
-                hand.DetachObject(gameObject, restoreOriginalParent);
+        //private void HandAttachedUpdate(Hand hand)
+        //{
+        //    //if(hand.)
+        //    if (hand.IsGrabEnding(this.gameObject))
+        //    {
+        //        //Debug.Log("LOCAL BOOK INTERACTABLE: GRAB IS ENDING");
+        //        hand.DetachObject(gameObject, restoreOriginalParent);
 
-                // Uncomment to detach ourselves late in the frame.
-                // This is so that any vehicles the player is attached to
-                // have a chance to finish updating themselves.
-                // If we detach now, our position could be behind what it
-                // will be at the end of the frame, and the object may appear
-                // to teleport behind the hand when the player releases it.
-                //StartCoroutine( LateDetach( hand ) );
-            }
+        //        // Uncomment to detach ourselves late in the frame.
+        //        // This is so that any vehicles the player is attached to
+        //        // have a chance to finish updating themselves.
+        //        // If we detach now, our position could be behind what it
+        //        // will be at the end of the frame, and the object may appear
+        //        // to teleport behind the hand when the player releases it.
+        //        //StartCoroutine( LateDetach( hand ) );
+        //    }
 
-            if (onHeldUpdate != null)
-                onHeldUpdate.Invoke(hand);
-        }
+        //    if (onHeldUpdate != null)
+        //        onHeldUpdate.Invoke(hand);
+        //}
 
         private bool lastHovering = false;
 
@@ -137,9 +147,11 @@ namespace HPVR
         //-------------------------------------------------
         // Called when this attached GameObject becomes the primary attached object
         //-------------------------------------------------
+        //-------------------------------------------------
         private void OnHandFocusAcquired(Hand hand)
         {
             gameObject.SetActive(true);
+            OnAttachedToHand(hand);
         }
 
 

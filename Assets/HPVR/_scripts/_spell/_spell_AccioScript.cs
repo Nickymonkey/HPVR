@@ -50,6 +50,7 @@ namespace HPVR
                 currentAudioSource = gameObject.AddComponent<AudioSource>();
             }
             currentAudioSource.spatialBlend = 1; // we do want to hear spatialized audio
+            currentAudioSource.playOnAwake = false;
             StartCoroutine(Countdown(5));
             StartCoroutine(Shake());
         }

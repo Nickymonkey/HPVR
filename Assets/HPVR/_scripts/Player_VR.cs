@@ -32,6 +32,7 @@ namespace HPVR
         private bool gamePaused = false;
         private float currentAmount = 0f;
         private float pauseSpeed = 90f;
+        public bool waitDelay = false;
         //-------------------------------------------------
         // Singleton instance of the Player. Only one can exist at a time.
         //-------------------------------------------------
@@ -120,7 +121,7 @@ namespace HPVR
                 loadingPauseCanvas.SetActive(true);
             }
 
-            if (ButtonInput.state && !gamePaused)
+            if ((ButtonInput.state && !gamePaused) && !waitDelay)
             {
                 if(currentAmount < 100)
                 {
@@ -135,6 +136,21 @@ namespace HPVR
                     }
                 }
             }
+            else if((ButtonInput.state && gamePaused) && !waitDelay)
+            {
+                //if (currentAmount < 100)
+                //{
+                //    currentAmount += pauseSpeed * Time.deltaTime;
+                //    loadingBar.fillAmount = currentAmount / 100;
+                //}
+                //else
+                //{
+                    if (gamePaused)
+                    {
+                        Unpause();
+                    }
+                //}
+            }
             else
             {
                 currentAmount = 0;
@@ -142,6 +158,18 @@ namespace HPVR
             }
 
             movementUpdate();
+        }
+
+        //-------------------------------------------------
+        public IEnumerator WaitForRealSeconds(float time)
+        {
+            waitDelay = true;
+            float start = Time.realtimeSinceStartup;
+            while (Time.realtimeSinceStartup < start + time)
+            {
+                yield return null;
+            }
+            waitDelay = false;
         }
 
         private bool isMineOrLocal()
@@ -162,6 +190,7 @@ namespace HPVR
 
         public void Pause()
         {
+            StartCoroutine(WaitForRealSeconds(0.5f));
             playerModel.SetActive(false);
             spellbookPickup.SetActive(false);
             wandPickup.SetActive(false);
@@ -173,6 +202,7 @@ namespace HPVR
 
         public void Unpause()
         {
+            StartCoroutine(WaitForRealSeconds(0.5f));
             playerModel.SetActive(true);
             spellbookPickup.SetActive(true);
             wandPickup.SetActive(true);
