@@ -44,11 +44,14 @@ namespace HPVR
 
         public void colorUpdate(GameObject particleSystem)
         {
+            //foreach(ParticleSystem ps in particleSystem.GetComponentsInChildren<ParticleSystem>())
             if (particleSystem.GetComponentInChildren<ParticleSystem>() != null)
             {
-                ParticleSystem ps = particleSystem.GetComponentInChildren<ParticleSystem>();
-                ParticleSystem.MainModule ma = ps.main;
-                ma.startColor = spellColor;
+                foreach (ParticleSystem ps in particleSystem.GetComponentsInChildren<ParticleSystem>())
+                {
+                    ParticleSystem.MainModule ma = ps.main;
+                    ma.startColor = spellColor;
+                }
             }
             if (particleSystem.GetComponentInChildren<Light>() != null)
             {
