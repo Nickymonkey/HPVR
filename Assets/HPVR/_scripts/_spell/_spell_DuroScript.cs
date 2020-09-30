@@ -39,9 +39,13 @@ namespace HPVR
                 }
             }
 
-            if(GetComponent<Breakable>() != null)
+            if (GetComponent<Breakable>() != null)
             {
                 GetComponent<Breakable>().BreakOnCollision = false;
+            }
+            if (GetComponent<BottleSmash>() != null)
+            {
+                GetComponent<BottleSmash>().allowShattering = false;
             }
             Destroy(this);
         }

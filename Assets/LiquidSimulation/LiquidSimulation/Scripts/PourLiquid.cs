@@ -14,6 +14,7 @@ public class PourLiquid : MonoBehaviour {
     public ParticleSystem pouringParticleSystem;
     //how many particles it takes to empty
     public float volumeOfParticles = 70.0f;
+    public AudioSource source;
     private Rigidbody corkRB;
 	void Start () {
         if (smashScript != null)
@@ -65,11 +66,14 @@ public class PourLiquid : MonoBehaviour {
                 if(!pouringParticleSystem.isEmitting)
                 {
                     pouringParticleSystem.Play();
+                    source.Play();
                 }
+                source.pitch = Mathf.Lerp(1.0f, 1.4f, 1.0f - liquid.level);
             }
             else
             {
                 pouringParticleSystem.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+                source.Stop();
             }
         }
 		

@@ -23,6 +23,8 @@ public class BottleSmash : MonoBehaviour {
     public float DespawnTime = 5.0f;
     //splash effect.
     public ParticleSystem Effect;
+
+    public AudioSource source;
     //3D mesh on hte ground (given a specific height).
     public GameObject Splat;
     //such as the ground layer otherwise the broken glass could be considered the 'ground'
@@ -102,8 +104,7 @@ public class BottleSmash : MonoBehaviour {
     }
 
     public void Smash()
-    {
-        
+    {       
         broken = true;
         //the Corks collider needs to be turned on;
         if (Cork != null)
@@ -124,6 +125,7 @@ public class BottleSmash : MonoBehaviour {
         //particle effect
         if(Effect != null)
         {
+            source.Play();
             Effect.Play();
             Destroy(Effect.gameObject, Effect.main.startLifetime.constantMax);
         }

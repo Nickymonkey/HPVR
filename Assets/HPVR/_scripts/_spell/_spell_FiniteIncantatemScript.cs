@@ -35,6 +35,11 @@ namespace HPVR
                 GetComponent<Breakable>().BreakOnCollision = true;
             }
 
+            if (GetComponent<BottleSmash>() != null)
+            {
+                GetComponent<BottleSmash>().allowShattering = true;
+            }
+
             if (GetComponent<Interactable>() != null)
             {
                 if(GetComponent<Interactable>().attachedToHand != null)

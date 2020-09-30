@@ -107,7 +107,28 @@ namespace HPVR
 
                 if(other.gameObject.GetComponent<Breakable>() != null)
                 {
-                    other.gameObject.GetComponent<Breakable>().BreakFunction();
+                    if (other.gameObject.GetComponent<Breakable>().BreakOnCollision)
+                    {
+                        other.gameObject.GetComponent<Breakable>().BreakFunction();
+                    }
+                }
+
+                if(other.gameObject.transform.parent != null)
+                {
+                    if (other.gameObject.GetComponent<BottleSmash>() != null)
+                    {
+                        if (other.gameObject.GetComponent<BottleSmash>().allowShattering)
+                        {
+                            other.gameObject.GetComponent<BottleSmash>().Smash();
+                        }
+                    }
+                    else if(other.gameObject.transform.parent.GetComponent<BottleSmash>() != null)
+                    {
+                        if (other.gameObject.transform.parent.GetComponent<BottleSmash>().allowShattering)
+                        {
+                            other.gameObject.transform.parent.GetComponent<BottleSmash>().Smash();
+                        }
+                    }
                 }
 
                 if (hasExplosion)
