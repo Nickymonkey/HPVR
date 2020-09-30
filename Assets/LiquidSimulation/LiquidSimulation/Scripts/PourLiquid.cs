@@ -29,9 +29,13 @@ public class PourLiquid : MonoBehaviour {
 	void Update () {
         if(corkRB != null)
         {
-            if (corkRB.gameObject.transform.parent.name == gameObject.transform.name)
-                return;
-            else if (!corkRB.gameObject.activeInHierarchy)
+            if(corkRB.gameObject.transform.parent != null)
+            {
+                if (corkRB.gameObject.transform.parent.name == gameObject.transform.name)
+                    return;
+            }
+
+            if (!corkRB.gameObject.activeInHierarchy)
                 return;
         }
 

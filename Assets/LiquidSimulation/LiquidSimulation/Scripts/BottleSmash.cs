@@ -108,10 +108,10 @@ public class BottleSmash : MonoBehaviour {
         //the Corks collider needs to be turned on;
         if (Cork != null)
         {
-            Cork.transform.parent = null;
-            Cork.GetComponent<Collider>().enabled = true;
-            Cork.GetComponent<Rigidbody>().isKinematic = false;
-            Destroy(Cork.gameObject, DespawnTime);
+            //Cork.transform.parent = null;
+            //Cork.GetComponent<Collider>().enabled = true;
+            //Cork.GetComponent<Rigidbody>().isKinematic = false;
+            //Destroy(Cork.gameObject, DespawnTime);
         }
         //the Liquid gets removed after n seconds
         if (Liquid != null)
@@ -144,7 +144,7 @@ public class BottleSmash : MonoBehaviour {
         if (Glass_Shattered != null)
         {
             Glass_Shattered.SetActive(true);
-            Glass_Shattered.transform.parent = null;
+            //Glass_Shattered.transform.parent = null;
             Destroy(Glass_Shattered, DespawnTime);
         }
 
